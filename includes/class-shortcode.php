@@ -52,11 +52,8 @@ class Shortcode {
 
 
 	public function parse( string $url ) {
-		$contents  = file_get_contents( $url );
-		$contents  = str_replace( array( "\n", "\r", "\t" ), '', $contents );
-		$contents  = trim( str_replace( '"', "'", $contents ) );
-		$simplexml = simplexml_load_string( $contents );
-		$json      = json_encode( $simplexml, JSON_HEX_APOS );
+		$simplexml = simplexml_load_file( $url, 'SimpleXMLElement', LIBXML_NOCDATA );
+		$json      = htmlspecialchars( json_encode( $simplexml ), ENT_QUOTES, 'UTF-8' );
 
 		return $json;
 	}
