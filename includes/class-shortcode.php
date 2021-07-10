@@ -93,7 +93,9 @@ class Shortcode {
 		return $html;
 	}
 
-
+	/**
+	 * Parse
+	 */
 	public function parse( string $url ) {
 		$simplexml = simplexml_load_file( $url, 'SimpleXMLElement', LIBXML_NOCDATA );
 		$array     = $this->xml2array( $simplexml );
@@ -105,9 +107,12 @@ class Shortcode {
 		return $json;
 	}
 
+	/**
+	 * xml2array
+	 */
 	public function xml2array( $xml_object, $out = array() ) {
 		foreach ( (array) $xml_object as $index => $node ) {
-			$out[ $index ] = ( is_object( $node ) ) ? $this->xml2array( $node ) : $node;
+			$out[ $index ] = is_object( $node ) ? $this->xml2array( $node ) : $node;
 		}
 
 		return $out;
