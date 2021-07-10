@@ -48,13 +48,23 @@
       props: ["dataRss", "dataName", "dataUrl", "styleNeeded"],
       mounted() {
         dataParse = JSON.parse(this.dataRss);
+
         const tempData = dataParse.channel.item;
-        const oldQuestion="document.getElementById('page-fiche').classList.add('quizz-open'); return false;"
-        const newQuestion = "document.getElementById('reponse').classList.add('quizz-open');document.getElementById('rna').classList.add('quizz-close'); return false;"
-        const oldClass="reponse-quizz-in"
-        const newClass = "quizz-close"
+
+
         for(let element of tempData) {
-          const replacement = element.description.replaceAll(oldQuestion,newQuestion).replaceAll(oldClass,newClass)
+          const idNumber = Math.floor(Math.random()*90000) + 10000;
+          const oldQuestion="document.getElementById('page-fiche').classList.add('quizz-open'); return false;"
+          const newQuestion = "document.getElementById('reponse"+idNumber+"').classList.add('quizz-open');document.getElementById('rna"+idNumber+"').classList.add('quizz-close'); return false;"
+          const oldTarget='href="#reponse"'
+          const newTarget ='href="#reponse'+idNumber+'"'
+          const oldClass="reponse-quizz-in"
+          const newClass = "quizz-close"
+          const oldID='id="reponse"'
+          const newID='id="reponse'+idNumber+'"'
+          const oldID2="rna"
+          const newID2='rna'+idNumber
+          const replacement = element.description.replaceAll(oldTarget,newTarget).replaceAll(oldID,newID).replaceAll(oldID2,newID2).replaceAll(oldQuestion,newQuestion).replaceAll(oldClass,newClass)
           element.description = replacement
         };
         this.goodData = tempData

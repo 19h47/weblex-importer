@@ -9,6 +9,7 @@
 }
 .quizz-open{
     visibility: visible;
+    position:relative;
 }
 .fiches-item {
     padding:0.5em;
