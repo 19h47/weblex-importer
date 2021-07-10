@@ -1,3 +1,23 @@
+.quizz-hebdo-item {
+    padding:0.5em;
+    margin:0.5em;
+    border-bottom:1px solid black;
+}
+.fiches-item {
+    padding:0.5em;
+    margin:0.5em;
+    border-bottom:1px solid black;
+}
+.indicateurs-item {
+    padding:0.5em;
+    margin:0.5em;
+    border-bottom:1px solid black;
+}
+.phdj-item {
+    padding:0.5em;
+    margin:0.5em;
+    border-bottom:1px solid black;
+}
 .agenda-item {
     padding:0.5em;
     margin:0.5em;
