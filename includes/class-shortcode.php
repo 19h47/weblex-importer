@@ -87,7 +87,7 @@ class Shortcode {
 		$html .= 'data-rss = "' . $this->parse( $feed['url'] ) . '" ';
 		$html .= 'data-name="' . $feed['title'] . '" ';
 		$html .= 'data-url = "' . $feed['url'] . '" ';
-		$html .= 'style-needed:"true />';
+		$html .= 'style-needed:"true" />';
 		$html .= '</div>';
 
 		return $html;
