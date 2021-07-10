@@ -36,7 +36,6 @@ Vue.component('quizz-hebdo', {
     mounted() {
       dataParse = JSON.parse(this.dataRss)
       this.goodData = dataParse.channel.item
-      console.log(dataParse.channel.item[0])
     },
     data () { return { goodData:''}},
     template: '<div> <div class="quizz-hebdo-item" v-for="(item,index) in goodData" :key="index"> <div class="quizz-hebdo-item-day">{{item.jour}}</div> <div class="quizz-hebdo-item-title">{{item.title}}</div> <div class="quizz-hebdo-item-desc" v-html="item.description"></div> </div> </div>'
@@ -47,7 +46,6 @@ Vue.component('phdj', {
     mounted() {
       dataParse = JSON.parse(this.dataRss)
       this.goodData = dataParse.channel.item
-      console.log(dataParse.channel.item[0])
     },
     data () { return { goodData:''}},
     template: '<div> <div class="phdj-item" v-for="(item,index) in goodData" :key="index"> <div class="phdj-item-day">{{item.jour}}</div> <div class="phdj-item-title">{{item.title}}</div> <div class="phdj-item-desc" v-html="item.description"></div> </div> </div>'
@@ -58,7 +56,6 @@ Vue.component('indicateurs', {
     mounted() {
       dataParse = JSON.parse(this.dataRss)
       this.goodData = dataParse.channel.item
-      console.log(dataParse.channel.item[0])
     },
     data () { return { goodData:''}},
     template: '<div> <div class="indicateurs-item" v-for="(item,index) in goodData" :key="index"> <div class="indicateurs-item-day">{{item.jour}}</div> <div class="indicateurs-item-title">{{item.title}}</div> <div class="indicateurs-item-desc" v-html="item.description"></div> </div> </div>'
@@ -69,7 +66,6 @@ Vue.component('fiches', {
     mounted() {
       dataParse = JSON.parse(this.dataRss)
       this.goodData = dataParse.channel.item
-      console.log(dataParse.channel.item[0])
     },
     data () { return { goodData:''}},
     template: '<div> <div class="fiches-item" v-for="(item,index) in goodData" :key="index"> <div class="fiches-item-day">{{item.jour}}</div> <div class="fiches-item-title">{{item.title}}</div> <div class="fiches-item-desc" v-html="item.description"></div> </div> </div>'
@@ -80,7 +76,6 @@ Vue.component('fiches', {
     mounted() {
       dataParse = JSON.parse(this.dataRss)
       this.goodData = dataParse.channel.item
-      console.log(dataParse)
     },
     data () { return { goodData:''}},
     template: '<div> <div class="agenda-item" v-for="(item,index) in goodData" :key="index"> <div class="agenda-item-day">{{item.jour}}</div> <div class="agenda-item-title">{{item.title}}</div> <div class="agenda-item-desc" v-html="item.description"></div> </div> </div>'
