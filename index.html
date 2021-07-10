@@ -26,15 +26,16 @@
   Vue.component('agenda', {
   props: ['dataRss','dataName','dataUrl','styleNeeded'],
   mounted() {
-    dataJson = JSON.parse(this.dataRss)
-    console.log(dataJson.channel.item)
+    dataParse = JSON.parse(this.dataRss)
+    this.dataJson = dataParse.channel.item
+    console.log(dataParse)
   },
   data () {
     return {
       dataJson:'',
     }
   },
-  template: '<div>{{dataJson}}</div>'
+  template: '<div><div class="item" v-for="item in dataJson">{{item}}</div></div>'
 })
 
     const vm = new Vue({
