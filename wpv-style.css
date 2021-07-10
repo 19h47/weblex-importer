@@ -26,7 +26,19 @@
 .agenda-item-day {
     font-size:0.8rem;
 }
-.agenda-item-title {
+.quizz-hebdo-item-title {
+    font-weight:800;
+}
+.phdj-item-title {
+    font-weight:800;
+}
+.indicateurs-item-title {
+    font-weight:800;
+}
+.fiches-item-title {
+    font-weight:800;
+}
+.actus-item-title {
     font-weight:800;
 }
 .agenda-item-desc {
