@@ -3,8 +3,12 @@
     margin:0.5em;
     border-bottom:1px solid black;
 }
+.quizz-close{
+    visibility: hidden;
+    position:absolute;
+}
 .quizz-open{
-    background-color:red;
+    visibility: visible;
 }
 .fiches-item {
     padding:0.5em;

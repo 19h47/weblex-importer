@@ -50,10 +50,11 @@
         dataParse = JSON.parse(this.dataRss);
         const tempData = dataParse.channel.item;
         const oldQuestion="document.getElementById('page-fiche').classList.add('quizz-open'); return false;"
-        const newQuestion = "document.getElementById('reponse').classList.add('quizz-open'); return false;"
-
+        const newQuestion = "document.getElementById('reponse').classList.add('quizz-open');document.getElementById('rna').classList.add('quizz-close'); return false;"
+        const oldClass="reponse-quizz-in"
+        const newClass = "quizz-close"
         for(let element of tempData) {
-          const replacement = element.description.replaceAll(oldClick,newClick).replaceAll(oldQuestion,newQuestion).replaceAll(oldAnswer,newAnswer)
+          const replacement = element.description.replaceAll(oldQuestion,newQuestion).replaceAll(oldClass,newClass)
           element.description = replacement
         };
         this.goodData = tempData
