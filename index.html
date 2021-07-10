@@ -48,7 +48,19 @@
       props: ["dataRss", "dataName", "dataUrl", "styleNeeded"],
       mounted() {
         dataParse = JSON.parse(this.dataRss);
-        this.goodData = dataParse.channel.item;
+        const tempData = dataParse.channel.item;
+        const oldClick="onclick"
+        const newClick = "@click"
+        const oldQuestion="document.getElementById('page-fiche').classList.add('quizz-open'); return false;"
+        const newQuestion = "document.getElementById('reponse').classList.add('quizz-open'); return false;"
+        const oldAnswer='<div id="reponse" class="reponse-quizz-in">'
+        const newAnswer='<div id="reponse" v-if="answer" class="reponse-quizz-in">'
+
+        for(let element of tempData) {
+          const replacement = element.description.replaceAll(oldClick,newClick).replaceAll(oldQuestion,newQuestion).replaceAll(oldAnswer,newAnswer)
+          element.description = replacement
+        };
+        this.goodData = tempData
       },
       data() {
         return { goodData: "" };
@@ -62,6 +74,7 @@
       mounted() {
         dataParse = JSON.parse(this.dataRss);
         this.goodData = dataParse.channel.item;
+        
       },
       data() {
         return { goodData: "" };

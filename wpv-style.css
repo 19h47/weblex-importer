@@ -3,6 +3,9 @@
     margin:0.5em;
     border-bottom:1px solid black;
 }
+.quizz-open{
+    background-color:red;
+}
 .fiches-item {
     padding:0.5em;
     margin:0.5em;
