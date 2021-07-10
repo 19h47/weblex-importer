@@ -1,0 +1,14 @@
+.agenda-item {
+    padding:0.5em;
+    margin:0.5em;
+    border-bottom:1px solid black;
+}
+.agenda-item-day {
+    font-size:0.8rem;
+}
+.agenda-item-title {
+    font-weight:800;
+}
+.agenda-item-desc {
+    font-size:0.9rem;
+}

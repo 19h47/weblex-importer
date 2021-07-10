@@ -27,15 +27,15 @@
   props: ['dataRss','dataName','dataUrl','styleNeeded'],
   mounted() {
     dataParse = JSON.parse(this.dataRss)
-    this.dataJson = dataParse.channel.item
+    this.dataAgenda = dataParse.channel.item
     console.log(dataParse)
   },
   data () {
     return {
-      dataJson:'',
+      dataAgenda:'',
     }
   },
-  template: '<div><div class="item" v-for="item in dataJson">{{item}}</div></div>'
+  template: '<div> <div class="agenda-item" v-for="(item,index) in dataAgenda" :key="index"> <div class="agenda-item-day">{{item.jour}}</div> <div class="agenda-item-title">{{item.title}}</div> <div class="agenda-item-desc" v-html="item.description"></div> </div> </div>'
 })
 
     const vm = new Vue({
