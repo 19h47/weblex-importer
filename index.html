@@ -55,7 +55,7 @@
         for(let element of tempData) {
           const idNumber = Math.floor(Math.random()*90000) + 10000;
           const oldQuestion="document.getElementById('page-fiche').classList.add('quizz-open'); return false;"
-          const newQuestion = "document.getElementById('reponse"+idNumber+"').classList.add('quizz-open');document.getElementById('rna"+idNumber+"').classList.add('quizz-close'); return false;"
+          const newQuestion = "document.getElementById('reponse"+idNumber+"').classList.add('quizz-open');document.getElementById('reponse"+idNumber+"').classList.remove('quizz-close');document.getElementById('rna"+idNumber+"').classList.add('quizz-close');document.getElementById('rna"+idNumber+"').classList.remove('quizz-open');return false;"
           const oldTarget='href="#reponse"'
           const newTarget ='href="#reponse'+idNumber+'"'
           const oldClass="reponse-quizz-in"
