@@ -83,7 +83,7 @@ class Shortcode {
 		$feed  = $feeds[ $index ];
 
 		$html  = '<div id="app">';
-		$html .= '<component :is="' . $feed['component'] . '" ';
+		$html .= '<component is="' . $feed['component'] . '" ';
 		$html .= 'data-rss = "' . $this->parse( $feed['url'] ) . '" ';
 		$html .= 'data-title="' . $feed['title'] . '" ';
 		$html .= 'data-url = "' . $feed['url'] . '" ';
