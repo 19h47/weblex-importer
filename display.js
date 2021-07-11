@@ -1,27 +1,27 @@
 Vue.component("quizz-hebdo", {
     props: ["dataRss", "dataName", "dataUrl", "styleNeeded"],
     mounted() {
-      dataParse = JSON.parse(this.dataRss);
+      if(this.dataRss) {
+        dataParse = JSON.parse(this.dataRss);
+        const tempData = dataParse.channel.item;
 
-      const tempData = dataParse.channel.item;
-
-
-      for(let element of tempData) {
-        const idNumber = Math.floor(Math.random()*90000) + 10000;
-        const oldQuestion="document.getElementById('page-fiche').classList.add('quizz-open'); return false;"
-        const newQuestion = "document.getElementById('reponse"+idNumber+"').classList.add('quizz-open');document.getElementById('reponse"+idNumber+"').classList.remove('quizz-close');document.getElementById('rna"+idNumber+"').classList.add('quizz-close');document.getElementById('rna"+idNumber+"').classList.remove('quizz-open');return false;"
-        const oldTarget='href="#reponse"'
-        const newTarget ='href="#reponse'+idNumber+'"'
-        const oldClass="reponse-quizz-in"
-        const newClass = "quizz-close"
-        const oldID='id="reponse"'
-        const newID='id="reponse'+idNumber+'"'
-        const oldID2="rna"
-        const newID2='rna'+idNumber
-        const replacement = element.description.replaceAll(oldTarget,newTarget).replaceAll(oldID,newID).replaceAll(oldID2,newID2).replaceAll(oldQuestion,newQuestion).replaceAll(oldClass,newClass)
-        element.description = replacement
-      };
-      this.goodData = tempData
+        for(let element of tempData) {
+          const idNumber = Math.floor(Math.random()*90000) + 10000;
+          const oldQuestion="document.getElementById('page-fiche').classList.add('quizz-open'); return false;"
+          const newQuestion = "document.getElementById('reponse"+idNumber+"').classList.add('quizz-open');document.getElementById('reponse"+idNumber+"').classList.remove('quizz-close');document.getElementById('rna"+idNumber+"').classList.add('quizz-close');document.getElementById('rna"+idNumber+"').classList.remove('quizz-open');return false;"
+          const oldTarget='href="#reponse"'
+          const newTarget ='href="#reponse'+idNumber+'"'
+          const oldClass="reponse-quizz-in"
+          const newClass = "quizz-close"
+          const oldID='id="reponse"'
+          const newID='id="reponse'+idNumber+'"'
+          const oldID2="rna"
+          const newID2='rna'+idNumber
+          const replacement = element.description.replaceAll(oldTarget,newTarget).replaceAll(oldID,newID).replaceAll(oldID2,newID2).replaceAll(oldQuestion,newQuestion).replaceAll(oldClass,newClass)
+          element.description = replacement
+        };
+        this.goodData = tempData
+      }
     },
     data() {
       return { goodData: "" };
@@ -33,9 +33,10 @@ Vue.component("quizz-hebdo", {
   Vue.component("phdj", {
     props: ["dataRss", "dataName", "dataUrl", "styleNeeded"],
     mounted() {
-      dataParse = JSON.parse(this.dataRss);
-      this.goodData = dataParse.channel.item;
-      
+      if(this.dataRss) {
+        dataParse = JSON.parse(this.dataRss);
+        this.goodData = dataParse.channel.item;
+      }
     },
     data() {
       return { goodData: "" };
@@ -47,8 +48,10 @@ Vue.component("quizz-hebdo", {
   Vue.component("indicateurs", {
     props: ["dataRss", "dataName", "dataUrl", "styleNeeded"],
     mounted() {
-      dataParse = JSON.parse(this.dataRss);
-      this.goodData = dataParse.channel.item;
+      if(this.dataRss) {
+        dataParse = JSON.parse(this.dataRss);
+        this.goodData = dataParse.channel.item;
+      }
     },
     data() {
       return { goodData: "" };
@@ -60,8 +63,10 @@ Vue.component("quizz-hebdo", {
   Vue.component("fiches", {
     props: ["dataRss", "dataName", "dataUrl", "styleNeeded"],
     mounted() {
-      dataParse = JSON.parse(this.dataRss);
-      this.goodData = dataParse.channel.item;
+      if(this.dataRss) {
+        dataParse = JSON.parse(this.dataRss);
+        this.goodData = dataParse.channel.item;
+      }
     },
     data() {
       return { goodData: "" };
@@ -73,8 +78,10 @@ Vue.component("quizz-hebdo", {
   Vue.component("agenda", {
     props: ["dataRss", "dataName", "dataUrl", "styleNeeded"],
     mounted() {
-      dataParse = JSON.parse(this.dataRss);
-      this.goodData = dataParse.channel.item;
+      if(this.dataRss) {
+        dataParse = JSON.parse(this.dataRss);
+        this.goodData = dataParse.channel.item;
+      }
     },
     data() {
       return { goodData: "" };
