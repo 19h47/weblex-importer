@@ -31,6 +31,8 @@ class Shortcode {
 	 * @return string
 	 */
 	public function feed( array $atts, string $content, string $shortcode_tag ) : string {
+		wp_enqueue_script( 'vuejs', '//cdn.jsdelivr.net/npm/vue@2.6.14' );
+		wp_enqueue_script( 'weblex-rss-feed-script', plugin_dir_url( _WEBLEXRSSFEED_PLUGIN_FILE ) . 'script.js', 'vuejs', false );
 
 		// agenda -> L'agenda
 		// phdj -> La petite histoire du jour
@@ -82,12 +84,12 @@ class Shortcode {
 		$index = array_search( $args['title'], array_column( $feeds, 'title' ), true );
 		$feed  = $feeds[ $index ];
 
-		$html  = '<div id="app">';
+		$html  = '<div class="weblex-rss-feed-app">';
 		$html .= '<component is="' . $feed['component'] . '" ';
 		$html .= 'data-rss = "' . $this->parse( $feed['url'] ) . '" ';
 		$html .= 'data-title="' . $feed['title'] . '" ';
 		$html .= 'data-url = "' . $feed['url'] . '" ';
-		$html .= 'style-needed:"true" />';
+		$html .= 'style-needed="true" />';
 		$html .= '</div>';
 
 		return $html;

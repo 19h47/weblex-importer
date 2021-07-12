@@ -15,6 +15,8 @@
  * @package WebLexRSSFeed
  */
 
+const _WEBLEXRSSFEED_PLUGIN_FILE = __FILE__;
+
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-shortcode.php';
 
 $plugin = new Shortcode();
