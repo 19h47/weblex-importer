@@ -1,0 +1,54 @@
+.quizz-hebdo-item {
+  padding: 0.5em;
+  margin: 0.5em;
+  border-bottom: 1px solid black;
+}
+.quizz-close {
+  visibility: hidden;
+  position: absolute;
+}
+.quizz-open {
+  visibility: visible;
+  position: relative;
+}
+.fiches-item {
+  padding: 0.5em;
+  margin: 0.5em;
+  border-bottom: 1px solid black;
+}
+.indicateurs-item {
+  padding: 0.5em;
+  margin: 0.5em;
+  border-bottom: 1px solid black;
+}
+.phdj-item {
+  padding: 0.5em;
+  margin: 0.5em;
+  border-bottom: 1px solid black;
+}
+.agenda-item {
+  padding: 0.5em;
+  margin: 0.5em;
+  border-bottom: 1px solid black;
+}
+.agenda-item-day {
+  font-size: 0.8rem;
+}
+.quizz-hebdo-item-title {
+  font-weight: 800;
+}
+.phdj-item-title {
+  font-weight: 800;
+}
+.indicateurs-item-title {
+  font-weight: 800;
+}
+.fiches-item-title {
+  font-weight: 800;
+}
+.actus-item-title {
+  font-weight: 800;
+}
+.agenda-item-desc {
+  font-size: 0.9rem;
+}
