@@ -10,6 +10,8 @@
 .quizz-open {
   visibility: visible;
   position: relative;
+  border-top: 1px dotted #b2b2b2;
+  padding-top: 4px;
 }
 .fiches-item {
   padding: 0.5em;
@@ -44,6 +46,9 @@
   font-weight: 800;
 }
 .fiches-item-title {
+  font-weight: 800;
+}
+.agenda-item-title {
   font-weight: 800;
 }
 .actus-item-title {
