@@ -69,11 +69,8 @@ class WebLex_RSS_Feed_Admin {
 	 */
 	private function load_dependencies() : void {
 
-		/**
-		 * The class responsible for orchestrating the actions and filters of the
-		 * core plugin.
-		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-rss-feed-settings.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-rss-feed-insert-post.php';
 	}
 
 	/**

@@ -17,7 +17,7 @@
 	class="regular-text"
 	type="url" 
 	id="<?php echo $args['id']; ?>" 
-	name="weblex_rss_feeds[<?php echo $args['id']; ?>]"  
+	name="weblex_rss_feed_options[<?php echo $args['id']; ?>]"  
 	value="<?php echo $options[ $args['id'] ]; ?>" 
 	placeholder="https://www.weblex.fr/flux.rss"
 />

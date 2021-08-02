@@ -112,7 +112,6 @@ class WebLex_RSS_Feed {
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-rss-feed-admin.php';
-		//require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-rss-feed-admin-settings.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
@@ -151,14 +150,17 @@ class WebLex_RSS_Feed {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin    = new WebLex_RSS_Feed_Admin( $this->get_plugin_name(), $this->get_version() );
-		$plugin_settings = new WebLex_RSS_Feed_Settings( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin       = new WebLex_RSS_Feed_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_settings    = new WebLex_RSS_Feed_Settings( $this->get_plugin_name(), $this->get_version() );
+		$plugin_insert_post = new WebLex_RSS_Feed_Insert_Post( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
 		$this->loader->add_action( 'admin_menu', $plugin_settings, 'setup_plugin_options_menu' );
 		$this->loader->add_action( 'admin_init', $plugin_settings, 'initialize_display_options' );
+
+		$this->loader->add_action( 'update_option_weblex_rss_feed_options', $plugin_insert_post, 'init', 10, 3 );
 
 	}
 

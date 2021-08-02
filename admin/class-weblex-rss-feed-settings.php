@@ -79,8 +79,8 @@ class WebLex_RSS_Feed_Settings {
 			<form method="post" action="options.php">
 				<?php
 
-				settings_fields( 'weblex_rss_feeds' );
-				do_settings_sections( 'weblex_rss_feeds' );
+				settings_fields( 'weblex_rss_feed_options' );
+				do_settings_sections( 'weblex_rss_feed_options' );
 
 				submit_button();
 
@@ -99,7 +99,7 @@ class WebLex_RSS_Feed_Settings {
 	 * in the add_settings_section function.
 	 */
 	public function general_options_callback() {
-		$options = get_option( 'weblex_rss_feeds' );
+		$options = get_option( 'weblex_rss_feed_options' );
 
 		echo '<p>' . __( 'Enter URLs for WebLex RSS feed.', 'weblex-rss-feed' ) . '</p>';
 	} // end general_options_callback
@@ -117,7 +117,7 @@ class WebLex_RSS_Feed_Settings {
 			'general_settings_section',                     // ID used to identify this section and with which to register options
 			__( 'RSS feeds', 'weblex-rss-feed' ),                // Title to be displayed on the administration page
 			array( $this, 'general_options_callback' ),      // Callback used to render the description of the section
-			'weblex_rss_feeds'                     // Page on which to add this section of options
+			'weblex_rss_feed_options'                     // Page on which to add this section of options
 		);
 
 		$feeds = array(
@@ -158,7 +158,7 @@ class WebLex_RSS_Feed_Settings {
 				'weblex_' . $feed['id'],
 				$feed['label'],
 				array( $this, 'save_weblex_feed' ),
-				'weblex_rss_feeds',
+				'weblex_rss_feed_options',
 				'general_settings_section',
 				array(
 					'description' => $feed['description'],
@@ -169,8 +169,8 @@ class WebLex_RSS_Feed_Settings {
 
 		// Finally, we register the fields with WordPress
 		register_setting(
-			'weblex_rss_feeds',
-			'weblex_rss_feeds',
+			'weblex_rss_feed_options',
+			'weblex_rss_feed_options',
 			array( $this, 'validate_input' )
 		);
 
@@ -185,7 +185,7 @@ class WebLex_RSS_Feed_Settings {
 	public function save_weblex_feed( array $args ) {
 
 		// First, we read the options collection
-		$options = get_option( 'weblex_rss_feeds' );
+		$options = get_option( 'weblex_rss_feed_options' );
 
 		include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/weblex-rss-feed-admin-input.php';
 
