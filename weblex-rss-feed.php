@@ -1,134 +1,78 @@
 <?php
 
 /**
+ * The plugin bootstrap file
+ *
+ * This file is read by WordPress to generate the plugin information in the plugin
+ * admin area. This file also includes all of the dependencies used by the plugin,
+ * registers the activation and deactivation functions, and defines a function
+ * that starts the plugin.
+ *
+ * @link              https://github.com/19h47/weblex-rss-feed/
+ * @since             0.0.0
+ * @package           WebLexRSSFeed
+ *
+ * @wordpress-plugin
  * Plugin Name:       WebLex RSS Feed
  * Plugin URI:        https://github.com/19h47/weblex-rss-feed/
- * Description:       Hey.
- * Version:           1.0.0
- * Author:            SuperFramer
- * Author URI:        https://superframer.com/
+ * Description:       WebLex RSS Feed.
+ * Version:           0.0.0
+ * Author:            Jérémy Levron
+ * Author URI:        https://19h47.fr/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       weblexrssfeed
  * Domain Path:       /languages
- *
- * @package WebLexRSSFeed
  */
 
-class Shortcode {
-
-	/**
-	 * Runs initialization tasks.
-	 *
-	 * @see https://core.trac.wordpress.org/browser/tags/5.6/src/wp-includes/shortcodes.php#L63
-	 *
-	 * @return void
-	 */
-	public function run() : void {
-		add_shortcode( 'weblex_rss_feed', array( $this, 'feed' ) );
-	}
-
-	/**
-	 * Button
-	 *
-	 * @param array       $atts Array of attributes.
-	 * @param string|null $content The shortcode content or null if not set.
-	 * @param string      $shortcode_tag The shortcode tag.
-	 *
-	 * @return string
-	 */
-	public function feed( array $atts, string $content, string $shortcode_tag ) : string {
-
-		wp_enqueue_script( 'vuejs', '//cdn.jsdelivr.net/npm/vue@2.6.14' );
-		wp_enqueue_script( 'weblex-rss-feed-script', plugin_dir_url( __FILE__ ) . 'script.js', 'vuejs', false );
-		wp_enqueue_style( 'weblex-rss-feed-style', plugin_dir_url( __FILE__ ) . 'style.css', null, false );
-
-		// agenda -> L'agenda
-		// phdj -> La petite histoire du jour
-		// actus -> Les actus
-		// quizz-hebdo -> Le quiz hebdo
-		// indicateurs -> Les indicateurs
-		// fiches -> Les fiches
-
-		$feeds = array(
-			array(
-				'title'     => 'L’agenda',
-				'url'       => 'https://www.weblex.fr/passerelle/363-1460/b3e932dfcd/flux.rss',
-				'component' => 'agenda',
-			),
-			array(
-				'title'     => 'La petite histoire du jour',
-				'url'       => 'https://www.weblex.fr/passerelle/360-4b11/0eb54cc01e/flux.rss',
-				'component' => 'phdj',
-			),
-			array(
-				'title'     => 'Les actus',
-				'url'       => 'https://www.weblex.fr/passerelle/361-0e00/6c4b7da188/flux.rss',
-				'component' => 'actus',
-			),
-			array(
-				'title'     => 'Le quiz hebdo',
-				'url'       => 'https://www.weblex.fr/passerelle/362-78e2/ad35f6dbf4/flux.rss',
-				'component' => 'quizz-hebdo',
-			),
-			array(
-				'title'     => 'Les indicateurs',
-				'url'       => 'https://www.weblex.fr/passerelle/364-162b/bfe450b810/flux.rss',
-				'component' => 'indicateurs',
-			),
-			array(
-				'title'     => 'Les fiches',
-				'url'       => 'https://www.weblex.fr/passerelle/365-0cee/ae02b875da/flux.rss',
-				'component' => 'fiches',
-			),
-		);
-
-		$args = shortcode_atts(
-			array(
-				'title' => __( 'Title', 'weblexrssfeed' ),
-			),
-			$atts
-		);
-
-		$index = array_search( $args['title'], array_column( $feeds, 'title' ), true );
-		$feed  = $feeds[ $index ];
-
-		$html  = '<div class="weblex-rss-feed-app">';
-		$html .= '<component is="' . $feed['component'] . '" ';
-		$html .= 'data-rss = "' . $this->parse( $feed['url'] ) . '" ';
-		$html .= 'data-title="' . $feed['title'] . '" ';
-		$html .= 'data-url = "' . $feed['url'] . '" ';
-		$html .= 'style-needed="true" />';
-		$html .= '</div>';
-
-		return $html;
-	}
-
-	/**
-	 * Parse
-	 */
-	public function parse( string $url ) {
-		$simplexml = simplexml_load_file( $url, 'SimpleXMLElement', LIBXML_NOCDATA );
-		$array     = $this->xml2array( $simplexml );
-
-		$array['channel']['item'] = array_slice( $simplexml->xpath( ' / rss / channel / item' ), 0, 10 );
-
-		$json = htmlspecialchars( json_encode( $array ), ENT_QUOTES, 'UTF-8' );
-
-		return $json;
-	}
-
-	/**
-	 * xml2array
-	 */
-	public function xml2array( $xml_object, $out = array() ) {
-		foreach ( (array) $xml_object as $index => $node ) {
-			$out[ $index ] = is_object( $node ) ? $this->xml2array( $node ) : $node;
-		}
-
-		return $out;
-	}
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
 }
 
-$plugin = new Shortcode();
-$plugin->run();
+
+/**
+ * The code that runs during plugin activation.
+ * This action is documented in includes/class-weblex-rss-feed-activator.php
+ */
+function activate_weblex_rss_feed() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-weblex-rss-feed-activator.php';
+	weblex_rss_feed_Activator::activate();
+}
+
+
+/**
+ * The code that runs during plugin deactivation.
+ * This action is documented in includes/class-weblex-rss-feed-deactivator.php
+ */
+function deactivate_weblex_rss_feed() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-weblex-rss-feed-deactivator.php';
+	weblex_rss_feed_Deactivator::deactivate();
+}
+
+register_activation_hook( __FILE__, 'activate_weblex_rss_feed' );
+register_deactivation_hook( __FILE__, 'deactivate_weblex_rss_feed' );
+
+
+/**
+ * The core plugin class that is used to define internationalization,
+ * admin-specific hooks, and public-facing site hooks.
+ */
+require plugin_dir_path( __FILE__ ) . 'includes/class-weblex-rss-feed.php';
+
+/**
+ * Begins execution of the plugin.
+ *
+ * Since everything within the plugin is registered via hooks,
+ * then kicking off the plugin from this point in the file does
+ * not affect the page life cycle.
+ *
+ * @since    0.0.0
+ */
+function run_weblex_rss_feed() {
+
+	$plugin = new weblex_rss_feed();
+	$plugin->run();
+
+}
+run_weblex_rss_feed();
