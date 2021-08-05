@@ -71,6 +71,7 @@ class WebLex_RSS_Feed_Admin {
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-rss-feed-settings.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-rss-feed-insert-post.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-rss-feed-post-type.php';
 	}
 
 	/**

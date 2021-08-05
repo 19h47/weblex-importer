@@ -102,7 +102,7 @@ class WebLex_RSS_Feed_Settings {
 		$options = get_option( 'weblex_rss_feed_options' );
 
 		echo '<p>' . __( 'Enter URLs for WebLex RSS feed.', 'weblex-rss-feed' ) . '</p>';
-	} // end general_options_callback
+	}
 
 
 	/**
@@ -114,48 +114,48 @@ class WebLex_RSS_Feed_Settings {
 	public function initialize_display_options() {
 
 		add_settings_section(
-			'general_settings_section',                     // ID used to identify this section and with which to register options
-			__( 'RSS feeds', 'weblex-rss-feed' ),                // Title to be displayed on the administration page
-			array( $this, 'general_options_callback' ),      // Callback used to render the description of the section
-			'weblex_rss_feed_options'                     // Page on which to add this section of options
+			'general_settings_section',                 // ID used to identify this section and with which to register options
+			__( 'RSS feeds', 'weblexrssfeed' ),         // Title to be displayed on the administration page
+			array( $this, 'general_options_callback' ), // Callback used to render the description of the section
+			'weblex_rss_feed_options'                   // Page on which to add this section of options
 		);
 
 		$feeds = array(
 			array(
 				'id'          => 'actus',
-				'label'       => __( 'Actus', 'weblex-rss-feed' ),
-				'description' => __( 'Flux pour WebLex Actus.', 'weblex-rss-feed' ),
+				'label'       => __( 'Actus', 'weblexrssfeed' ),
+				'description' => __( 'Flux pour WebLex Actus.', 'weblexrssfeed' ),
 			),
 			array(
 				'id'          => 'agenda',
-				'label'       => __( 'Agenda', 'weblex-rss-feed' ),
-				'description' => __( 'Flux pour WebLex Agenda.', 'weblex-rss-feed' ),
+				'label'       => __( 'Agenda', 'weblexrssfeed' ),
+				'description' => __( 'Flux pour WebLex Agenda.', 'weblexrssfeed' ),
 			),
 			array(
 				'id'          => 'fiches',
-				'label'       => __( 'Fiches', 'weblex-rss-feed' ),
-				'description' => __( 'Flux pour WebLex Fiches.', 'weblex-rss-feed' ),
+				'label'       => __( 'Fiches', 'weblexrssfeed' ),
+				'description' => __( 'Flux pour WebLex Fiches.', 'weblexrssfeed' ),
 			),
 			array(
 				'id'          => 'indicateurs',
-				'label'       => __( 'Indicateurs', 'weblex-rss-feed' ),
-				'description' => __( 'Flux pour WebLex Indicateurs.', 'weblex-rss-feed' ),
+				'label'       => __( 'Indicateurs', 'weblexrssfeed' ),
+				'description' => __( 'Flux pour WebLex Indicateurs.', 'weblexrssfeed' ),
 			),
 			array(
 				'id'          => 'phdj',
-				'label'       => __( 'Petite Histoire du Jour', 'weblex-rss-feed' ),
-				'description' => __( 'Flux pour WebLex PHDJ.', 'weblex-rss-feed' ),
+				'label'       => __( 'Petite Histoire du Jour', 'weblexrssfeed' ),
+				'description' => __( 'Flux pour WebLex PHDJ.', 'weblexrssfeed' ),
 			),
 			array(
 				'id'          => 'quiz-hebdo',
-				'label'       => __( 'Quiz Hebdo', 'weblex-rss-feed' ),
-				'description' => __( 'Flux pour WebLex Quiz Hebdo.', 'weblex-rss-feed' ),
+				'label'       => __( 'Quiz Hebdo', 'weblexrssfeed' ),
+				'description' => __( 'Flux pour WebLex Quiz Hebdo.', 'weblexrssfeed' ),
 			),
 		);
 
 		foreach ( $feeds as $feed ) {
 			add_settings_field(
-				'weblex_' . $feed['id'],
+				'weblex_option_' . $feed['id'],
 				$feed['label'],
 				array( $this, 'save_weblex_feed' ),
 				'weblex_rss_feed_options',
@@ -167,13 +167,11 @@ class WebLex_RSS_Feed_Settings {
 			);
 		}
 
-		// Finally, we register the fields with WordPress
 		register_setting(
 			'weblex_rss_feed_options',
 			'weblex_rss_feed_options',
-			array( $this, 'validate_input' )
+			// 'sanitize_text_field'
 		);
-
 	}
 
 
@@ -183,36 +181,8 @@ class WebLex_RSS_Feed_Settings {
 	 * @param array $args
 	 */
 	public function save_weblex_feed( array $args ) {
-
-		// First, we read the options collection
 		$options = get_option( 'weblex_rss_feed_options' );
 
 		include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/weblex-rss-feed-admin-input.php';
-
-	} // end save_weblex_feed
-
-	/**
-	 *
-	 */
-	public function validate_input( array $input ) {
-
-		// Create our array for storing the validated options
-		$output = array();
-
-		// Loop through each of the incoming options
-		foreach ( $input as $key => $value ) {
-
-			// Check to see if the current option has a value. If so, process it.
-			if ( isset( $input[ $key ] ) ) {
-
-				// Strip all HTML and PHP tags and properly handle quoted strings
-				$output[ $key ] = strip_tags( stripslashes( $input[ $key ] ) );
-
-			} // end if
-		} // end foreach
-
-		// Return the array processing any additional functions filtered by this action
-		return apply_filters( 'weblex_rss_feed_validate_input', $output, $input );
-
-	} // end validate_input
+	}
 }

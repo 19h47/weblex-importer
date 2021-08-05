@@ -17,8 +17,9 @@
 	class="regular-text"
 	type="url" 
 	id="<?php echo $args['id']; ?>" 
-	name="weblex_rss_feed_options[<?php echo $args['id']; ?>]"  
-	value="<?php echo $options[ $args['id'] ]; ?>" 
+	name="weblex_rss_feed_options[<?php echo $args['id']; ?>][url]"  
+	value="<?php echo isset( $options[ $args['id'] ] ) ? $options[ $args['id'] ]['url'] : ''; ?>" 
 	placeholder="https://www.weblex.fr/flux.rss"
 />
+<input type="hidden" name="weblex_rss_feed_options[<?php echo $args['id']; ?>][date]" value="<?php echo gmdate( 'Y-m-d H:i:s' ); ?>">
 <p class="description"><?php echo $args['description']; ?></p>
