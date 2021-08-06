@@ -10,11 +10,7 @@
  * @subpackage WebLex_RSS_Feed/admin
  */
 
-
-/**
- * Product class
- */
-class WebLex_RSS_Feed_Post_Type {
+class WebLex_RSS_Feed_Post {
 
 	/**
 	 * The ID of this plugin.
@@ -194,7 +190,7 @@ class WebLex_RSS_Feed_Post_Type {
 			'rewrite'             => $rewrite,
 			'show_in_rest'        => true,
 			'show_in_graphql'     => true,
-			'taxonomies'          => array(),
+			'taxonomies'          => array( 'weblex-rss-feed-tag' ),
 		);
 
 		register_post_type( 'weblex-rss-feed-post', $args );

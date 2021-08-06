@@ -150,7 +150,8 @@ class WebLex_RSS_Feed {
 		$plugin_admin       = new WebLex_RSS_Feed_Admin( $this->get_plugin_name(), $this->get_version() );
 		$plugin_settings    = new WebLex_RSS_Feed_Settings( $this->get_plugin_name(), $this->get_version() );
 		$plugin_insert_post = new WebLex_RSS_Feed_Insert_Post( $this->get_plugin_name(), $this->get_version() );
-		$plugin_post_type   = new WebLex_RSS_Feed_Post_Type( $this->get_plugin_name(), $this->get_version() );
+		$plugin_post        = new WebLex_RSS_Feed_Post( $this->get_plugin_name(), $this->get_version() );
+		$plugin_taxonomy    = new WebLex_RSS_Feed_Taxonomy( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -158,12 +159,13 @@ class WebLex_RSS_Feed {
 		$this->loader->add_action( 'admin_menu', $plugin_settings, 'setup_plugin_options_menu' );
 		$this->loader->add_action( 'admin_init', $plugin_settings, 'initialize_display_options' );
 
-		$this->loader->add_action( 'update_option_weblex_rss_feed_options', $plugin_insert_post, 'init', 10, 3 );
+		$this->loader->add_action( 'update_option_weblex_rss_feed_options', $plugin_insert_post, 'update_options', 10, 3 );
 
-		$this->loader->add_action( 'init', $plugin_post_type, 'register', 10, 0 );
+		$this->loader->add_action( 'init', $plugin_post, 'register', 10, 0 );
+		$this->loader->add_action( 'init', $plugin_taxonomy, 'register', 10, 0 );
 
-		$this->loader->add_filter( 'post_updated_messages', $plugin_post_type, 'updated_messages', 10, 1 );
-		$this->loader->add_filter( 'bulk_post_updated_messages', $plugin_post_type, 'bulk_updated_messages', 10, 2 );
+		$this->loader->add_filter( 'post_updated_messages', $plugin_post, 'updated_messages', 10, 1 );
+		$this->loader->add_filter( 'bulk_post_updated_messages', $plugin_post, 'bulk_updated_messages', 10, 2 );
 
 	}
 
