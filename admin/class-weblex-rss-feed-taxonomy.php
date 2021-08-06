@@ -84,11 +84,11 @@ class WebLex_RSS_Feed_Taxonomy {
 			'labels'             => $labels,
 			'hierarchical'       => false,
 			'public'             => true,
-			'publicly_queryable' => false,
+			'publicly_queryable' => true,
 			'show_ui'            => true,
 			'show_in_menu'       => true,
 			'show_in_nav_menus'  => true,
-			'show_in_quick_edit' => false,
+			'show_in_quick_edit' => true,
 			'show_admin_column'  => true,
 			'show_in_rest'       => true,
 		);

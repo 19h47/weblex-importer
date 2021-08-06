@@ -18,7 +18,7 @@
  *
  * @package    WebLexRSSFeed
  * @subpackage WebLexRSSFeed/public
- * @author     Devin Vinson <devinvinson@gmail.com>
+ * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
 class WebLex_RSS_Feed_Public {
 
@@ -52,7 +52,21 @@ class WebLex_RSS_Feed_Public {
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
 
+		$this->load_dependencies();
 	}
+
+
+	/**
+	 * Load the required dependencies for the Public facing functionality.
+	 *
+	 *
+	 * @since    0.0.0
+	 * @access   private
+	 */
+	private function load_dependencies() : void {
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-weblex-rss-feed-template-loader.php';
+	}
+
 
 	/**
 	 * Register the stylesheets for the public-facing side of the site.

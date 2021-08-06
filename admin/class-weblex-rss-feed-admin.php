@@ -18,7 +18,7 @@
  *
  * @package    WebLexRSSFeed
  * @subpackage WebLexRSSFeed/admin
- * @author     Devin Vinson <devinvinson@gmail.com>
+ * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
 class WebLex_RSS_Feed_Admin {
 
@@ -53,7 +53,6 @@ class WebLex_RSS_Feed_Admin {
 		$this->version     = $version;
 
 		$this->load_dependencies();
-
 	}
 
 	/**
