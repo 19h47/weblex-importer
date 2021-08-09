@@ -1,20 +1,19 @@
 <?php
-
 /**
  * The settings of the plugin.
  *
- * @link       https://github.com/19h47/weblex-rss-feed/
+ * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package    WebLex_RSS_Feed
- * @subpackage WebLex_RSS_Feed/admin
+ * @package    WebLex_Importer
+ * @subpackage WebLex_Importer/admin
  */
 
 /**
  * Class WordPress_Plugin_Template_Settings
  *
  */
-class WebLex_RSS_Feed_Insert_Post {
+class WebLex_Importer_Import {
 
 	/**
 	 * The ID of this plugin.
@@ -88,8 +87,8 @@ class WebLex_RSS_Feed_Insert_Post {
 
 				$query = new WP_Query(
 					array(
-						'post_type'  => 'weblex-rss-feed-post',
-						'meta_key'   => 'weblex-rss-feed-id',
+						'post_type'  => 'weblex-importer-post',
+						'meta_key'   => 'weblex-importer-id',
 						'meta_value' => $item_id,
 					)
 				);
@@ -106,13 +105,13 @@ class WebLex_RSS_Feed_Insert_Post {
 						$updated_post_id = wp_update_post( $post );
 
 						if ( 0 !== $updated_post_id ) {
-							wp_set_object_terms( $updated_post_id, $term_id, 'weblex-rss-feed-tag', false );
+							wp_set_object_terms( $updated_post_id, $term_id, 'weblex-importer-tag', false );
 							wp_set_post_tags( $updated_post_id, $post_tags, false );
 						}
 					}
 				} else {
 					$post = array(
-						'post_type'    => 'weblex-rss-feed-post',
+						'post_type'    => 'weblex-importer-post',
 						'post_content' => $item->get_description( false ), // The full text of the post.
 						'post_title'   => $item->get_title(), // The title of the post.
 						'post_status'  => 'publish',
@@ -122,9 +121,9 @@ class WebLex_RSS_Feed_Insert_Post {
 
 					$inserted_post_id = wp_insert_post( $post );
 
-					if ( $inserted_post_id != 0 ) {
-						wp_set_object_terms( $inserted_post_id, $term_id, 'weblex-rss-feed-tag', false );
-						update_post_meta( $inserted_post_id, 'weblex-rss-feed-id', $item_id );
+					if ( 0 !== $inserted_post_id ) {
+						wp_set_object_terms( $inserted_post_id, $term_id, 'weblex-importer-tag', false );
+						update_post_meta( $inserted_post_id, 'weblex-importer-id', $item_id );
 					}
 				}
 			}
@@ -160,10 +159,10 @@ class WebLex_RSS_Feed_Insert_Post {
 	 */
 	private function get_tag_by_name( string $name ) : int {
 
-		$term = get_term_by( 'name', $name, 'weblex-rss-feed-tag' );
+		$term = get_term_by( 'name', $name, 'weblex-importer-tag' );
 
 		if ( false === $term ) {
-			$term = wp_insert_term( $name, 'weblex-rss-feed-tag' );
+			$term = wp_insert_term( $name, 'weblex-importer-tag' );
 		}
 
 		return $term->term_id;

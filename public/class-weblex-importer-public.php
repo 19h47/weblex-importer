@@ -3,11 +3,11 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * @link       https://github.com/19h47/weblex-rss-feed/
+ * @link       https://github.com/19h47/weblex-importer/
  * @since      1.0.0
  *
- * @package    WebLexRSSFeed
- * @subpackage WebLexRSSFeed/public
+ * @package           WebLexRSSImporter
+ * @subpackage WebLexRSSImporter/public
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    WebLexRSSFeed
- * @subpackage WebLexRSSFeed/public
+ * @package           WebLexRSSImporter
+ * @subpackage WebLexRSSImporter/public
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
-class WebLex_RSS_Feed_Public {
+class WebLex_Importer_Public {
 
 	/**
 	 * The ID of this plugin.
@@ -64,7 +64,7 @@ class WebLex_RSS_Feed_Public {
 	 * @access   private
 	 */
 	private function load_dependencies() : void {
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-weblex-rss-feed-template-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-weblex-importer-template-loader.php';
 	}
 
 
@@ -79,15 +79,15 @@ class WebLex_RSS_Feed_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in WebLex_RSS_Feed_Loader as all of the hooks are defined
+		 * defined in WebLex_Importer_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The WebLex_RSS_Feed_Loader will then create the relationship
+		 * The WebLex_Importer_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wppb-demo-plugin-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/weblex-importer-public.css', array(), $this->version, 'all' );
 
 	}
 
@@ -102,15 +102,15 @@ class WebLex_RSS_Feed_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in WebLex_RSS_Feed_Loader as all of the hooks are defined
+		 * defined in WebLex_Importer_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The WebLex_RSS_Feed_Loader will then create the relationship
+		 * The WebLex_Importer_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wppb-demo-plugin-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/weblex-importer-public.js', array( 'jquery' ), $this->version, false );
 
 	}
 

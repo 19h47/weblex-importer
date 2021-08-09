@@ -3,11 +3,11 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       https://github.com/19h47/weblex-rss-feed/
+ * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package    WebLexRSSFeed
- * @subpackage WebLexRSSFeed/admin
+ * @package           WebLexImporter
+ * @subpackage weblex-importer/admin
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    WebLexRSSFeed
- * @subpackage WebLexRSSFeed/admin
+ * @package           WebLexImporter
+ * @subpackage weblex-importer/admin
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
-class WebLex_RSS_Feed_Admin {
+class WebLex_Importer_Admin {
 
 	/**
 	 * The ID of this plugin.
@@ -60,7 +60,10 @@ class WebLex_RSS_Feed_Admin {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - WebLex_RSS_Feed_Settings. Registers the admin settings and page.
+	 * - WebLex_Importer_Settings. Registers the admin settings and page.
+	 * - WebLex_Importer_Import.
+	 * - WebLex_Importer_Post.
+	 * - WebLex_Importer_Taxonomy.
 	 *
 	 *
 	 * @since    0.0.0
@@ -68,10 +71,10 @@ class WebLex_RSS_Feed_Admin {
 	 */
 	private function load_dependencies() : void {
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-rss-feed-settings.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-rss-feed-insert-post.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-rss-feed-post.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-rss-feed-taxonomy.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-importer-settings.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-importer-import.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-importer-post.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-importer-taxonomy.php';
 	}
 
 	/**
@@ -93,7 +96,7 @@ class WebLex_RSS_Feed_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/weblex-rss-feed-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/weblex-importer-admin.css', array(), $this->version, 'all' );
 	}
 
 	/**
@@ -115,7 +118,7 @@ class WebLex_RSS_Feed_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/weblex-rss-feed-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/weblex-importer-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
 }

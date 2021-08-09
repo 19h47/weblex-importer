@@ -3,11 +3,11 @@
 /**
  * Register all actions and filters for the plugin
  *
- * @link       https://github.com/19h47/weblex-rss-feed/
+ * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package    WeblexRssFeed
- * @subpackage WeblexRssFeed/includes
+ * @package           WebLexImporter
+ * @package           WebLexImporter/includes
  */
 
 /**
@@ -17,11 +17,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    WeblexRssFeed
- * @subpackage WeblexRssFeed/includes
+ * @package           WebLexImporter
+ * @package           WebLexImporter/includes
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
-class WebLex_RSS_Feed_Loader {
+class WebLex_Importer_Loader {
 
 	/**
 	 * The array of actions registered with WordPress.

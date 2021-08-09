@@ -3,18 +3,18 @@
 /**
  * The settings of the plugin.
  *
- * @link       https://github.com/19h47/weblex-rss-feed/
+ * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package    WebLex_RSS_Feed
- * @subpackage WebLex_RSS_Feed/admin
+ * @package    WebLex_Importer
+ * @subpackage WebLex_Importer/admin
  */
 
 /**
  * Class WordPress_Plugin_Template_Settings
  *
  */
-class WebLex_RSS_Feed_Settings {
+class WebLex_Importer_Settings {
 
 	/**
 	 * The ID of this plugin.
@@ -56,10 +56,10 @@ class WebLex_RSS_Feed_Settings {
 
 		//Add the menu to the Plugins set of menu items
 		add_plugins_page(
-			__( 'WebLex RSS Feed Options', 'weblex-rss-feed' ),                    // The title to be displayed in the browser window for this page.
-			__( 'WebLex RSS Feed Options', 'weblex-rss-feed' ),                    // The text to be displayed for this menu item
+			__( 'WebLex Importer Options', 'weblex-importer' ),                    // The title to be displayed in the browser window for this page.
+			__( 'WebLex Importer Options', 'weblex-importer' ),                    // The text to be displayed for this menu item
 			'manage_options',                   // Which type of users can see this menu item
-			'weblex_rss_feed_options',            // The unique ID - that is, the slug - for this menu item
+			'weblex_importer_options',            // The unique ID - that is, the slug - for this menu item
 			array( $this, 'render_settings_page_content' )               // The name of the function to call when rendering this menu's page
 		);
 
@@ -73,14 +73,14 @@ class WebLex_RSS_Feed_Settings {
 		?>
 		<div class="wrap">
 
-			<h2><?php _e( 'WebLexx RSS Feed Options', 'weblex-rss-feed' ); ?></h2>
+			<h2><?php _e( 'WebLex Importer Options', 'weblex-importer' ); ?></h2>
 			<?php settings_errors(); ?>
 
 			<form method="post" action="options.php">
 				<?php
 
-				settings_fields( 'weblex_rss_feed_options' );
-				do_settings_sections( 'weblex_rss_feed_options' );
+				settings_fields( 'weblex_importer_options' );
+				do_settings_sections( 'weblex_importer_options' );
 
 				submit_button();
 
@@ -99,9 +99,9 @@ class WebLex_RSS_Feed_Settings {
 	 * in the add_settings_section function.
 	 */
 	public function general_options_callback() {
-		$options = get_option( 'weblex_rss_feed_options' );
+		$options = get_option( 'weblex_importer_options' );
 
-		echo '<p>' . __( 'Enter URLs for WebLex RSS feed.', 'weblex-rss-feed' ) . '</p>';
+		echo '<p>' . __( 'Enter URLs for WebLex RSS feed.', 'weblex-importer' ) . '</p>';
 	}
 
 
@@ -115,50 +115,50 @@ class WebLex_RSS_Feed_Settings {
 
 		add_settings_section(
 			'general_settings_section',                 // ID used to identify this section and with which to register options
-			__( 'RSS feeds', 'weblexrssfeed' ),         // Title to be displayed on the administration page
+			__( 'RSS feeds', 'weblex-importer' ),         // Title to be displayed on the administration page
 			array( $this, 'general_options_callback' ), // Callback used to render the description of the section
-			'weblex_rss_feed_options'                   // Page on which to add this section of options
+			'weblex_importer_options'                   // Page on which to add this section of options
 		);
 
 		$feeds = array(
 			array(
 				'id'          => 'actus',
-				'label'       => __( 'Actus', 'weblexrssfeed' ),
-				'description' => __( 'Flux pour WebLex Actus.', 'weblexrssfeed' ),
+				'label'       => __( 'Actus', 'weblex-importer' ),
+				'description' => __( 'Flux pour WebLex Actus.', 'weblex-importer' ),
 			),
 			array(
 				'id'          => 'agenda',
-				'label'       => __( 'Agenda', 'weblexrssfeed' ),
-				'description' => __( 'Flux pour WebLex Agenda.', 'weblexrssfeed' ),
+				'label'       => __( 'Agenda', 'weblex-importer' ),
+				'description' => __( 'Flux pour WebLex Agenda.', 'weblex-importer' ),
 			),
 			array(
 				'id'          => 'fiches',
-				'label'       => __( 'Fiches', 'weblexrssfeed' ),
-				'description' => __( 'Flux pour WebLex Fiches.', 'weblexrssfeed' ),
+				'label'       => __( 'Fiches', 'weblex-importer' ),
+				'description' => __( 'Flux pour WebLex Fiches.', 'weblex-importer' ),
 			),
 			array(
 				'id'          => 'indicateurs',
-				'label'       => __( 'Indicateurs', 'weblexrssfeed' ),
-				'description' => __( 'Flux pour WebLex Indicateurs.', 'weblexrssfeed' ),
+				'label'       => __( 'Indicateurs', 'weblex-importer' ),
+				'description' => __( 'Flux pour WebLex Indicateurs.', 'weblex-importer' ),
 			),
 			array(
 				'id'          => 'phdj',
-				'label'       => __( 'Petite Histoire du Jour', 'weblexrssfeed' ),
-				'description' => __( 'Flux pour WebLex PHDJ.', 'weblexrssfeed' ),
+				'label'       => __( 'Petite Histoire du Jour', 'weblex-importer' ),
+				'description' => __( 'Flux pour WebLex PHDJ.', 'weblex-importer' ),
 			),
 			array(
 				'id'          => 'quiz-hebdo',
-				'label'       => __( 'Quiz Hebdo', 'weblexrssfeed' ),
-				'description' => __( 'Flux pour WebLex Quiz Hebdo.', 'weblexrssfeed' ),
+				'label'       => __( 'Quiz Hebdo', 'weblex-importer' ),
+				'description' => __( 'Flux pour WebLex Quiz Hebdo.', 'weblex-importer' ),
 			),
 		);
 
 		foreach ( $feeds as $feed ) {
 			add_settings_field(
-				'weblex_option_' . $feed['id'],
+				'weblex_importer_option_' . $feed['id'],
 				$feed['label'],
 				array( $this, 'save_weblex_feed' ),
-				'weblex_rss_feed_options',
+				'weblex_importer_options',
 				'general_settings_section',
 				array(
 					'description' => $feed['description'],
@@ -168,8 +168,8 @@ class WebLex_RSS_Feed_Settings {
 		}
 
 		register_setting(
-			'weblex_rss_feed_options',
-			'weblex_rss_feed_options',
+			'weblex_importer_options',
+			'weblex_importer_options',
 			// 'sanitize_text_field'
 		);
 	}
@@ -181,8 +181,8 @@ class WebLex_RSS_Feed_Settings {
 	 * @param array $args
 	 */
 	public function save_weblex_feed( array $args ) {
-		$options = get_option( 'weblex_rss_feed_options' );
+		$options = get_option( 'weblex_importer_options' );
 
-		include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/weblex-rss-feed-admin-input.php';
+		include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/weblex-importer-admin-input.php';
 	}
 }

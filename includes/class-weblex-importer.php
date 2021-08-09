@@ -6,11 +6,11 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @link       https://github.com/19h47/weblex-rss-feed/
+ * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package    WebLexRSSFeed
- * @subpackage WebLexRSSFeed/includes
+ * @package           WebLexImporter
+ * @package           WebLexImporter/includes
  */
 
 /**
@@ -23,11 +23,11 @@
  * version of the plugin.
  *
  * @since      0.0.0
- * @package    WebLexRSSFeed
- * @subpackage WebLexRSSFeed/includes
+ * @package           WebLexImporter
+ * @package           WebLexImporter/includes
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
-class WebLex_RSS_Feed {
+class WebLex_Importer {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -35,7 +35,7 @@ class WebLex_RSS_Feed {
 	 *
 	 * @since    0.0.0
 	 * @access   protected
-	 * @var      WebLex_RSS_Feed_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      WebLex_Importer_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -67,7 +67,7 @@ class WebLex_RSS_Feed {
 	 * @since    0.0.0
 	 */
 	public function __construct() {
-		$this->plugin_name = 'weblex-rss-feed';
+		$this->plugin_name = 'weblex-importer';
 		$this->version     = '0.0.0';
 
 		$this->load_dependencies();
@@ -81,10 +81,10 @@ class WebLex_RSS_Feed {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - WebLex_RSS_Feed_Loader. Orchestrates the hooks of the plugin.
-	 * - WebLex_RSS_Feed_i18n. Defines internationalization functionality.
-	 * - WebLex_RSS_Feed_Admin. Defines all hooks for the admin area.
-	 * - WebLex_RSS_Feed_Public. Defines all hooks for the public side of the site.
+	 * - WebLex_Importer_Loader. Orchestrates the hooks of the plugin.
+	 * - WebLex_Importer_i18n. Defines internationalization functionality.
+	 * - WebLex_Importer_Admin. Defines all hooks for the admin area.
+	 * - WebLex_Importer_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -98,32 +98,32 @@ class WebLex_RSS_Feed {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-weblex-rss-feed-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-weblex-importer-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-weblex-rss-feed-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-weblex-importer-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-rss-feed-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-importer-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-weblex-rss-feed-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-weblex-importer-public.php';
 
-		$this->loader = new WebLex_RSS_Feed_Loader();
+		$this->loader = new WebLex_Importer_Loader();
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the WebLex_RSS_Feed_i18n class in order to set the domain and to register the hook
+	 * Uses the WebLex_Importer_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    0.0.0
@@ -131,8 +131,8 @@ class WebLex_RSS_Feed {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new WebLex_RSS_Feed_i18n();
-		$plugin_i18n->set_domain( 'weblex-rss-feed' );
+		$plugin_i18n = new WebLex_Importer_i18n();
+		$plugin_i18n->set_domain( 'weblex-importer' );
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -147,11 +147,11 @@ class WebLex_RSS_Feed {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin       = new WebLex_RSS_Feed_Admin( $this->get_plugin_name(), $this->get_version() );
-		$plugin_settings    = new WebLex_RSS_Feed_Settings( $this->get_plugin_name(), $this->get_version() );
-		$plugin_insert_post = new WebLex_RSS_Feed_Insert_Post( $this->get_plugin_name(), $this->get_version() );
-		$plugin_post        = new WebLex_RSS_Feed_Post( $this->get_plugin_name(), $this->get_version() );
-		$plugin_taxonomy    = new WebLex_RSS_Feed_Taxonomy( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin    = new WebLex_Importer_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_settings = new WebLex_Importer_Settings( $this->get_plugin_name(), $this->get_version() );
+		$plugin_import   = new WebLex_Importer_Import( $this->get_plugin_name(), $this->get_version() );
+		$plugin_post     = new WebLex_Importer_Post( $this->get_plugin_name(), $this->get_version() );
+		$plugin_taxonomy = new WebLex_Importer_Taxonomy( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -159,7 +159,7 @@ class WebLex_RSS_Feed {
 		$this->loader->add_action( 'admin_menu', $plugin_settings, 'setup_plugin_options_menu' );
 		$this->loader->add_action( 'admin_init', $plugin_settings, 'initialize_display_options' );
 
-		$this->loader->add_action( 'update_option_weblex_rss_feed_options', $plugin_insert_post, 'update_options', 10, 3 );
+		$this->loader->add_action( 'update_option_weblex_importer_options', $plugin_import, 'update_options', 10, 3 );
 
 		$this->loader->add_action( 'init', $plugin_post, 'register', 10, 0 );
 		$this->loader->add_action( 'init', $plugin_taxonomy, 'register', 10, 0 );
@@ -178,8 +178,8 @@ class WebLex_RSS_Feed {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public          = new WebLex_RSS_Feed_Public( $this->get_plugin_name(), $this->get_version() );
-		$plugin_template_loader = new WebLex_RSS_Feed_Template_Loader( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public          = new WebLex_Importer_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_template_loader = new WebLex_Importer_Template_Loader( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -212,7 +212,7 @@ class WebLex_RSS_Feed {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     0.0.0
-	 * @return    WebLex_RSS_Feed_Loader    Orchestrates the hooks of the plugin.
+	 * @return    WebLex_Importer_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

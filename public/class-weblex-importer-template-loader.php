@@ -3,11 +3,11 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * @link       https://github.com/19h47/weblex-rss-feed/
+ * @link       https://github.com/19h47/weblex-importer/
  * @since      1.0.0
  *
- * @package    WebLexRSSFeed
- * @subpackage WebLexRSSFeed/public
+ * @package           WebLexRSSImporter
+ * @subpackage WebLexRSSImporter/public
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    WebLexRSSFeed
- * @subpackage WebLexRSSFeed/public
+ * @package           WebLexRSSImporter
+ * @subpackage WebLexRSSImporter/public
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
-class WebLex_RSS_Feed_Template_Loader {
+class WebLex_Importer_Template_Loader {
 
 	/**
 	 * The ID of this plugin.

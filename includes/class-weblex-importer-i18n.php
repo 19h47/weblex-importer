@@ -6,11 +6,11 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @link       https://github.com/19h47/weblex-rss-feed/
+ * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package    WeblexRSSFeed
- * @subpackage WeblexRSSFeed/includes
+ * @package           WebLexImporter
+ * @package           WebLexImporter/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      0.0.0
- * @package    WeblexRSSFeed
- * @subpackage WeblexRSSFeed/includes
+ * @package           WebLexImporter
+ * @package           WebLexImporter/includes
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
-class WebLex_RSS_Feed_I18n {
+class WebLex_Importer_I18n {
 
 	/**
 	 * The domain specified for this plugin.
