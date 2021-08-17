@@ -31,6 +31,8 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+define( 'WEBLEX_IMPORTER_DIR_PATH', plugin_dir_path( __FILE__ ) );
+
 
 /**
  * The code that runs during plugin activation.
@@ -76,4 +78,5 @@ function run_weblex_importer() {
 	$plugin->run();
 
 }
+
 run_weblex_importer();

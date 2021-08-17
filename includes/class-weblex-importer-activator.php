@@ -31,6 +31,9 @@ class WebLex_Importer_Activator {
 	 */
 	public static function activate() {
 		flush_rewrite_rules();
-	}
 
+		if ( ! wp_next_scheduled( 'weblex_importer_cron_import' ) ) {
+			wp_schedule_event( time(), 'daily', 'weblex_importer_cron_import' );
+		}
+	}
 }

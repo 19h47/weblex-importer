@@ -47,6 +47,20 @@ class WebLex_Importer_Import {
 
 	}
 
+
+	/**
+	 * Cron
+	 */
+	public function cron_update_options() {
+		$options = get_option( 'weblex_importer_options' );
+
+		foreach ( $options as $key => $value ) {
+			if ( '' !== $value['url'] ) {
+				$this->fetch( $value['url'] );
+			}
+		}
+	}
+
 	/**
 	 * Update options.
 	 *

@@ -6,8 +6,8 @@
  * @link       https://github.com/19h47/weblex-importer/
  * @since      1.0.0
  *
- * @package           WebLexRSSImporter
- * @subpackage WebLexRSSImporter/public
+ * @package           WebLexImporter
+ * @subpackage WebLexImporter/public
  */
 
 /**
@@ -16,8 +16,8 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package           WebLexRSSImporter
- * @subpackage WebLexRSSImporter/public
+ * @package           WebLexImporter
+ * @subpackage WebLexImporter/public
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
 class WebLex_Importer_Template_Loader {
@@ -55,14 +55,28 @@ class WebLex_Importer_Template_Loader {
 	}
 
 	/**
-	 * Template
+	 * Load a template.
+	 *
+	 * Handles template usage so that we can use our own templates instead of the theme's.
 	 *
 	 * @param string $template The path of the template to include.
 	 *
 	 * @see https://developer.wordpress.org/reference/hooks/template_include/
+	 *
 	 * @return string
 	 */
-	function template( string $template ) : string {
+	function template_loader( string $template ) : string {
+		if ( is_tax( 'weblex-importer-tag' ) ) {
+			$search_files = array( 'taxonomy-weblex-importer-tag.php' );
+			$template     = locate_template( $search_files );
+
+			if ( $template ) {
+				return $template;
+			} else {
+				$template = WEBLEX_IMPORTER_DIR_PATH . 'templates/taxonomy-weblex-importer-tag.php';
+			}
+		}
+
 		return $template;
 	}
 }

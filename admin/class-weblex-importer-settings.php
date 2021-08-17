@@ -182,6 +182,7 @@ class WebLex_Importer_Settings {
 	 */
 	public function save_weblex_feed( array $args ) {
 		$options = get_option( 'weblex_importer_options' );
+		$term    = get_term_by( 'slug', sanitize_title( $args['description'] ), 'weblex-importer-tag' );
 
 		include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/weblex-importer-admin-input.php';
 	}

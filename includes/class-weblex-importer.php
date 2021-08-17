@@ -160,9 +160,14 @@ class WebLex_Importer {
 		$this->loader->add_action( 'admin_init', $plugin_settings, 'initialize_display_options' );
 
 		$this->loader->add_action( 'update_option_weblex_importer_options', $plugin_import, 'update_options', 10, 3 );
+		$this->loader->add_action( 'weblex_importer_cron_import', $plugin_import, 'cron_update_options' );
 
 		$this->loader->add_action( 'init', $plugin_post, 'register', 10, 0 );
+
 		$this->loader->add_action( 'init', $plugin_taxonomy, 'register', 10, 0 );
+		$this->loader->add_action( 'pre_get_posts', $plugin_taxonomy, 'pre_get_weblex_importer_posts', 10, 1 );
+
+		add_action( '', 'customize_customtaxonomy_archive_display' );
 
 		$this->loader->add_filter( 'post_updated_messages', $plugin_post, 'updated_messages', 10, 1 );
 		$this->loader->add_filter( 'bulk_post_updated_messages', $plugin_post, 'bulk_updated_messages', 10, 2 );
@@ -184,7 +189,7 @@ class WebLex_Importer {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
-		$this->loader->add_filter( 'template_include', $plugin_template_loader, 'template', 10, 1 );
+		$this->loader->add_filter( 'template_include', $plugin_template_loader, 'template_loader', 10, 1 );
 
 	}
 

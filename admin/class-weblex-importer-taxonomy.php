@@ -95,4 +95,13 @@ class WebLex_Importer_Taxonomy {
 
 		register_taxonomy( 'weblex-importer-tag', array( 'weblex-importer-post' ), $args );
 	}
+
+	/**
+	 * @param WP_Query $query The WP_Query instance (passed by reference).
+	 */
+	function pre_get_weblex_importer_posts( $query ) {
+		if ( ( $query->is_main_query() ) && is_tax( 'weblex-importer-tag' ) ) {
+			$query->set( 'post_type', 'weblex-importer-post' );
+		}
+	}
 }

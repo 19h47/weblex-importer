@@ -22,4 +22,11 @@
 	placeholder="https://www.weblex.fr/flux.rss"
 />
 <input type="hidden" name="weblex_importer_options[<?php echo $args['id']; ?>][date]" value="<?php echo gmdate( 'Y-m-d H:i:s' ); ?>">
-<p class="description"><?php echo $args['description']; ?></p>
+
+<?php if ( $term ) { ?>
+	<p class="description">
+		<a href="<?php echo get_term_link( $term->term_id, 'weblex-importer-tag' ); ?>" target="_blank">
+			<?php echo $args['description']; ?>
+		</a>
+	</p>
+<?php } ?>
