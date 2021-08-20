@@ -73,10 +73,18 @@ require WEBLEX_IMPORTER_DIR_PATH . 'includes/class-weblex-importer.php';
  * @since    0.0.0
  */
 function run_weblex_importer() {
+	require WEBLEX_IMPORTER_DIR_PATH . 'vendor/yahnis-elsts/plugin-update-checker/plugin-update-checker.php';
 
 	$plugin = new Weblex_Importer();
 	$plugin->run();
 
+	$update_checker = Puc_v4_Factory::buildUpdateChecker(
+		'https://github.com/19h47/weblex-importer/',
+		__FILE__,
+		'weblex-importer'
+	);
+
+	$update_checker->setBranch( 'wordpress-plugin' );
 }
 
 run_weblex_importer();
