@@ -1,0 +1,21 @@
+{
+  "name": "WebLex Importer",
+  "slug": "weblex-importer",
+  "author": "<a href='https://19h47.fr'>Jérémy Levron</a>",
+  "author_profile": "https://profiles.wordpress.org/19h47/",
+  "version": "0.0.2",
+  "download_url": "https://weblex-importer.19h47.fr/weblex-importer.zip",
+  "requires": "5.8",
+  "tested": "5.8",
+  "requires_php": "7.3.5",
+  "last_updated": "2021-08-20 15:02:00",
+  "sections": {
+    "description": "Import posts from an WebLex RSS feed.",
+    "installation": "Click the activate button and that's it.",
+    "changelog": "<h4>🎉 0.0.1 – 8 august 2021</h4><ul><li>Initital release.</li></ul>"
+  },
+  "banners": {
+    "low": "https://weblex-importer.19h47.fr/banner-772x250.jpg",
+    "high": "https://weblex-importer.19h47.fr/banner-1544x500.jpg"
+  }
+}

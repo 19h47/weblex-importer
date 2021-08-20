@@ -16,7 +16,7 @@
  * Plugin Name:       WebLex Importer
  * Plugin URI:        https://github.com/19h47/weblex-importer/
  * Description:       Import posts from an WebLex RSS feed.
- * Version:           0.0.0
+ * Version:           0.0.2
  * Author:            Jérémy Levron
  * Author URI:        https://19h47.fr/
  * License:           GPL-2.0+
@@ -39,7 +39,7 @@ define( 'WEBLEX_IMPORTER_DIR_PATH', plugin_dir_path( __FILE__ ) );
  * This action is documented in includes/class-weblex-importer-activator.php
  */
 function activate_weblex_importer() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-weblex-importer-activator.php';
+	require_once WEBLEX_IMPORTER_DIR_PATH . 'includes/class-weblex-importer-activator.php';
 	WebLex_Importer_Activator::activate();
 }
 
@@ -49,7 +49,7 @@ function activate_weblex_importer() {
  * This action is documented in includes/class-weblex-importer-deactivator.php
  */
 function deactivate_weblex_importer() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-weblex-importer-deactivator.php';
+	require_once WEBLEX_IMPORTER_DIR_PATH . 'includes/class-weblex-importer-deactivator.php';
 	WebLex_Importer_Deactivator::deactivate();
 }
 
@@ -61,7 +61,7 @@ register_deactivation_hook( __FILE__, 'deactivate_weblex_importer' );
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-weblex-importer.php';
+require WEBLEX_IMPORTER_DIR_PATH . 'includes/class-weblex-importer.php';
 
 /**
  * Begins execution of the plugin.
