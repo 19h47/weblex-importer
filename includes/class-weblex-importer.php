@@ -167,8 +167,6 @@ class WebLex_Importer {
 		$this->loader->add_action( 'init', $plugin_taxonomy, 'register', 10, 0 );
 		$this->loader->add_action( 'pre_get_posts', $plugin_taxonomy, 'pre_get_weblex_importer_posts', 10, 1 );
 
-		add_action( '', 'customize_customtaxonomy_archive_display' );
-
 		$this->loader->add_filter( 'post_updated_messages', $plugin_post, 'updated_messages', 10, 1 );
 		$this->loader->add_filter( 'bulk_post_updated_messages', $plugin_post, 'bulk_updated_messages', 10, 2 );
 

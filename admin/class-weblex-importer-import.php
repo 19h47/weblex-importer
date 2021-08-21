@@ -87,6 +87,8 @@ class WebLex_Importer_Import {
 	 * @return void
 	 */
 	public function fetch( $url ) : void {
+		define( 'WP_MEMORY_LIMIT', '-1' );
+
 		$rss = fetch_feed( $url );
 
 		if ( ! is_wp_error( $rss ) ) {

@@ -18,3 +18,15 @@ Import posts from an WebLex RSS feed.
 == Changelog ==
 
 == Upgrade Notice ==
+
+= 0.0.0 =
+* Initial Release
+
+= 0.0.1 =
+* Test Release
+
+= 0.0.2 =
+* Test Release
+
+= 0.0.3 =
+* Disable WP_MEMORY_LIMIT
