@@ -131,7 +131,7 @@ class WebLex_Importer {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new WebLex_Importer_i18n();
+		$plugin_i18n = new WebLex_Importer_I18n();
 		$plugin_i18n->set_domain( 'weblex-importer' );
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );

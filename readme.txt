@@ -36,4 +36,5 @@ Import posts from an WebLex RSS feed.
 * i18n
 
 = 0.0.5 =
-* Fix langugaes files
+* Fix languages files
+* Fix typo
