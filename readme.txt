@@ -34,3 +34,6 @@ Import posts from an WebLex RSS feed.
 = 0.0.4 =
 * Add Category taxonomy
 * i18n
+
+= 0.0.5 =
+* Fix langugaes files
