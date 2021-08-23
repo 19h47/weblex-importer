@@ -11,6 +11,8 @@
 
 get_header();
 
+$description = get_queried_object() ? get_queried_object()->description : false;
+
 if ( have_posts() ) : ?>
 
 <div class="container-wrap">
@@ -26,9 +28,9 @@ if ( have_posts() ) : ?>
 		</header><!-- .page-header -->
 
 		<?php while ( have_posts() ) : ?>
-			
+
 			<?php the_post(); ?>
-			
+
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<header class="entry-header">
 					<?php if ( is_singular() ) : ?>
@@ -36,6 +38,8 @@ if ( have_posts() ) : ?>
 					<?php else : ?>
 						<?php the_title( sprintf( '<h2 class="entry-title default-max-width"><a href="%s">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 					<?php endif; ?>
+
+					<?php echo get_the_term_list( get_the_ID(), 'weblex-importer-category', '<div class="default-max-width">', ', ', '</div>' ); ?>
 				</header><!-- .entry-header -->
 
 				<div class="entry-content">

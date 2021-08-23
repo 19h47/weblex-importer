@@ -38,3 +38,6 @@ Import posts from an WebLex RSS feed.
 = 0.0.5 =
 * Fix languages files
 * Fix typo
+
+= 0.0.6 =
+* Add get_the_term_list to template
