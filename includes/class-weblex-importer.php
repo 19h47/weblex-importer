@@ -147,11 +147,11 @@ class WebLex_Importer {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin    = new WebLex_Importer_Admin( $this->get_plugin_name(), $this->get_version() );
-		$plugin_settings = new WebLex_Importer_Settings( $this->get_plugin_name(), $this->get_version() );
-		$plugin_import   = new WebLex_Importer_Import( $this->get_plugin_name(), $this->get_version() );
-		$plugin_post     = new WebLex_Importer_Post( $this->get_plugin_name(), $this->get_version() );
-		$plugin_taxonomy = new WebLex_Importer_Taxonomy( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin      = new WebLex_Importer_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_settings   = new WebLex_Importer_Settings( $this->get_plugin_name(), $this->get_version() );
+		$plugin_import     = new WebLex_Importer_Import( $this->get_plugin_name(), $this->get_version() );
+		$plugin_post       = new WebLex_Importer_Post( $this->get_plugin_name(), $this->get_version() );
+		$plugin_taxonomies = new WebLex_Importer_Taxonomies( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -164,8 +164,10 @@ class WebLex_Importer {
 
 		$this->loader->add_action( 'init', $plugin_post, 'register', 10, 0 );
 
-		$this->loader->add_action( 'init', $plugin_taxonomy, 'register', 10, 0 );
-		$this->loader->add_action( 'pre_get_posts', $plugin_taxonomy, 'pre_get_weblex_importer_posts', 10, 1 );
+		$this->loader->add_action( 'init', $plugin_taxonomies, 'register', 10, 0 );
+		$this->loader->add_action( 'pre_get_posts', $plugin_taxonomies, 'pre_get_weblex_importer_posts', 10, 1 );
+
+		add_action( '', 'customize_customtaxonomy_archive_display' );
 
 		$this->loader->add_filter( 'post_updated_messages', $plugin_post, 'updated_messages', 10, 1 );
 		$this->loader->add_filter( 'bulk_post_updated_messages', $plugin_post, 'bulk_updated_messages', 10, 2 );
@@ -230,5 +232,4 @@ class WebLex_Importer {
 	public function get_version() {
 		return $this->version;
 	}
-
 }

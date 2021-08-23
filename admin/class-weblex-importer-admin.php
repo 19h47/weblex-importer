@@ -74,7 +74,7 @@ class WebLex_Importer_Admin {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-importer-settings.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-importer-import.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-importer-post.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-importer-taxonomy.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-importer-taxonomies.php';
 	}
 
 	/**

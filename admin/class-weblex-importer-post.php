@@ -190,7 +190,7 @@ class WebLex_Importer_Post {
 			'rewrite'             => $rewrite,
 			'show_in_rest'        => true,
 			'show_in_graphql'     => true,
-			'taxonomies'          => array( 'weblex-importer-tag' ),
+			'taxonomies'          => array( 'weblex-importer-tag', 'weblex-importer-category' ),
 		);
 
 		register_post_type( 'weblex-importer-post', $args );
