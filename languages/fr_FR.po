@@ -1,0 +1,505 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WebLex Importer\n"
+"POT-Creation-Date: 2021-08-23 15:51+0200\n"
+"PO-Revision-Date: 2021-08-23 15:52+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: weblex-importer.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+
+#. translators: Publish box date format, see https://secure.php.net/date
+#: admin/class-weblex-importer-post.php:64
+msgid "M j, Y @ H:i"
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:69
+msgid "View post"
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:75
+#: admin/class-weblex-importer-post.php:81
+msgid "Preview post"
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:86
+#: admin/class-weblex-importer-post.php:89
+msgid "Post updated."
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:87
+msgid "Custom field updated."
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:88
+msgid "Custom field deleted."
+msgstr ""
+
+#. translators: %s: date and time of the revision
+#: admin/class-weblex-importer-post.php:91
+#, php-format
+msgid "Post restored to revision from %s."
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:92
+msgid "Post published."
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:93
+msgid "Post saved."
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:94
+msgid "Post submitted."
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:95
+#, php-format
+msgid "Post scheduled for: %s."
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:96
+msgid "Post draft updated."
+msgstr ""
+
+#. translators: %s: Number of posts.
+#: admin/class-weblex-importer-post.php:116
+#, php-format
+msgid "%s post updated."
+msgid_plural "%s posts updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin/class-weblex-importer-post.php:117
+msgid "1 post not updated, somebody is editing it."
+msgstr ""
+
+#. translators: %s: Number of posts.
+#: admin/class-weblex-importer-post.php:119
+#, php-format
+msgid "%s post not updated, somebody is editing it."
+msgid_plural "%s posts not updated, somebody is editing them."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: Number of posts.
+#: admin/class-weblex-importer-post.php:121
+#, php-format
+msgid "%s post permanently deleted."
+msgid_plural "%s post permanently deleted."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: Number of posts..
+#: admin/class-weblex-importer-post.php:123
+#, php-format
+msgid "%s post moved to the Trash."
+msgid_plural "%s post moved to the Trash."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: Number of posts.
+#: admin/class-weblex-importer-post.php:125
+#, php-format
+msgid "%s post restored from the Trash."
+msgid_plural "%s post restored from the Trash."
+msgstr[0] "%s article restaurée depuis la corbeille."
+msgstr[1] "%s articles restaurées depuis la corbeille."
+
+#: admin/class-weblex-importer-post.php:140
+msgctxt "post type generale name"
+msgid "Posts"
+msgstr "Articles"
+
+#: admin/class-weblex-importer-post.php:141
+msgctxt "post type singular name"
+msgid "Post"
+msgstr "Article"
+
+#: admin/class-weblex-importer-post.php:142
+msgctxt "post type"
+msgid "Add New"
+msgstr "Ajouter"
+
+#: admin/class-weblex-importer-post.php:143
+msgid "Add New Post"
+msgstr "Ajouter un nouvel article"
+
+#: admin/class-weblex-importer-post.php:144
+msgid "Edit Post"
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:145
+msgid "New Post"
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:146
+msgid "View Posts"
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:147
+msgid "View Post"
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:148
+msgid "Search Posts"
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:149
+msgid "No Posts found."
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:150
+msgid "No Posts found in Trash."
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:151
+msgid "Parent Post:"
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:152
+msgid "All Posts"
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:153
+msgid "Post Archives"
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:154
+msgid "Post Attributes"
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:155
+msgid "Insert into post"
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:156
+msgid "Uploaded to this post"
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:157
+msgctxt "post"
+msgid "Featured Image"
+msgstr "Image mise en avant"
+
+#: admin/class-weblex-importer-post.php:158
+msgctxt "post"
+msgid "Set featured image"
+msgstr "Définir comme image mise en avant"
+
+#: admin/class-weblex-importer-post.php:159
+msgctxt "post"
+msgid "Remove featured image"
+msgstr "Supprimer l’image mise en avant"
+
+#: admin/class-weblex-importer-post.php:160
+msgctxt "post"
+msgid "Use as featured image"
+msgstr "Utiliser comme image mise en avant"
+
+#: admin/class-weblex-importer-post.php:161
+msgid "Posts list navigation"
+msgstr "Navigation de la liste des articles"
+
+#: admin/class-weblex-importer-post.php:162
+msgid "Posts list"
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:163
+msgid "post published."
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:164
+msgid "post published privately."
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:165
+msgid "post reverted to draft."
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:166
+msgid "post scheduled."
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:167
+msgid "post updated."
+msgstr ""
+
+#: admin/class-weblex-importer-post.php:176
+msgid "Post"
+msgstr "Article"
+
+#: admin/class-weblex-importer-settings.php:59
+#: admin/class-weblex-importer-settings.php:60
+#: admin/class-weblex-importer-settings.php:76
+msgid "WebLex Importer Options"
+msgstr "Options de l’importateur WebLex"
+
+#: admin/class-weblex-importer-settings.php:104
+msgid "Enter URLs for WebLex RSS feed."
+msgstr ""
+
+#: admin/class-weblex-importer-settings.php:118
+msgid "RSS feeds"
+msgstr ""
+
+#: admin/class-weblex-importer-settings.php:126
+msgid "Actus"
+msgstr ""
+
+#: admin/class-weblex-importer-settings.php:127
+msgid "Flux pour WebLex Actus."
+msgstr ""
+
+#: admin/class-weblex-importer-settings.php:131
+msgid "Agenda"
+msgstr ""
+
+#: admin/class-weblex-importer-settings.php:132
+msgid "Flux pour WebLex Agenda."
+msgstr ""
+
+#: admin/class-weblex-importer-settings.php:136
+msgid "Fiches"
+msgstr ""
+
+#: admin/class-weblex-importer-settings.php:137
+msgid "Flux pour WebLex Fiches."
+msgstr ""
+
+#: admin/class-weblex-importer-settings.php:141
+msgid "Indicateurs"
+msgstr ""
+
+#: admin/class-weblex-importer-settings.php:142
+msgid "Flux pour WebLex Indicateurs."
+msgstr ""
+
+#: admin/class-weblex-importer-settings.php:146
+msgid "Petite Histoire du Jour"
+msgstr ""
+
+#: admin/class-weblex-importer-settings.php:147
+msgid "Flux pour WebLex PHDJ."
+msgstr ""
+
+#: admin/class-weblex-importer-settings.php:151
+msgid "Quiz Hebdo"
+msgstr ""
+
+#: admin/class-weblex-importer-settings.php:152
+msgid "Flux pour WebLex Quiz Hebdo."
+msgstr ""
+
+#: admin/class-weblex-importer-taxonomies.php:72
+msgctxt "post tag general name"
+msgid "Tags"
+msgstr "Étiquettes"
+
+#: admin/class-weblex-importer-taxonomies.php:73
+msgctxt "post tag singular name"
+msgid "Tag"
+msgstr "Étiquette"
+
+#: admin/class-weblex-importer-taxonomies.php:74
+msgid "Search Tags"
+msgstr "Rechercher des étiquettes"
+
+#: admin/class-weblex-importer-taxonomies.php:75
+msgid "All Tags"
+msgstr "Toutes les étiquettes"
+
+#: admin/class-weblex-importer-taxonomies.php:76
+msgid "Popular Tags"
+msgstr "Étiquettes populaires"
+
+#: admin/class-weblex-importer-taxonomies.php:77
+msgid "Edit Tag"
+msgstr "Modifier l’étiquette"
+
+#: admin/class-weblex-importer-taxonomies.php:78
+msgid "View Tag"
+msgstr "Voir l’étiquette"
+
+#: admin/class-weblex-importer-taxonomies.php:79
+msgid "Update Tag"
+msgstr "Mettre à jour l’étiquette"
+
+#: admin/class-weblex-importer-taxonomies.php:80
+msgid "Add New Tag"
+msgstr "Ajouter une nouvelle étiquette"
+
+#: admin/class-weblex-importer-taxonomies.php:81
+msgid "New Tag Name"
+msgstr "Nom de la nouvelle étiquette"
+
+#: admin/class-weblex-importer-taxonomies.php:82
+msgid "Separate tags with commas"
+msgstr "Séparez les étiquettes par des virgules"
+
+#: admin/class-weblex-importer-taxonomies.php:83
+msgid "Add or remove tags"
+msgstr "Ajouter ou retirer des étiquettes"
+
+#: admin/class-weblex-importer-taxonomies.php:84
+msgid "Choose from the most used tags"
+msgstr "Choisissez parmi les étiquettes les plus utilisées"
+
+#: admin/class-weblex-importer-taxonomies.php:85
+msgid "No tags found."
+msgstr "Aucune étiquette trouvée."
+
+#: admin/class-weblex-importer-taxonomies.php:86
+msgid "No tags"
+msgstr "Aucune étiquette"
+
+#: admin/class-weblex-importer-taxonomies.php:87
+msgid "Tags list navigation"
+msgstr "Navigation de la liste des étiquettes"
+
+#: admin/class-weblex-importer-taxonomies.php:88
+msgid "Tags list"
+msgstr "Liste des étiquettes"
+
+#. translators: Post tag heading when selecting from the most used terms.
+#: admin/class-weblex-importer-taxonomies.php:90
+msgctxt "post tag"
+msgid "Most Used"
+msgstr "Plus utilisées"
+
+#: admin/class-weblex-importer-taxonomies.php:91
+msgid "&larr; Back to Tags"
+msgstr "&larr; Retour aux étiquettes"
+
+#: admin/class-weblex-importer-taxonomies.php:118
+msgctxt "post category general name"
+msgid "Categories"
+msgstr "Catégories"
+
+#: admin/class-weblex-importer-taxonomies.php:119
+msgctxt "post category singular name"
+msgid "Category"
+msgstr "Catégorie"
+
+#: admin/class-weblex-importer-taxonomies.php:120
+msgid "Search Categories"
+msgstr "Rechercher dans les catégories"
+
+#: admin/class-weblex-importer-taxonomies.php:121
+msgid "All Categories"
+msgstr "Toutes les catégories"
+
+#: admin/class-weblex-importer-taxonomies.php:122
+msgid "Popular Categories"
+msgstr "Catégories populaires"
+
+#: admin/class-weblex-importer-taxonomies.php:123
+msgid "Edit Category"
+msgstr "Modifier la catégorie"
+
+#: admin/class-weblex-importer-taxonomies.php:124
+msgid "View Category"
+msgstr "Voir la catégorie"
+
+#: admin/class-weblex-importer-taxonomies.php:125
+msgid "Update Category"
+msgstr "Mettre à jour la catégorie"
+
+#: admin/class-weblex-importer-taxonomies.php:126
+msgid "Add New Category"
+msgstr "Ajouter une nouvelle catégorie"
+
+#: admin/class-weblex-importer-taxonomies.php:127
+msgid "New Category Name"
+msgstr "Nom de la nouvelle catégorie"
+
+#: admin/class-weblex-importer-taxonomies.php:128
+msgid "Separate categories with commas"
+msgstr "Séparez les catégories par des virgules"
+
+#: admin/class-weblex-importer-taxonomies.php:129
+msgid "Add or remove categories"
+msgstr "Ajouter ou retirer des catégories"
+
+#: admin/class-weblex-importer-taxonomies.php:130
+msgid "Choose from the most used categories"
+msgstr "Choisir parmi les catégories les plus utilisées"
+
+#: admin/class-weblex-importer-taxonomies.php:131
+msgid "No categories found."
+msgstr "Aucune catégorie trouvée."
+
+#: admin/class-weblex-importer-taxonomies.php:132
+msgid "No categories"
+msgstr "Aucune catégorie"
+
+#: admin/class-weblex-importer-taxonomies.php:133
+msgid "Categories list navigation"
+msgstr "Navigation de la liste des catégories"
+
+#: admin/class-weblex-importer-taxonomies.php:134
+msgid "Categories list"
+msgstr "Liste des catégories"
+
+#. translators: Post category heading when selecting from the most used terms.
+#: admin/class-weblex-importer-taxonomies.php:136
+msgctxt "post category"
+msgid "Most Used"
+msgstr "Plus utilisées"
+
+#: admin/class-weblex-importer-taxonomies.php:137
+msgid "&larr; Back to Categories"
+msgstr "&larr; Retour aux catégories"
+
+#: templates/taxonomy-weblex-importer-tag.php:48
+msgid "Page"
+msgstr "Page"
+
+#. translators: %: page number.
+#: templates/taxonomy-weblex-importer-tag.php:51
+msgid "Page %"
+msgstr "Page %"
+
+#: templates/taxonomy-weblex-importer-tag.php:65
+msgid "Nothing here"
+msgstr ""
+
+#: templates/taxonomy-weblex-importer-tag.php:70
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "WebLex Importer"
+msgstr "Importateur WebLex"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/19h47/weblex-importer/"
+msgstr "https://github.com/19h47/weblex-importer/"
+
+#. Description of the plugin/theme
+msgid "Import posts from an WebLex RSS feed."
+msgstr "Importer les articles des flux RSS de WebLex."
+
+#. Author of the plugin/theme
+msgid "Jérémy Levron"
+msgstr "Jérémy Levron"
+
+#. Author URI of the plugin/theme
+msgid "https://19h47.fr/"
+msgstr "https://19h47.fr/"

@@ -69,8 +69,8 @@ class WebLex_Importer_Taxonomies {
 	 */
 	public function register_tag() {
 		$labels = array(
-			'name'                       => _x( 'Tags', 'member tag general name', 'weblex-importer' ),
-			'singular_name'              => _x( 'Tag', 'member tag singular name', 'weblex-importer' ),
+			'name'                       => _x( 'Tags', 'post tag general name', 'weblex-importer' ),
+			'singular_name'              => _x( 'Tag', 'post tag singular name', 'weblex-importer' ),
 			'search_items'               => __( 'Search Tags', 'weblex-importer' ),
 			'all_items'                  => __( 'All Tags', 'weblex-importer' ),
 			'popular_items'              => __( 'Popular Tags', 'weblex-importer' ),
@@ -87,7 +87,7 @@ class WebLex_Importer_Taxonomies {
 			'items_list_navigation'      => __( 'Tags list navigation', 'weblex-importer' ),
 			'items_list'                 => __( 'Tags list', 'weblex-importer' ),
 			/* translators: Post tag heading when selecting from the most used terms. */
-			'most_used'                  => _x( 'Most Used', 'member tag', 'weblex-importer' ),
+			'most_used'                  => _x( 'Most Used', 'post tag', 'weblex-importer' ),
 			'back_to_items'              => __( '&larr; Back to Tags', 'weblex-importer' ),
 		);
 
@@ -115,8 +115,8 @@ class WebLex_Importer_Taxonomies {
 	 */
 	public function register_category() {
 		$labels = array(
-			'name'                       => _x( 'Categories', 'member category general name', 'weblex-importer' ),
-			'singular_name'              => _x( 'Category', 'member Category singular name', 'weblex-importer' ),
+			'name'                       => _x( 'Categories', 'post category general name', 'weblex-importer' ),
+			'singular_name'              => _x( 'Category', 'post category singular name', 'weblex-importer' ),
 			'search_items'               => __( 'Search Categories', 'weblex-importer' ),
 			'all_items'                  => __( 'All Categories', 'weblex-importer' ),
 			'popular_items'              => __( 'Popular Categories', 'weblex-importer' ),
@@ -133,7 +133,7 @@ class WebLex_Importer_Taxonomies {
 			'items_list_navigation'      => __( 'Categories list navigation', 'weblex-importer' ),
 			'items_list'                 => __( 'Categories list', 'weblex-importer' ),
 			/* translators: Post category heading when selecting from the most used terms. */
-			'most_used'                  => _x( 'Most Used', 'member tag', 'weblex-importer' ),
+			'most_used'                  => _x( 'Most Used', 'post category', 'weblex-importer' ),
 			'back_to_items'              => __( '&larr; Back to Categories', 'weblex-importer' ),
 		);
 

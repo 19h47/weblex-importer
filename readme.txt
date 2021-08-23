@@ -30,3 +30,7 @@ Import posts from an WebLex RSS feed.
 
 = 0.0.3 =
 * Disable WP_MEMORY_LIMIT
+
+= 0.0.4 =
+* Add Category taxonomy
+* i18n
