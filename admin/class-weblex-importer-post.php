@@ -32,6 +32,16 @@ class WebLex_Importer_Post {
 
 
 	/**
+	 * The post type name
+	 *
+	 * @since 0.0.5
+	 * @access private
+	 * @var string
+	 */
+	private $post_type;
+
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    0.0.0
@@ -42,8 +52,100 @@ class WebLex_Importer_Post {
 
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
+		$this->post_type   = 'weblex-importer-post';
 
 	}
+
+
+
+	/**
+	 * CSS
+	 *
+	 * @return bool
+	 */
+	public function css() : bool {
+		global $typenow;
+
+		if ( $this->post_type !== $typenow ) {
+			return false;
+		}
+
+		?>
+		<style>
+			.fixed .column-thumbnail {
+				vertical-align: top;
+				width: 80px;
+			}
+
+			.fixed .column-thumbnail a {
+				display: block;
+			}
+			.fixed .column-thumbnail a img {
+				display: inline-block;
+				vertical-align: middle;
+				width: 80px;
+				height: 80px;
+				object-fit: contain;
+				object-position: center;
+				overflow: hidden;
+			}
+		</style>
+		<?php
+
+		return true;
+	}
+
+
+	/**
+	 * Add custom columns
+	 *
+	 * @param array $columns Array of columns.
+	 * @return array $new_columns
+	 * @link https://developer.wordpress.org/reference/hooks/manage_post_type_posts_columns/
+	 */
+	public function add_custom_columns( array $columns ) : array {
+		$new_columns = array();
+
+		unset( $columns['date'] );
+
+		foreach ( $columns as $key => $value ) {
+			if ( 'title' === $key ) {
+				$new_columns['thumbnail'] = __( 'Thumbnail', 'weblex-importer' );
+			}
+
+			$new_columns[ $key ] = $value;
+		}
+		return $new_columns;
+	}
+
+
+	/**
+	 * Render custom columns
+	 *
+	 * @param string $column_name The column name.
+	 * @param int    $post_id The ID of the post.
+	 * @link https://developer.wordpress.org/reference/hooks/manage_post-post_type_posts_custom_column/
+	 *
+	 * @return void
+	 */
+	public function render_custom_columns( string $column_name, int $post_id ) : void {
+		switch ( $column_name ) {
+			case 'thumbnail':
+				$thumbnail = get_the_post_thumbnail( $post_id, 'medium' );
+				$html      = '—';
+
+				if ( $thumbnail ) {
+					$html  = '<a href="' . esc_attr( get_edit_post_link( $post_id ) ) . '">';
+					$html .= $thumbnail;
+					$html .= '</a>';
+				}
+
+				echo wp_kses_post( $html );
+
+				break;
+		}
+	}
+
 
 
 	/**
@@ -81,7 +183,7 @@ class WebLex_Importer_Post {
 			__( 'Preview post', 'weblex-importer' )
 		);
 
-		$messages['weblex-importer-post'] = array(
+		$messages[ $this->post_type ] = array(
 			0  => '', // Unused. Messages start at index 1.
 			1  => __( 'Post updated.', 'weblex-importer' ) . $view_link_html,
 			2  => __( 'Custom field updated.', 'weblex-importer' ),
@@ -111,7 +213,7 @@ class WebLex_Importer_Post {
 	 * @return array $bulk_counts
 	 */
 	public function bulk_updated_messages( array $bulk_messages, array $bulk_counts ) : array {
-		$bulk_messages['weblex-importer-post'] = array(
+		$bulk_messages[ $this->post_type ] = array(
 			/* translators: %s: Number of posts. */
 			'updated'   => _n( '%s post updated.', '%s posts updated.', $bulk_counts['updated'], 'weblex-importer' ),
 			'locked'    => ( 1 === $bulk_counts['locked'] ) ? __( '1 post not updated, somebody is editing it.', 'weblex-importer' ) :
@@ -137,9 +239,9 @@ class WebLex_Importer_Post {
 	 */
 	public function register() : void {
 		$labels = array(
-			'name'                     => _x( 'Posts', 'post type generale name', 'weblex-importer' ),
-			'singular_name'            => _x( 'Post', 'post type singular name', 'weblex-importer' ),
-			'add_new'                  => _x( 'Add New', 'post type', 'weblex-importer' ),
+			'name'                     => _x( 'Posts', 'weblex-importer-post type generale name', 'weblex-importer' ),
+			'singular_name'            => _x( 'Post', 'weblex-importer-post type singular name', 'weblex-importer' ),
+			'add_new'                  => _x( 'Add New', 'weblex-importer-post type', 'weblex-importer' ),
 			'add_new_item'             => __( 'Add New Post', 'weblex-importer' ),
 			'edit_item'                => __( 'Edit Post', 'weblex-importer' ),
 			'new_item'                 => __( 'New Post', 'weblex-importer' ),
@@ -193,6 +295,6 @@ class WebLex_Importer_Post {
 			'taxonomies'          => array( 'weblex-importer-tag', 'weblex-importer-category' ),
 		);
 
-		register_post_type( 'weblex-importer-post', $args );
+		register_post_type( $this->post_type, $args );
 	}
 }

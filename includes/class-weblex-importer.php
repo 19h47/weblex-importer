@@ -163,6 +163,9 @@ class WebLex_Importer {
 		$this->loader->add_action( 'weblex_importer_cron_import', $plugin_import, 'cron_update_options' );
 
 		$this->loader->add_action( 'init', $plugin_post, 'register', 10, 0 );
+		$this->loader->add_action( 'manage_weblex-importer-post_posts_custom_column', $plugin_post, 'render_custom_columns', 10, 2 );
+		$this->loader->add_filter( 'bulk_post_updated_messages', $plugin_post, 'bulk_updated_messages', 10, 2 );
+		$this->loader->add_filter( 'manage_weblex-importer-post_posts_columns', $plugin_post, 'add_custom_columns' );
 
 		$this->loader->add_action( 'init', $plugin_taxonomies, 'register', 10, 0 );
 		$this->loader->add_action( 'pre_get_posts', $plugin_taxonomies, 'pre_get_weblex_importer_posts', 10, 1 );
