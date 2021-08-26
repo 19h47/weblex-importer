@@ -60,4 +60,7 @@ This section describes how to install the plugin and get it working.
 = 0.0.10 =
 * Change tag and category slug 
 
+= 0.0.11 =
+* Add archive category template
+
 == Upgrade Notice ==

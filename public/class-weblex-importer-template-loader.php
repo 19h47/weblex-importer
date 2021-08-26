@@ -66,6 +66,7 @@ class WebLex_Importer_Template_Loader {
 	 * @return string
 	 */
 	function template_loader( string $template ) : string {
+
 		if ( is_tax( 'weblex-importer-tag' ) ) {
 			$search_files = array( 'taxonomy-weblex-importer-tag.php' );
 			$template     = locate_template( $search_files );
@@ -74,6 +75,17 @@ class WebLex_Importer_Template_Loader {
 				return $template;
 			} else {
 				$template = WEBLEX_IMPORTER_DIR_PATH . 'templates/taxonomy-weblex-importer-tag.php';
+			}
+		}
+
+		if ( is_tax( 'weblex-importer-category' ) ) {
+			$search_files = array( 'taxonomy-weblex-importer-category.php' );
+			$template     = locate_template( $search_files );
+
+			if ( $template ) {
+				return $template;
+			} else {
+				$template = WEBLEX_IMPORTER_DIR_PATH . 'templates/taxonomy-weblex-importer-category.php';
 			}
 		}
 
