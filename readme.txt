@@ -54,4 +54,7 @@ This section describes how to install the plugin and get it working.
 = 0.0.8 =
 * Bugfix 
 
+= 0.0.9 =
+* Bugfix 
+
 == Upgrade Notice ==
