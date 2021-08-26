@@ -94,7 +94,6 @@ class WebLex_Importer_Import {
 			$term_id = $this->get_tag_by_name( $title );
 
 			foreach ( $rss->get_items( 0, $rss->get_item_quantity( 0 ) ) as $item ) {
-				wp_die( var_dump( $item->get_url() ) );
 				$item_id       = $item->get_id( false );
 				$item_pub_date = gmdate( $item->get_date( 'Y-m-d H:i:s' ) );
 
