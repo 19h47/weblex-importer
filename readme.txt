@@ -11,13 +11,18 @@ Import posts from an WebLex RSS feed.
 
 == Description ==
 
+== Installation ==
+ 
+This section describes how to install the plugin and get it working.
+
+1. Upload `weblex-importer` folder to the `/wp-content/plugins/` directory
+1. Activate the plugin through the 'Plugins' menu in WordPress
+
 == Frequently Asked Questions ==
 
 == Screenshots ==
 
 == Changelog ==
-
-== Upgrade Notice ==
 
 = 0.0.0 =
 * Initial Release
@@ -41,3 +46,8 @@ Import posts from an WebLex RSS feed.
 
 = 0.0.6 =
 * Add get_the_term_list to template
+
+= 0.0.7 =
+* Change archive slug for les-infos-du-jour
+
+== Upgrade Notice ==

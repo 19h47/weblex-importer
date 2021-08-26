@@ -270,7 +270,7 @@ class WebLex_Importer_Post {
 		);
 
 		$rewrite = array(
-			'slug'       => 'weblex-importer-post',
+			'slug'       => 'les-infos-du-jour',
 			'with_front' => true,
 		);
 
