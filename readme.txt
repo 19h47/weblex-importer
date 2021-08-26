@@ -48,7 +48,10 @@ This section describes how to install the plugin and get it working.
 * Add get_the_term_list to template
 
 = 0.0.7 =
-* Bug fix
+* Bugfix
 * Change archive slug for les-infos-du-jour
+
+= 0.0.8 =
+* Bugfix 
 
 == Upgrade Notice ==
