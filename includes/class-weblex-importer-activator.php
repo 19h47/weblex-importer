@@ -3,8 +3,8 @@
 /**
  * Fired during plugin activation
  *
- * @link       http://example.com
- * @since      1.0.0
+ * @link       https://github.com/19h47/weblex-importer/
+ * @since      0.0.0
  *
  * @package           WebLexImporter
  * @package           WebLexImporter/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's activation.
  *
- * @since      1.0.0
+ * @since      0.0.0
  * @package           WebLexImporter
  * @package           WebLexImporter/includes
  * @author     Jérémy Levron <jeremylevron@19h47.fr>

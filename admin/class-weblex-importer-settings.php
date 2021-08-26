@@ -11,7 +11,7 @@
  */
 
 /**
- * Class WordPress_Plugin_Template_Settings
+ * Class WebLex_Importer_Settings
  *
  */
 class WebLex_Importer_Settings {

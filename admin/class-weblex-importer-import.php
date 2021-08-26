@@ -1,6 +1,7 @@
 <?php
+
 /**
- * The settings of the plugin.
+ * Import.
  *
  * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0

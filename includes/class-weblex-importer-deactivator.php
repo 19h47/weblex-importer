@@ -3,11 +3,11 @@
 /**
  * Fired during plugin deactivation
  *
- * @link       http://example.com
- * @since      1.0.0
+ * @link       https://github.com/19h47/weblex-importer/
+ * @since      0.0.0
  *
- * @package    Plugin_Name
- * @subpackage Plugin_Name/includes
+ * @package           WebLexImporter
+ * @package           WebLexImporter/includes
  */
 
 /**
@@ -15,10 +15,10 @@
  *
  * This class defines all code necessary to run during the plugin's deactivation.
  *
- * @since      1.0.0
- * @package    Plugin_Name
- * @subpackage Plugin_Name/includes
- * @author     Your Name <email@example.com>
+ * @since      0.0.0
+ * @package           WebLexImporter
+ * @package           WebLexImporter/includes
+ * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
 class WebLex_Importer_Deactivator {
 

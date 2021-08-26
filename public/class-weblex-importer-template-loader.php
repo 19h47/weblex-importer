@@ -4,7 +4,7 @@
  * The public-facing functionality of the plugin.
  *
  * @link       https://github.com/19h47/weblex-importer/
- * @since      1.0.0
+ * @since      0.0.0
  *
  * @package           WebLexImporter
  * @subpackage WebLexImporter/public

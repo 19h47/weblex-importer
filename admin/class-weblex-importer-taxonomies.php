@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Taxonomies of the plugin.
+ *
  * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
@@ -91,6 +93,12 @@ class WebLex_Importer_Taxonomies {
 			'back_to_items'              => __( '&larr; Back to Tags', 'weblex-importer' ),
 		);
 
+		$rewrite = array(
+			'slug'         => 'les-infos-du-jour-tag',
+			'with_front'   => true,
+			'hierarchical' => false,
+		);
+
 		$args = array(
 			'labels'             => $labels,
 			'hierarchical'       => false,
@@ -102,6 +110,7 @@ class WebLex_Importer_Taxonomies {
 			'show_in_quick_edit' => true,
 			'show_admin_column'  => true,
 			'show_in_rest'       => true,
+			'rewrite'            => $rewrite,
 		);
 
 		register_taxonomy( 'weblex-importer-tag', array( 'weblex-importer-post' ), $args );
@@ -137,6 +146,12 @@ class WebLex_Importer_Taxonomies {
 			'back_to_items'              => __( '&larr; Back to Categories', 'weblex-importer' ),
 		);
 
+		$rewrite = array(
+			'slug'         => 'les-infos-du-jour-categories',
+			'with_front'   => true,
+			'hierarchical' => false,
+		);
+
 		$args = array(
 			'labels'             => $labels,
 			'hierarchical'       => true,
@@ -148,6 +163,7 @@ class WebLex_Importer_Taxonomies {
 			'show_in_quick_edit' => true,
 			'show_admin_column'  => true,
 			'show_in_rest'       => true,
+			'rewrite'            => $rewrite,
 		);
 
 		register_taxonomy( 'weblex-importer-category', array( 'weblex-importer-post' ), $args );
