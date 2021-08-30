@@ -6,7 +6,7 @@
  *
  * @package           WebLexImporter
  * @subpackage WebLexImporter/templates
- * @since 0.0.0
+ * @since 0.0.11
  */
 
 get_header();
