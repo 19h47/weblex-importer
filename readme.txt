@@ -63,4 +63,7 @@ This section describes how to install the plugin and get it working.
 = 0.0.11 =
 * Add archive category template
 
+= 0.0.12 =
+* Fix pre_get_posts on taxonomy archive
+
 == Upgrade Notice ==
