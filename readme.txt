@@ -69,4 +69,7 @@ This section describes how to install the plugin and get it working.
 = 0.0.13 =
 * Set post thumbnail
 
+= 0.0.14 =
+* Set date column
+
 == Upgrade Notice ==
