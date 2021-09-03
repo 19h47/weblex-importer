@@ -10,6 +10,16 @@
  * @subpackage WebLex_Importer/admin
  */
 
+// $allposts = get_posts(
+// 	array(
+// 		'post_type'   => 'weblex-importer-post',
+// 		'numberposts' => -1,
+// 	)
+// );
+// foreach ( $allposts as $eachpost ) {
+// 	wp_delete_post( $eachpost->ID, true );
+// }
+
 /**
  * Class WordPress_Plugin_Template_Settings
  *
@@ -123,7 +133,7 @@ class WebLex_Importer_Import {
 							wp_set_object_terms( $updated_post_id, $post_tags, 'weblex-importer-category', false );
 						}
 
-						// $this->set_post_thumbnail( $item->get_item_tags( '', 'image' )[0]['child']['']['url'][0]['data'], $updated_post_id );
+						set_post_thumbnail( $this->set_post_thumbnail( $item->get_item_tags( '', 'image' )[0]['child']['']['url'][0]['data'], $updated_post_id ), $updated_post_id );
 					}
 				} else {
 					$post = array(
@@ -144,7 +154,7 @@ class WebLex_Importer_Import {
 						update_post_meta( $inserted_post_id, 'weblex-importer-id', $item_id );
 					}
 
-					// $this->set_post_thumbnail( $item->get_item_tags( '', 'image' )[0]['child']['']['url'][0]['data'], $updated_post_id );
+					set_post_thumbnail( $this->set_post_thumbnail( $item->get_item_tags( '', 'image' )[0]['child']['']['url'][0]['data'], $inserted_post_id ), $inserted_post_id );
 				}
 			}
 		}
@@ -193,24 +203,62 @@ class WebLex_Importer_Import {
 	 *
 	 */
 	public function set_post_thumbnail( $url, $post_id ) {
-		require_once ABSPATH . 'wp-admin/includes/image.php';
+		require_once( ABSPATH . 'wp-admin/includes/media.php' );
+		require_once( ABSPATH . 'wp-admin/includes/file.php' );
+		require_once( ABSPATH . 'wp-admin/includes/image.php' );
 
-		$filename      = sanitize_file_name( basename( $url ) );
-		$filetype      = wp_check_filetype( basename( $url ), null );
-		$wp_upload_dir = wp_upload_dir();
+		if ( '' === $post_id ) {
+			return new WP_Error( 'insert_attachment_failed', __( 'Invalid post ID' ) );
+		}
 
-		$attachment = array(
-			'post_mime_type' => $filetype['type'],
-			'post_title'     => $filename,
-			'post_content'   => '',
-			'post_status'    => 'inherit',
-			'post_parent'    => $post_id,
-		);
+		if ( ! empty( $url ) ) {
+			$url = esc_url( $url );
 
-		$attachment_id       = wp_insert_attachment( $attachment, $url, $post_id );
-		$attachment_metadata = wp_generate_attachment_metadata( $attachment_id, $url );
+			/**
+			 * Set variables for storage, fix file
+			 * filename for query strings.
+			 */
+			preg_match( '/[^\?]+\.(jpe?g|jpe|gif|png)\b/i', $url, $matches );
+			if ( ! $matches ) {
+				return new WP_Error( 'insert_attachment_failed', __( 'Invalid image URL' ) );
+			}
 
-		wp_update_attachment_metadata( $attachment_id, $attachment_metadata );
-		set_post_thumbnail( $post_id, $attachment_id );
+			$file_array         = array();
+			$file_array['name'] = basename( $matches[0] );
+
+			/**
+			* Download file to temp location.
+			*/
+			$file_array['tmp_name'] = download_url( $url );
+
+			/**
+			* Check for download errors
+			* if there are error unlink the temp file name
+			*/
+			if ( is_wp_error( $file_array['tmp_name'] ) ) {
+				return $file_array['tmp_name'];
+			}
+
+			$attachment_id = media_handle_sideload( $file_array, $post_id );
+
+			/**
+			 * If error storing permanently, unlink.
+			 */
+			if ( is_wp_error( $attachment_id ) ) {
+				@unlink( $file_array['tmp_name'] );
+				return $attachment_id;
+			}
+
+			/**
+			 * If error thumbnail
+			 */
+			if ( false === set_post_thumbnail( $post_id, $attachment_id ) ) {
+				return new WP_Error( 'insert_attachment_failed', __( 'Problem to set post thumbnail' ) );
+			}
+
+			return $attachment_id;
+		} else {
+			return new WP_Error( 'insert_attachment_failed', __( 'Insert URL' ) );
+		}
 	}
 }

@@ -56,11 +56,11 @@ class WebLex_Importer_Settings {
 
 		//Add the menu to the Plugins set of menu items
 		add_plugins_page(
-			__( 'WebLex Importer Options', 'weblex-importer' ),                    // The title to be displayed in the browser window for this page.
-			__( 'WebLex Importer Options', 'weblex-importer' ),                    // The text to be displayed for this menu item
-			'manage_options',                   // Which type of users can see this menu item
-			'weblex_importer_options',            // The unique ID - that is, the slug - for this menu item
-			array( $this, 'render_settings_page_content' )               // The name of the function to call when rendering this menu's page
+			__( 'WebLex Importer Options', 'weblex-importer' ),
+			__( 'WebLex Importer Options', 'weblex-importer' ),
+			'manage_options',
+			'weblex_importer_options',
+			array( $this, 'render_settings_page_content' )
 		);
 
 	}

@@ -66,4 +66,7 @@ This section describes how to install the plugin and get it working.
 = 0.0.12 =
 * Fix pre_get_posts on taxonomy archive
 
+= 0.0.13 =
+* Set post thumbnail
+
 == Upgrade Notice ==

@@ -39,6 +39,25 @@ if ( have_posts() ) : ?>
 						<?php the_title( sprintf( '<h2 class="entry-title default-max-width"><a href="%s">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 					<?php endif; ?>
 
+					<?php
+
+					$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+
+					$time_string = sprintf(
+						$time_string,
+						esc_attr( get_the_date( DATE_W3C ) ),
+						esc_html( get_the_date() )
+					);
+					echo '<div class="posted-on default-max-width">';
+					printf(
+					/* translators: %s: publish date. */
+						esc_html__( 'Published %s', 'twentytwentyone' ),
+						$time_string // phpcs:ignore WordPress.Security.EscapeOutput
+					);
+					echo '</div>';
+
+					?>
+
 					<?php echo get_the_term_list( get_the_ID(), 'weblex-importer-category', '<div class="default-max-width">', ', ', '</div>' ); ?>
 				</header><!-- .entry-header -->
 
