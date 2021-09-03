@@ -32,12 +32,21 @@ if ( have_posts() ) : ?>
 			<?php the_post(); ?>
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-				<header class="entry-header">
-					<?php if ( is_singular() ) : ?>
-						<?php the_title( '<h1 class="entry-title default-max-width">', '</h1>' ); ?>
-					<?php else : ?>
-						<?php the_title( sprintf( '<h2 class="entry-title default-max-width"><a href="%s">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
-					<?php endif; ?>
+
+				<?php if ( get_post_thumbnail_id() ) : ?>
+					<figure class="post-thumbnail">
+						<a class="post-thumbnail-inner alignwide" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+							<?php the_post_thumbnail( 'post-thumbnail' ); ?>
+						</a>
+						<?php if ( wp_get_attachment_caption( get_post_thumbnail_id() ) ) : ?>
+							<figcaption class="wp-caption-text"><?php echo wp_kses_post( wp_get_attachment_caption( get_post_thumbnail_id() ) ); ?></figcaption>
+						<?php endif; ?>
+					</figure>
+				<?php endif; ?>
+
+				<header class="entry-header default-max-width">
+
+					<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 
 					<?php
 
@@ -48,7 +57,7 @@ if ( have_posts() ) : ?>
 						esc_attr( get_the_date( DATE_W3C ) ),
 						esc_html( get_the_date() )
 					);
-					echo '<div class="posted-on default-max-width">';
+					echo '<div class="posted-on">';
 					printf(
 					/* translators: %s: publish date. */
 						esc_html__( 'Published %s', 'twentytwentyone' ),
@@ -58,7 +67,7 @@ if ( have_posts() ) : ?>
 
 					?>
 
-					<?php echo get_the_term_list( get_the_ID(), 'weblex-importer-category', '<div class="default-max-width">', ', ', '</div>' ); ?>
+					<?php echo get_the_term_list( get_the_ID(), 'weblex-importer-category', '<div>', ', ', '</div>' ); ?>
 				</header><!-- .entry-header -->
 
 				<div class="entry-content">

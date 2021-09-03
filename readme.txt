@@ -72,4 +72,7 @@ This section describes how to install the plugin and get it working.
 = 0.0.14 =
 * Set date column
 
+= 0.0.15 =
+* Add post thumbnail to archive
+
 == Upgrade Notice ==
