@@ -76,6 +76,8 @@ This section describes how to install the plugin and get it working.
 * Add post thumbnail to archive
 
 = 0.0.16 =
-* Remove archive prefix
+* Remove archive 
+* Fix load_plugin_textdomain
+* Quizz JavaScript
 
 == Upgrade Notice ==

@@ -39,7 +39,9 @@ if ( have_posts() ) : ?>
 							<?php the_post_thumbnail( 'post-thumbnail' ); ?>
 						</a>
 						<?php if ( wp_get_attachment_caption( get_post_thumbnail_id() ) ) : ?>
-							<figcaption class="wp-caption-text"><?php echo wp_kses_post( wp_get_attachment_caption( get_post_thumbnail_id() ) ); ?></figcaption>
+							<figcaption class="wp-caption-text">
+								<?php echo wp_kses_post( wp_get_attachment_caption( get_post_thumbnail_id() ) ); ?>
+							</figcaption>
 						<?php endif; ?>
 					</figure>
 				<?php endif; ?>
@@ -60,7 +62,7 @@ if ( have_posts() ) : ?>
 					echo '<div class="posted-on">';
 					printf(
 					/* translators: %s: publish date. */
-						esc_html__( 'Published %s', 'twentytwentyone' ),
+						esc_html__( 'Published %s', 'weblex-importer' ),
 						$time_string // phpcs:ignore WordPress.Security.EscapeOutput
 					);
 					echo '</div>';

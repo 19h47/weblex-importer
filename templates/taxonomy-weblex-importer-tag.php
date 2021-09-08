@@ -57,7 +57,7 @@ if ( have_posts() ) : ?>
 					echo '<div class="posted-on">';
 					printf(
 					/* translators: %s: publish date. */
-						esc_html__( 'Published %s', 'twentytwentyone' ),
+						esc_html__( 'Published %s', 'weblex-importer' ),
 						$time_string // phpcs:ignore WordPress.Security.EscapeOutput
 					);
 					echo '</div>';
