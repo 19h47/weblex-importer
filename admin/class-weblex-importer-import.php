@@ -142,7 +142,7 @@ class WebLex_Importer_Import {
 						'post_title'   => $item->get_title(), // The title of the post.
 						'post_status'  => 'publish',
 						'post_date'    => $item_pub_date, // The time the post was made.
-						'tags_input'   => $post_tags,
+						// 'tags_input'   => $post_tags,
 					);
 
 					$inserted_post_id = wp_insert_post( $post );
@@ -172,7 +172,7 @@ class WebLex_Importer_Import {
 		$tags = array();
 
 		foreach ( $categories as $category ) {
-			array_push( $tags, sanitize_title( $category->get_term() ) );
+			array_push( $tags, $category->get_term() );
 		}
 
 		return $tags;

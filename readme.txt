@@ -80,4 +80,7 @@ This section describes how to install the plugin and get it working.
 * Fix load_plugin_textdomain
 * Quizz JavaScript
 
+= 0.0.17 =
+* Fox categories import
+
 == Upgrade Notice ==
