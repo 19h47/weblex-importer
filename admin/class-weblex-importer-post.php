@@ -107,8 +107,6 @@ class WebLex_Importer_Post {
 	public function add_custom_columns( array $columns ) : array {
 		$new_columns = array();
 
-		unset( $columns['date'] );
-
 		foreach ( $columns as $key => $value ) {
 			if ( 'title' === $key ) {
 				$new_columns['thumbnail'] = __( 'Thumbnail', 'weblex-importer' );

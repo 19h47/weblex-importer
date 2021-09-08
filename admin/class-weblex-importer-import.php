@@ -133,7 +133,7 @@ class WebLex_Importer_Import {
 							wp_set_object_terms( $updated_post_id, $post_tags, 'weblex-importer-category', false );
 						}
 
-						set_post_thumbnail( $this->set_post_thumbnail( $item->get_item_tags( '', 'image' )[0]['child']['']['url'][0]['data'], $updated_post_id ), $updated_post_id );
+						$this->set_post_thumbnail( $item->get_item_tags( '', 'image' )[0]['child']['']['url'][0]['data'], $updated_post_id );
 					}
 				} else {
 					$post = array(
@@ -154,7 +154,7 @@ class WebLex_Importer_Import {
 						update_post_meta( $inserted_post_id, 'weblex-importer-id', $item_id );
 					}
 
-					set_post_thumbnail( $this->set_post_thumbnail( $item->get_item_tags( '', 'image' )[0]['child']['']['url'][0]['data'], $inserted_post_id ), $inserted_post_id );
+					$this->set_post_thumbnail( $item->get_item_tags( '', 'image' )[0]['child']['']['url'][0]['data'], $inserted_post_id );
 				}
 			}
 		}
@@ -201,64 +201,62 @@ class WebLex_Importer_Import {
 
 	/**
 	 *
+	 * @param string $url
+	 * @param int|WP_Post $post         Post ID or post object where thumbnail should be attached.
+	 *
+	 * @return int|WP_Error The ID of the attachment or a WP_Error on failure.
 	 */
-	public function set_post_thumbnail( $url, $post_id ) {
-		require_once( ABSPATH . 'wp-admin/includes/media.php' );
-		require_once( ABSPATH . 'wp-admin/includes/file.php' );
-		require_once( ABSPATH . 'wp-admin/includes/image.php' );
+	public function set_post_thumbnail( string $url, $post ) {
+		$post = get_post( $post );
 
-		if ( '' === $post_id ) {
-			return new WP_Error( 'insert_attachment_failed', __( 'Invalid post ID' ) );
+		if ( ! function_exists( 'media_handle_upload' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/media.php';
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+			require_once ABSPATH . 'wp-admin/includes/image.php';
 		}
 
-		if ( ! empty( $url ) ) {
-			$url = esc_url( $url );
+		if ( null === $post ) {
+			return new WP_Error( 'insert_attachment_failed', __( 'Invalid post' ) );
+		}
 
-			/**
-			 * Set variables for storage, fix file
-			 * filename for query strings.
-			 */
-			preg_match( '/[^\?]+\.(jpe?g|jpe|gif|png)\b/i', $url, $matches );
-			if ( ! $matches ) {
-				return new WP_Error( 'insert_attachment_failed', __( 'Invalid image URL' ) );
-			}
-
-			$file_array         = array();
-			$file_array['name'] = basename( $matches[0] );
-
-			/**
-			* Download file to temp location.
-			*/
-			$file_array['tmp_name'] = download_url( $url );
-
-			/**
-			* Check for download errors
-			* if there are error unlink the temp file name
-			*/
-			if ( is_wp_error( $file_array['tmp_name'] ) ) {
-				return $file_array['tmp_name'];
-			}
-
-			$attachment_id = media_handle_sideload( $file_array, $post_id );
-
-			/**
-			 * If error storing permanently, unlink.
-			 */
-			if ( is_wp_error( $attachment_id ) ) {
-				@unlink( $file_array['tmp_name'] );
-				return $attachment_id;
-			}
-
-			/**
-			 * If error thumbnail
-			 */
-			if ( false === set_post_thumbnail( $post_id, $attachment_id ) ) {
-				return new WP_Error( 'insert_attachment_failed', __( 'Problem to set post thumbnail' ) );
-			}
-
-			return $attachment_id;
-		} else {
+		if ( empty( $url ) ) {
 			return new WP_Error( 'insert_attachment_failed', __( 'Insert URL' ) );
 		}
+
+		$url = esc_url( $url );
+
+		// Set variables for storage, fix file filename for query strings.
+		preg_match( '/[^\?]+\.(jpe?g|jpe|gif|png)\b/i', $url, $matches );
+
+		if ( ! $matches ) {
+			return new WP_Error( 'insert_attachment_failed', __( 'Invalid image URL' ) );
+		}
+
+		// Array that represents a `$_FILES` upload array.
+		$file_array         = array();
+		$file_array['name'] = basename( $matches[0] );
+
+		// @see https://developer.wordpress.org/reference/functions/download_url/
+		$file_array['tmp_name'] = download_url( $url );
+
+		if ( is_wp_error( $file_array['tmp_name'] ) ) {
+			return $file_array['tmp_name'];
+		}
+
+		// @see https://developer.wordpress.org/reference/functions/media_handle_sideload/
+		$attachment_id = media_handle_sideload( $file_array, $post->ID );
+
+		if ( is_wp_error( $attachment_id ) ) {
+			return $attachment_id;
+		}
+
+		// @see https://developer.wordpress.org/reference/functions/set_post_thumbnail/
+		$post_thumbnail = set_post_thumbnail( $post->ID, $attachment_id );
+
+		if ( false === $post_thumbnail ) {
+			return new WP_Error( 'insert_attachment_failed', __( 'Problem to set post thumbnail' ) );
+		}
+
+		return $attachment_id;
 	}
 }

@@ -75,4 +75,7 @@ This section describes how to install the plugin and get it working.
 = 0.0.15 =
 * Add post thumbnail to archive
 
+= 0.0.16 =
+* Remove archive prefix
+
 == Upgrade Notice ==
