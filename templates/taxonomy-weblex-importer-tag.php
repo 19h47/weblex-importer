@@ -68,7 +68,6 @@ if ( have_posts() ) : ?>
 				</header><!-- .entry-header -->
 
 				<div class="entry-content">
-					<?php // the_content(); ?>
 					<?php the_excerpt(); ?>
 
 					<?php

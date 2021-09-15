@@ -276,7 +276,7 @@ class WebLex_Importer_Post {
 		$args = array(
 			'label'               => __( 'Post', 'weblex-importer' ),
 			'labels'              => $labels,
-			'supports'            => array( 'title', 'editor', 'thumbnail' ),
+			'supports'            => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
 			'public'              => true,
 			'show_ui'             => true,
 			'show_in_menu'        => true,

@@ -83,4 +83,7 @@ This section describes how to install the plugin and get it working.
 = 0.0.17 =
 * Fox categories import
 
+= 0.0.18 =
+* Excerpt field
+
 == Upgrade Notice ==
