@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WebLex Importer\n"
-"POT-Creation-Date: 2021-09-08 18:42+0200\n"
-"PO-Revision-Date: 2021-09-08 18:55+0200\n"
+"POT-Creation-Date: 2021-09-15 12:56+0200\n"
+"PO-Revision-Date: 2021-09-15 12:56+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -22,19 +22,19 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 
-#: admin/class-weblex-importer-import.php:219
+#: admin/class-weblex-importer-import.php:270
 msgid "Invalid post"
 msgstr ""
 
-#: admin/class-weblex-importer-import.php:223
+#: admin/class-weblex-importer-import.php:274
 msgid "Insert URL"
 msgstr ""
 
-#: admin/class-weblex-importer-import.php:232
+#: admin/class-weblex-importer-import.php:283
 msgid "Invalid image URL"
 msgstr ""
 
-#: admin/class-weblex-importer-import.php:257
+#: admin/class-weblex-importer-import.php:308
 msgid "Problem to set post thumbnail"
 msgstr ""
 
@@ -282,7 +282,7 @@ msgid "Actus"
 msgstr ""
 
 #: admin/class-weblex-importer-settings.php:127
-msgid "Flux pour WebLex Actus."
+msgid "Les actualités"
 msgstr ""
 
 #: admin/class-weblex-importer-settings.php:131
@@ -290,7 +290,7 @@ msgid "Agenda"
 msgstr ""
 
 #: admin/class-weblex-importer-settings.php:132
-msgid "Flux pour WebLex Agenda."
+msgid "L'agenda fiscal et social"
 msgstr ""
 
 #: admin/class-weblex-importer-settings.php:136
@@ -298,7 +298,7 @@ msgid "Fiches"
 msgstr ""
 
 #: admin/class-weblex-importer-settings.php:137
-msgid "Flux pour WebLex Fiches."
+msgid "Les fiches pratiques"
 msgstr ""
 
 #: admin/class-weblex-importer-settings.php:141
@@ -306,15 +306,15 @@ msgid "Indicateurs"
 msgstr ""
 
 #: admin/class-weblex-importer-settings.php:142
-msgid "Flux pour WebLex Indicateurs."
+msgid "Les indicateurs chiffres et barèmes"
 msgstr ""
 
 #: admin/class-weblex-importer-settings.php:146
-msgid "Petite Histoire du Jour"
+msgid "La petite Histoire du Jour"
 msgstr ""
 
 #: admin/class-weblex-importer-settings.php:147
-msgid "Flux pour WebLex PHDJ."
+msgid "La petite histoire du jour"
 msgstr ""
 
 #: admin/class-weblex-importer-settings.php:151
@@ -322,7 +322,7 @@ msgid "Quiz Hebdo"
 msgstr ""
 
 #: admin/class-weblex-importer-settings.php:152
-msgid "Flux pour WebLex Quiz Hebdo."
+msgid "Le Quiz Hebdo"
 msgstr ""
 
 #: admin/class-weblex-importer-taxonomies.php:74
@@ -492,24 +492,28 @@ msgstr "&larr; Retour aux catégories"
 msgid "Published %s"
 msgstr "Publié le %s"
 
+#: templates/taxonomy-weblex-importer-category.php:77
+msgid "Read More"
+msgstr "Lire la suite"
+
 #: templates/taxonomy-weblex-importer-category.php:82
-#: templates/taxonomy-weblex-importer-tag.php:77
+#: templates/taxonomy-weblex-importer-tag.php:76
 msgid "Page"
 msgstr "Page"
 
 #. translators: %: page number.
 #: templates/taxonomy-weblex-importer-category.php:85
-#: templates/taxonomy-weblex-importer-tag.php:80
+#: templates/taxonomy-weblex-importer-tag.php:79
 msgid "Page %"
 msgstr "Page %"
 
 #: templates/taxonomy-weblex-importer-category.php:99
-#: templates/taxonomy-weblex-importer-tag.php:94
+#: templates/taxonomy-weblex-importer-tag.php:93
 msgid "Nothing here"
 msgstr ""
 
 #: templates/taxonomy-weblex-importer-category.php:104
-#: templates/taxonomy-weblex-importer-tag.php:99
+#: templates/taxonomy-weblex-importer-tag.php:98
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."

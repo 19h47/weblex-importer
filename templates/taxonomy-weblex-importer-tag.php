@@ -69,6 +69,9 @@ if ( have_posts() ) : ?>
 
 				<div class="entry-content">
 					<?php the_excerpt(); ?>
+					<p>
+						<a href="<?php the_permalink(); ?>"><?php _e( 'Read More', 'weblex-importer' ); ?></a>
+					</p>
 
 					<?php
 					wp_link_pages(
