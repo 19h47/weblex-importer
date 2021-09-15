@@ -89,4 +89,7 @@ This section describes how to install the plugin and get it working.
 = 0.0.19 =
 * Fix
 
+= 0.0.20 =
+* Fix
+
 == Upgrade Notice ==

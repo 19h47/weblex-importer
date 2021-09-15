@@ -74,21 +74,21 @@ class WebLex_Importer_Settings {
 		<div class="wrap">
 
 			<h2><?php _e( 'WebLex Importer Options', 'weblex-importer' ); ?></h2>
-			<?php settings_errors(); ?>
+		<?php settings_errors(); ?>
 
 			<form method="post" action="options.php">
-				<?php
+			<?php
 
-				settings_fields( 'weblex_importer_options' );
-				do_settings_sections( 'weblex_importer_options' );
+			settings_fields( 'weblex_importer_options' );
+			do_settings_sections( 'weblex_importer_options' );
 
-				submit_button();
+			submit_button();
 
-				?>
+			?>
 			</form>
 
 		</div><!-- /.wrap -->
-		<?php
+			<?php
 	}
 
 
@@ -123,33 +123,33 @@ class WebLex_Importer_Settings {
 		$feeds = array(
 			array(
 				'id'          => 'actus',
-				'label'       => __( 'Actus', 'weblex-importer' ),
-				'description' => __( 'Flux pour WebLex Actus.', 'weblex-importer' ),
+				'label'       => __( 'Actus', 'weblex - importer' ),
+				'description' => __( 'Les actualités', 'weblex - importer' ),
 			),
 			array(
 				'id'          => 'agenda',
-				'label'       => __( 'Agenda', 'weblex-importer' ),
-				'description' => __( 'Flux pour WebLex Agenda.', 'weblex-importer' ),
+				'label'       => __( 'Agenda', 'weblex - importer' ),
+				'description' => __( "L'agenda fiscal et social", 'weblex - importer' ),
 			),
 			array(
 				'id'          => 'fiches',
-				'label'       => __( 'Fiches', 'weblex-importer' ),
-				'description' => __( 'Flux pour WebLex Fiches.', 'weblex-importer' ),
+				'label'       => __( 'Fiches', 'weblex - importer' ),
+				'description' => __( 'Les fiches pratiques', 'weblex - importer' ),
 			),
 			array(
 				'id'          => 'indicateurs',
-				'label'       => __( 'Indicateurs', 'weblex-importer' ),
-				'description' => __( 'Flux pour WebLex Indicateurs.', 'weblex-importer' ),
+				'label'       => __( 'Indicateurs', 'weblex - importer' ),
+				'description' => __( 'Les indicateurs chiffres et barèmes', 'weblex - importer' ),
 			),
 			array(
 				'id'          => 'phdj',
-				'label'       => __( 'Petite Histoire du Jour', 'weblex-importer' ),
-				'description' => __( 'Flux pour WebLex PHDJ.', 'weblex-importer' ),
+				'label'       => __( 'La petite Histoire du Jour', 'weblex - importer' ),
+				'description' => __( 'La petite histoire du jour', 'weblex - importer' ),
 			),
 			array(
-				'id'          => 'quiz-hebdo',
-				'label'       => __( 'Quiz Hebdo', 'weblex-importer' ),
-				'description' => __( 'Flux pour WebLex Quiz Hebdo.', 'weblex-importer' ),
+				'id'          => 'quiz - hebdo',
+				'label'       => __( 'Quiz Hebdo', 'weblex - importer' ),
+				'description' => __( 'Le Quiz Hebdo', 'weblex - importer' ),
 			),
 		);
 
