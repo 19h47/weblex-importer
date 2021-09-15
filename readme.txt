@@ -86,4 +86,7 @@ This section describes how to install the plugin and get it working.
 = 0.0.18 =
 * Excerpt field
 
+= 0.0.19 =
+* Fix
+
 == Upgrade Notice ==
