@@ -95,4 +95,7 @@ This section describes how to install the plugin and get it working.
 = 0.0.21 =
 * Read more link
 
+= 0.0.22 =
+* Fix wp_insert_trm
+
 == Upgrade Notice ==

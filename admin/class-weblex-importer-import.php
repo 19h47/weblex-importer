@@ -151,7 +151,7 @@ class WebLex_Importer_Import {
 					$inserted_post_id = wp_insert_post( $post );
 
 					if ( 0 !== $inserted_post_id ) {
-						wp_set_object_terms( $inserted_post_id, $term_id, 'weblex-importer-tag', false );
+						wp_set_object_terms( $inserted_post_id, $term_id, 'weblex-importer-tag', true );
 						wp_set_object_terms( $inserted_post_id, $post_tags, 'weblex-importer-category', false );
 
 						update_post_meta( $inserted_post_id, 'weblex-importer-id', $item_id );
@@ -187,17 +187,18 @@ class WebLex_Importer_Import {
 	/**
 	 * Get tag by name
 	 *
-	 * @param string $name Title.
+	 * @param string $name Term name.
 	 *
 	 * @since    0.0.0
 	 * @return int
 	 */
 	private function get_tag_by_name( string $name ) : int {
-
 		$term = get_term_by( 'name', $name, 'weblex-importer-tag' );
 
 		if ( false === $term ) {
 			$term = wp_insert_term( $name, 'weblex-importer-tag' );
+
+			return (int) $term['term_id'];
 		}
 
 		return (int) $term->term_id;
