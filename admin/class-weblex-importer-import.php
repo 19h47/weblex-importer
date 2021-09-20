@@ -122,7 +122,11 @@ class WebLex_Importer_Import {
 					$post = $query->next_post();
 
 					if ( strtotime( $post->post_modified ) < strtotime( $item_pub_date ) ) {
-						$post->post_content  = $item->get_description( false );
+
+						if ( $item->get_description( false ) ) {
+							$post->post_content = $item->get_description( false );
+						}
+
 						$post->post_title    = $item->get_title();
 						$post->post_modified = $item_pub_date;
 						$post->post_excerpt  = $this->get_introduction( $item );
@@ -141,12 +145,15 @@ class WebLex_Importer_Import {
 				} else {
 					$post = array(
 						'post_type'    => 'weblex-importer-post',
-						'post_content' => $item->get_description( false ), // The full text of the post.
 						'post_title'   => $item->get_title(), // The title of the post.
 						'post_status'  => 'publish',
 						'post_date'    => $item_pub_date, // The time the post was made.
 						'post_excerpt' => $this->get_introduction( $item ),
 					);
+
+					if ( $item->get_description( false ) ) {
+						$post['post_content'] = $item->get_description( false );
+					}
 
 					$inserted_post_id = wp_insert_post( $post );
 

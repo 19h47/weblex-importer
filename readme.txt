@@ -96,6 +96,9 @@ This section describes how to install the plugin and get it working.
 * Read more link
 
 = 0.0.22 =
-* Fix wp_insert_trm
+* Fix wp_insert_term
+
+= 0.0.23 =
+* Fix when feed item doesn't have content
 
 == Upgrade Notice ==
