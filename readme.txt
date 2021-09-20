@@ -101,4 +101,7 @@ This section describes how to install the plugin and get it working.
 = 0.0.23 =
 * Fix when feed item doesn't have content
 
+= 0.0.24 =
+* Check for content to display readmore link
+
 == Upgrade Notice ==

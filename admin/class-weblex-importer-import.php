@@ -20,6 +20,16 @@
 // 	wp_delete_post( $eachpost->ID, true );
 // }
 
+// add_action( 'before_delete_post', 'wps_remove_attachment_with_post', 10 );
+// function wps_remove_attachment_with_post( $post_id ) {
+
+// 	if ( has_post_thumbnail( $post_id ) ) {
+// 		$attachment_id = get_post_thumbnail_id( $post_id );
+// 		wp_delete_attachment( $attachment_id, true );
+// 	}
+
+// }
+
 /**
  * Class WordPress_Plugin_Template_Settings
  *
