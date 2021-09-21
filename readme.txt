@@ -104,4 +104,7 @@ This section describes how to install the plugin and get it working.
 = 0.0.24 =
 * Check for content to display readmore link
 
+= 0.0.25 =
+* Fix
+
 == Upgrade Notice ==

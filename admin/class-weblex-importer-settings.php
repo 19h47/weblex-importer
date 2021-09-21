@@ -167,11 +167,7 @@ class WebLex_Importer_Settings {
 			);
 		}
 
-		register_setting(
-			'weblex_importer_options',
-			'weblex_importer_options',
-			// 'sanitize_text_field'
-		);
+		register_setting( 'weblex_importer_options', 'weblex_importer_options' );
 	}
 
 
