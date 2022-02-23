@@ -105,6 +105,11 @@ This section describes how to install the plugin and get it working.
 * Check for content to display readmore link
 
 = 0.0.25 =
+* Release Date - 21 September 2021
+
+= 0.0.26 =
+* Change tag name
+
 * Fix
 
 == Upgrade Notice ==

@@ -74,7 +74,7 @@ class WebLex_Importer_Settings {
 		<div class="wrap">
 
 			<h2><?php _e( 'WebLex Importer Options', 'weblex-importer' ); ?></h2>
-		<?php settings_errors(); ?>
+			<?php settings_errors(); ?>
 
 			<form method="post" action="options.php">
 			<?php
@@ -125,31 +125,37 @@ class WebLex_Importer_Settings {
 				'id'          => 'actus',
 				'label'       => __( 'Actus', 'weblex - importer' ),
 				'description' => __( 'Les actualités', 'weblex - importer' ),
+				'slug'        => 'actus',
 			),
 			array(
 				'id'          => 'agenda',
 				'label'       => __( 'Agenda', 'weblex - importer' ),
 				'description' => __( "L'agenda fiscal et social", 'weblex - importer' ),
+				'slug'        => 'agenda',
 			),
 			array(
 				'id'          => 'fiches',
 				'label'       => __( 'Fiches', 'weblex - importer' ),
 				'description' => __( 'Les fiches pratiques', 'weblex - importer' ),
+				'slug'        => 'fiches',
 			),
 			array(
 				'id'          => 'indicateurs',
 				'label'       => __( 'Indicateurs', 'weblex - importer' ),
 				'description' => __( 'Les indicateurs chiffres et barèmes', 'weblex - importer' ),
+				'slug'        => 'indicateurs',
 			),
 			array(
 				'id'          => 'phdj',
 				'label'       => __( 'La petite Histoire du Jour', 'weblex - importer' ),
 				'description' => __( 'La petite histoire du jour', 'weblex - importer' ),
+				'slug'        => 'petite-histoire-du-jour',
 			),
 			array(
 				'id'          => 'quiz - hebdo',
 				'label'       => __( 'Quiz Hebdo', 'weblex - importer' ),
 				'description' => __( 'Le Quiz Hebdo', 'weblex - importer' ),
+				'slug'        => 'quiz-hebdo',
 			),
 		);
 
@@ -163,6 +169,7 @@ class WebLex_Importer_Settings {
 				array(
 					'description' => $feed['description'],
 					'id'          => $feed['id'],
+					'slug'        => $feed['slug'],
 				)
 			);
 		}
@@ -178,7 +185,7 @@ class WebLex_Importer_Settings {
 	 */
 	public function save_weblex_feed( array $args ) {
 		$options = get_option( 'weblex_importer_options' );
-		$term    = get_term_by( 'slug', sanitize_title( $args['description'] ), 'weblex-importer-tag' );
+		$term    = get_term_by( 'slug', sanitize_title( $args['slug'] ), 'weblex-importer-tag' );
 
 		include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/weblex-importer-admin-input.php';
 	}
