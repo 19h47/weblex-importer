@@ -187,8 +187,6 @@ class WebLex_Importer_Settings {
 		$options = get_option( 'weblex_importer_options' );
 		$term    = $this->get_tag( $args['slug'] );
 
-		var_dump( $term );
-
 		include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/weblex-importer-admin-input.php';
 	}
 
