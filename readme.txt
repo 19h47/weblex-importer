@@ -110,6 +110,9 @@ This section describes how to install the plugin and get it working.
 = 0.0.26 =
 * Change tag name
 
+= 0.0.27 =
+* Add some tag slug to check
+
 * Fix
 
 == Upgrade Notice ==

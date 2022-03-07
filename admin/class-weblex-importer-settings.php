@@ -123,39 +123,39 @@ class WebLex_Importer_Settings {
 		$feeds = array(
 			array(
 				'id'          => 'actus',
-				'label'       => __( 'Actus', 'weblex - importer' ),
-				'description' => __( 'Les actualités', 'weblex - importer' ),
-				'slug'        => 'actus',
+				'label'       => __( 'Actus', 'weblex-importer' ),
+				'description' => __( 'Les actualités', 'weblex-importer' ),
+				'slug'        => array( 'Les actualités', 'actus', 'actualites' ),
 			),
 			array(
 				'id'          => 'agenda',
-				'label'       => __( 'Agenda', 'weblex - importer' ),
-				'description' => __( "L'agenda fiscal et social", 'weblex - importer' ),
-				'slug'        => 'agenda',
+				'label'       => __( 'Agenda', 'weblex-importer' ),
+				'description' => __( "L'agenda fiscal et social", 'weblex-importer' ),
+				'slug'        => array( "L'agenda fiscal et social", 'agenda' ),
 			),
 			array(
 				'id'          => 'fiches',
-				'label'       => __( 'Fiches', 'weblex - importer' ),
-				'description' => __( 'Les fiches pratiques', 'weblex - importer' ),
-				'slug'        => 'fiches',
+				'label'       => __( 'Fiches', 'weblex-importer' ),
+				'description' => __( 'Les fiches pratiques', 'weblex-importer' ),
+				'slug'        => array( 'Les fiches pratiques', 'fiches' ),
 			),
 			array(
 				'id'          => 'indicateurs',
-				'label'       => __( 'Indicateurs', 'weblex - importer' ),
-				'description' => __( 'Les indicateurs chiffres et barèmes', 'weblex - importer' ),
-				'slug'        => 'indicateurs',
+				'label'       => __( 'Indicateurs', 'weblex-importer' ),
+				'description' => __( 'Les indicateurs chiffres et barèmes', 'weblex-importer' ),
+				'slug'        => array( 'Les indicateurs chiffres et barèmes', 'indicateurs' ),
 			),
 			array(
 				'id'          => 'phdj',
-				'label'       => __( 'La petite Histoire du Jour', 'weblex - importer' ),
-				'description' => __( 'La petite histoire du jour', 'weblex - importer' ),
-				'slug'        => 'petite-histoire-du-jour',
+				'label'       => __( 'La petite Histoire du Jour', 'weblex-importer' ),
+				'description' => __( 'La petite histoire du jour', 'weblex-importer' ),
+				'slug'        => array( 'La petite histoire du jour', 'petite-histoire-du-jour' ),
 			),
 			array(
-				'id'          => 'quiz - hebdo',
-				'label'       => __( 'Quiz Hebdo', 'weblex - importer' ),
-				'description' => __( 'Le Quiz Hebdo', 'weblex - importer' ),
-				'slug'        => 'quiz-hebdo',
+				'id'          => 'quiz-hebdo',
+				'label'       => __( 'Quiz Hebdo', 'weblex-importer' ),
+				'description' => __( 'Le Quiz Hebdo', 'weblex-importer' ),
+				'slug'        => array( 'Le Quiz Hebdo', 'quiz-hebdo', 'le-quiz-hebdo' ),
 			),
 		);
 
@@ -185,8 +185,30 @@ class WebLex_Importer_Settings {
 	 */
 	public function save_weblex_feed( array $args ) {
 		$options = get_option( 'weblex_importer_options' );
-		$term    = get_term_by( 'slug', sanitize_title( $args['slug'] ), 'weblex-importer-tag' );
+		$term    = $this->get_tag( $args['slug'] );
+
+		var_dump( $term );
 
 		include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/weblex-importer-admin-input.php';
+	}
+
+
+	/**
+	 * Get Term
+	 */
+	public function get_tag( $slug ) {
+		$term = '';
+
+		if ( is_array( $slug ) ) {
+			foreach ( $slug as $s ) {
+				$term = get_term_by( 'slug', sanitize_title( $s ), 'weblex-importer-tag' );
+
+				if ( is_object( $term ) ) {
+					return $term;
+				}
+			}
+		}
+
+		return get_term_by( 'slug', sanitize_title( $slug ), 'weblex-importer-tag' );
 	}
 }
