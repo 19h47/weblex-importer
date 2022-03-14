@@ -113,6 +113,7 @@ This section describes how to install the plugin and get it working.
 = 0.0.27 =
 * Add some tag slug to check
 
-* Fix
+= 0.0.28 =
+* Fix get_tag
 
 == Upgrade Notice ==

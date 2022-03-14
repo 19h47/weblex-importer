@@ -193,6 +193,8 @@ class WebLex_Importer_Settings {
 
 	/**
 	 * Get Term
+	 *
+	 * @param mixed $slug
 	 */
 	public function get_tag( $slug ) {
 		$term = '';
@@ -205,6 +207,8 @@ class WebLex_Importer_Settings {
 					return $term;
 				}
 			}
+
+			return $term;
 		}
 
 		return get_term_by( 'slug', sanitize_title( $slug ), 'weblex-importer-tag' );
