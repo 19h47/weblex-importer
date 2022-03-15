@@ -55,10 +55,10 @@ class WebLex_Importer_Settings {
 
 		//Add the menu to the Plugins set of menu items
 		add_plugins_page(
-			__( 'WebLex Importer Options', 'weblex-importer' ),
-			__( 'WebLex Importer Options', 'weblex-importer' ),
+			__( 'WebLex Importer Options', 'webleximporter' ),
+			__( 'WebLex Importer Options', 'webleximporter' ),
 			'manage_options',
-			'weblex_importer_options',
+			'WebLex_Importer_options',
 			array( $this, 'render_settings_page_content' )
 		);
 
@@ -67,19 +67,21 @@ class WebLex_Importer_Settings {
 
 	/**
 	 * Renders a simple page to display for the theme menu defined above.
+	 *
+	 * @param string $active_tab The active tab.
 	 */
-	public function render_settings_page_content( $active_tab = '' ) {
+	public function render_settings_page_content( string $active_tab = '' ) : void {
 		?>
 		<div class="wrap">
 
-			<h2><?php _e( 'WebLex Importer Options', 'weblex-importer' ); ?></h2>
+			<h2><?php _e( 'WebLex Importer Options', 'webleximporter' ); ?></h2>
 			<?php settings_errors(); ?>
 
 			<form method="post" action="options.php">
 			<?php
 
-			settings_fields( 'weblex_importer_options' );
-			do_settings_sections( 'weblex_importer_options' );
+			settings_fields( 'WebLex_Importer_options' );
+			do_settings_sections( 'WebLex_Importer_options' );
 
 			submit_button();
 
@@ -98,9 +100,9 @@ class WebLex_Importer_Settings {
 	 * in the add_settings_section function.
 	 */
 	public function general_options_callback() {
-		$options = get_option( 'weblex_importer_options' );
+		$options = get_option( 'WebLex_Importer_options' );
 
-		echo '<p>' . __( 'Enter URLs for WebLex RSS feed.', 'weblex-importer' ) . '</p>';
+		echo '<p>' . __( 'Enter URLs for WebLex RSS feed.', 'WeblexImporter' ) . '</p>';
 	}
 
 
@@ -114,56 +116,56 @@ class WebLex_Importer_Settings {
 
 		add_settings_section(
 			'general_settings_section',                 // ID used to identify this section and with which to register options
-			__( 'RSS feeds', 'weblex-importer' ),         // Title to be displayed on the administration page
+			__( 'RSS feeds', 'webleximporter' ),         // Title to be displayed on the administration page
 			array( $this, 'general_options_callback' ), // Callback used to render the description of the section
-			'weblex_importer_options'                   // Page on which to add this section of options
+			'WebLex_Importer_options'                   // Page on which to add this section of options
 		);
 
 		$feeds = array(
 			array(
 				'id'          => 'actus',
-				'label'       => __( 'Actus', 'weblex-importer' ),
-				'description' => __( 'Les actualités', 'weblex-importer' ),
+				'label'       => __( 'Actus', 'webleximporter' ),
+				'description' => __( 'Les actualités', 'webleximporter' ),
 				'slug'        => array( 'ACTUALITES', 'Les actualités', 'actus', 'actualites' ),
 			),
 			array(
 				'id'          => 'agenda',
-				'label'       => __( 'Agenda', 'weblex-importer' ),
-				'description' => __( "L'agenda fiscal et social", 'weblex-importer' ),
+				'label'       => __( 'Agenda', 'webleximporter' ),
+				'description' => __( "L'agenda fiscal et social", 'webleximporter' ),
 				'slug'        => array( 'AGENDA', "L'agenda fiscal et social", 'agenda' ),
 			),
 			array(
 				'id'          => 'fiches',
-				'label'       => __( 'Fiches', 'weblex-importer' ),
-				'description' => __( 'Les fiches pratiques', 'weblex-importer' ),
+				'label'       => __( 'Fiches', 'webleximporter' ),
+				'description' => __( 'Les fiches pratiques', 'webleximporter' ),
 				'slug'        => array( 'Les fiches pratiques', 'fiches' ),
 			),
 			array(
 				'id'          => 'indicateurs',
-				'label'       => __( 'Indicateurs', 'weblex-importer' ),
-				'description' => __( 'Les indicateurs chiffres et barèmes', 'weblex-importer' ),
+				'label'       => __( 'Indicateurs', 'webleximporter' ),
+				'description' => __( 'Les indicateurs chiffres et barèmes', 'webleximporter' ),
 				'slug'        => array( 'INDICATEURS, CHIFFRES ET BAREMES', 'Les indicateurs chiffres et barèmes', 'indicateurs' ),
 			),
 			array(
 				'id'          => 'phdj',
-				'label'       => __( 'La petite Histoire du Jour', 'weblex-importer' ),
-				'description' => __( 'La petite histoire du jour', 'weblex-importer' ),
+				'label'       => __( 'La petite Histoire du Jour', 'webleximporter' ),
+				'description' => __( 'La petite histoire du jour', 'webleximporter' ),
 				'slug'        => array( 'LA PETITE HISTOIRE DU JOUR', 'La petite histoire du jour', 'petite-histoire-du-jour' ),
 			),
 			array(
 				'id'          => 'quiz-hebdo',
-				'label'       => __( 'Quiz Hebdo', 'weblex-importer' ),
-				'description' => __( 'Le Quiz Hebdo', 'weblex-importer' ),
+				'label'       => __( 'Quiz Hebdo', 'webleximporter' ),
+				'description' => __( 'Le Quiz Hebdo', 'webleximporter' ),
 				'slug'        => array( 'Le Quiz Hebdo', 'quiz-hebdo', 'le-quiz-hebdo' ),
 			),
 		);
 
 		foreach ( $feeds as $feed ) {
 			add_settings_field(
-				'weblex_importer_option_' . $feed['id'],
+				'WebLex_Importer_option_' . $feed['id'],
 				$feed['label'],
 				array( $this, 'save_weblex_feed' ),
-				'weblex_importer_options',
+				'WebLex_Importer_options',
 				'general_settings_section',
 				array(
 					'description' => $feed['description'],
@@ -173,7 +175,7 @@ class WebLex_Importer_Settings {
 			);
 		}
 
-		register_setting( 'weblex_importer_options', 'weblex_importer_options' );
+		register_setting( 'WebLex_Importer_options', 'WebLex_Importer_options' );
 	}
 
 
@@ -183,7 +185,7 @@ class WebLex_Importer_Settings {
 	 * @param array $args
 	 */
 	public function save_weblex_feed( array $args ) {
-		$options = get_option( 'weblex_importer_options' );
+		$options = get_option( 'WebLex_Importer_options' );
 		$term    = $this->get_tag( $args['slug'] );
 
 		include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/weblex-importer-admin-input.php';

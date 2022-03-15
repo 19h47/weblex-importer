@@ -1,16 +1,13 @@
 <?php
-
 /**
  * The post type of the plugin.
  *
  * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package    WebLex_RSS_Feed
- * @subpackage WebLex_RSS_Feed/admin
+ * @package    WebLex_Importer
+ * @subpackage WebLex_Importer/admin
  */
-
-use WP_Post;
 
 class WebLex_Importer_Post {
 
@@ -110,7 +107,7 @@ class WebLex_Importer_Post {
 
 		foreach ( $columns as $key => $value ) {
 			if ( 'title' === $key ) {
-				$new_columns['thumbnail'] = __( 'Thumbnail', 'weblex-importer' );
+				$new_columns['thumbnail'] = __( 'Thumbnail', 'webleximporter' );
 			}
 
 			$new_columns[ $key ] = $value;
@@ -163,39 +160,39 @@ class WebLex_Importer_Post {
 		$preview_url = get_preview_post_link( $post );
 
 		/* translators: Publish box date format, see https://secure.php.net/date */
-		$scheduled_date = date_i18n( __( 'M j, Y @ H:i' ), strtotime( $post->post_date ) );
+		$scheduled_date = date_i18n( __( 'M j, Y @ H:i', 'webleximporter' ), strtotime( $post->post_date ) );
 
 		$view_link_html = sprintf(
 			' <a href="%1$s">%2$s</a>',
 			esc_url( get_permalink( $post_ID ) ),
-			__( 'View post', 'weblex-importer' )
+			__( 'View post', 'webleximporter' )
 		);
 
 		$scheduled_link_html = sprintf(
 			' <a target="_blank" href="%1$s">%2$s</a>',
 			esc_url( get_permalink( $post_ID ) ),
-			__( 'Preview post', 'weblex-importer' )
+			__( 'Preview post', 'webleximporter' )
 		);
 
 		$preview_link_html = sprintf(
 			' <a target="_blank" href="%1$s">%2$s</a>',
 			esc_url( $preview_url ),
-			__( 'Preview post', 'weblex-importer' )
+			__( 'Preview post', 'webleximporter' )
 		);
 
 		$messages[ $this->post_type ] = array(
 			0 => '', // Unused. Messages start at index 1.
-			1 => __( 'Post updated.', 'weblex-importer' ) . $view_link_html,
-			2 => __( 'Custom field updated.', 'weblex-importer' ),
-			3 => __( 'Custom field deleted.', 'weblex-importer' ),
-			4 => __( 'Post updated.', 'weblex-importer' ),
+			1 => __( 'Post updated.', 'webleximporter' ) . $view_link_html,
+			2 => __( 'Custom field updated.', 'webleximporter' ),
+			3 => __( 'Custom field deleted.', 'webleximporter' ),
+			4 => __( 'Post updated.', 'webleximporter' ),
 			/* translators: %s: date and time of the revision */
-		5  => isset( $_GET['revision'] ) ? sprintf( __( 'Post restored to revision from %s.', 'weblex-importer' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false, // phpcs:ignore
-		6     => __( 'Post published.', 'weblex-importer' ) . $view_link_html,
-		7     => __( 'Post saved.', 'weblex-importer' ),
-		8     => __( 'Post submitted.', 'weblex-importer' ) . $preview_link_html,
-		9  => sprintf( __( 'Post scheduled for: %s.', 'weblex-importer' ), '<strong>' . $scheduled_date . '</strong>' ) . $scheduled_link_html, // phpcs:ignore
-		10    => __( 'Post draft updated.', 'weblex-importer' ) . $preview_link_html,
+		5  => isset( $_GET['revision'] ) ? sprintf( __( 'Post restored to revision from %s.', 'webleximporter' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false, // phpcs:ignore
+		6     => __( 'Post published.', 'webleximporter' ) . $view_link_html,
+		7     => __( 'Post saved.', 'webleximporter' ),
+		8     => __( 'Post submitted.', 'webleximporter' ) . $preview_link_html,
+		9  => sprintf( __( 'Post scheduled for: %s.', 'webleximporter' ), '<strong>' . $scheduled_date . '</strong>' ) . $scheduled_link_html, // phpcs:ignore
+		10    => __( 'Post draft updated.', 'webleximporter' ) . $preview_link_html,
 		);
 
 		return $messages;
@@ -215,16 +212,16 @@ class WebLex_Importer_Post {
 	public function bulk_updated_messages( array $bulk_messages, array $bulk_counts ) : array {
 		$bulk_messages[ $this->post_type ] = array(
 			/* translators: %s: Number of posts. */
-			'updated'   => _n( '%s post updated.', '%s posts updated.', $bulk_counts['updated'], 'weblex-importer' ),
-			'locked'    => ( 1 === $bulk_counts['locked'] ) ? __( '1 post not updated, somebody is editing it.', 'weblex-importer' ) :
+			'updated'   => _n( '%s post updated.', '%s posts updated.', $bulk_counts['updated'], 'webleximporter' ),
+			'locked'    => ( 1 === $bulk_counts['locked'] ) ? __( '1 post not updated, somebody is editing it.', 'webleximporter' ) :
 				/* translators: %s: Number of posts. */
-				_n( '%s post not updated, somebody is editing it.', '%s posts not updated, somebody is editing them.', $bulk_counts['locked'], 'weblex-importer' ),
+				_n( '%s post not updated, somebody is editing it.', '%s posts not updated, somebody is editing them.', $bulk_counts['locked'], 'webleximporter' ),
 			/* translators: %s: Number of posts. */
-			'deleted'   => _n( '%s post permanently deleted.', '%s post permanently deleted.', $bulk_counts['deleted'], 'weblex-importer' ),
+			'deleted'   => _n( '%s post permanently deleted.', '%s post permanently deleted.', $bulk_counts['deleted'], 'webleximporter' ),
 			/* translators: %s: Number of posts.. */
-			'trashed'   => _n( '%s post moved to the Trash.', '%s post moved to the Trash.', $bulk_counts['trashed'], 'weblex-importer' ),
+			'trashed'   => _n( '%s post moved to the Trash.', '%s post moved to the Trash.', $bulk_counts['trashed'], 'webleximporter' ),
 			/* translators: %s: Number of posts. */
-			'untrashed' => _n( '%s post restored from the Trash.', '%s post restored from the Trash.', $bulk_counts['untrashed'], 'weblex-importer' ),
+			'untrashed' => _n( '%s post restored from the Trash.', '%s post restored from the Trash.', $bulk_counts['untrashed'], 'webleximporter' ),
 		);
 
 		return $bulk_messages;
@@ -239,34 +236,34 @@ class WebLex_Importer_Post {
 	 */
 	public function register() : void {
 		$labels = array(
-			'name'                     => _x( 'Posts', 'weblex-importer-post type generale name', 'weblex-importer' ),
-			'singular_name'            => _x( 'Post', 'weblex-importer-post type singular name', 'weblex-importer' ),
-			'add_new'                  => _x( 'Add New', 'weblex-importer-post type', 'weblex-importer' ),
-			'add_new_item'             => __( 'Add New Post', 'weblex-importer' ),
-			'edit_item'                => __( 'Edit Post', 'weblex-importer' ),
-			'new_item'                 => __( 'New Post', 'weblex-importer' ),
-			'view_items'               => __( 'View Posts', 'weblex-importer' ),
-			'view_item'                => __( 'View Post', 'weblex-importer' ),
-			'search_items'             => __( 'Search Posts', 'weblex-importer' ),
-			'not_found'                => __( 'No Posts found.', 'weblex-importer' ),
-			'not_found_in_trash'       => __( 'No Posts found in Trash.', 'weblex-importer' ),
-			'parent_item_colon'        => __( 'Parent Post:', 'weblex-importer' ),
-			'all_items'                => __( 'All Posts', 'weblex-importer' ),
-			'archives'                 => __( 'Post Archives', 'weblex-importer' ),
-			'attributes'               => __( 'Post Attributes', 'weblex-importer' ),
-			'insert_into_item'         => __( 'Insert into post', 'weblex-importer' ),
-			'uploaded_to_this_item'    => __( 'Uploaded to this post', 'weblex-importer' ),
-			'featured_image'           => _x( 'Featured Image', 'post', 'weblex-importer' ),
-			'set_featured_image'       => _x( 'Set featured image', 'post', 'weblex-importer' ),
-			'remove_featured_image'    => _x( 'Remove featured image', 'post', 'weblex-importer' ),
-			'use_featured_image'       => _x( 'Use as featured image', 'post', 'weblex-importer' ),
-			'items_list_navigation'    => __( 'Posts list navigation', 'weblex-importer' ),
-			'items_list'               => __( 'Posts list', 'weblex-importer' ),
-			'item_published'           => __( 'post published.', 'weblex-importer' ),
-			'item_published_privately' => __( 'post published privately.', 'weblex-importer' ),
-			'item_reverted_to_draft'   => __( 'post reverted to draft.', 'weblex-importer' ),
-			'item_scheduled'           => __( 'post scheduled.', 'weblex-importer' ),
-			'item_updated'             => __( 'post updated.', 'weblex-importer' ),
+			'name'                     => _x( 'Posts', 'weblex-importer-post type generale name', 'webleximporter' ),
+			'singular_name'            => _x( 'Post', 'weblex-importer-post type singular name', 'webleximporter' ),
+			'add_new'                  => _x( 'Add New', 'weblex-importer-post type', 'webleximporter' ),
+			'add_new_item'             => __( 'Add New Post', 'webleximporter' ),
+			'edit_item'                => __( 'Edit Post', 'webleximporter' ),
+			'new_item'                 => __( 'New Post', 'webleximporter' ),
+			'view_items'               => __( 'View Posts', 'webleximporter' ),
+			'view_item'                => __( 'View Post', 'webleximporter' ),
+			'search_items'             => __( 'Search Posts', 'webleximporter' ),
+			'not_found'                => __( 'No Posts found.', 'webleximporter' ),
+			'not_found_in_trash'       => __( 'No Posts found in Trash.', 'webleximporter' ),
+			'parent_item_colon'        => __( 'Parent Post:', 'webleximporter' ),
+			'all_items'                => __( 'All Posts', 'webleximporter' ),
+			'archives'                 => __( 'Post Archives', 'webleximporter' ),
+			'attributes'               => __( 'Post Attributes', 'webleximporter' ),
+			'insert_into_item'         => __( 'Insert into post', 'webleximporter' ),
+			'uploaded_to_this_item'    => __( 'Uploaded to this post', 'webleximporter' ),
+			'featured_image'           => _x( 'Featured Image', 'post', 'webleximporter' ),
+			'set_featured_image'       => _x( 'Set featured image', 'post', 'webleximporter' ),
+			'remove_featured_image'    => _x( 'Remove featured image', 'post', 'webleximporter' ),
+			'use_featured_image'       => _x( 'Use as featured image', 'post', 'webleximporter' ),
+			'items_list_navigation'    => __( 'Posts list navigation', 'webleximporter' ),
+			'items_list'               => __( 'Posts list', 'webleximporter' ),
+			'item_published'           => __( 'post published.', 'webleximporter' ),
+			'item_published_privately' => __( 'post published privately.', 'webleximporter' ),
+			'item_reverted_to_draft'   => __( 'post reverted to draft.', 'webleximporter' ),
+			'item_scheduled'           => __( 'post scheduled.', 'webleximporter' ),
+			'item_updated'             => __( 'post updated.', 'webleximporter' ),
 		);
 
 		$rewrite = array(
@@ -275,7 +272,7 @@ class WebLex_Importer_Post {
 		);
 
 		$args = array(
-			'label'               => __( 'Post', 'weblex-importer' ),
+			'label'               => __( 'Post', 'webleximporter' ),
 			'labels'              => $labels,
 			'supports'            => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
 			'public'              => true,

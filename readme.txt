@@ -120,4 +120,7 @@ This section describes how to install the plugin and get it working.
 * Add new slugs
 * Delete attachment when post is delete
 
+= 0.1.0 =
+* Naming
+
 == Upgrade Notice ==

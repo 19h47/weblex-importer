@@ -71,26 +71,26 @@ class WebLex_Importer_Taxonomies {
 	 */
 	public function register_tag() {
 		$labels = array(
-			'name'                       => _x( 'Tags', 'post tag general name', 'weblex-importer' ),
-			'singular_name'              => _x( 'Tag', 'post tag singular name', 'weblex-importer' ),
-			'search_items'               => __( 'Search Tags', 'weblex-importer' ),
-			'all_items'                  => __( 'All Tags', 'weblex-importer' ),
-			'popular_items'              => __( 'Popular Tags', 'weblex-importer' ),
-			'edit_item'                  => __( 'Edit Tag', 'weblex-importer' ),
-			'view_item'                  => __( 'View Tag', 'weblex-importer' ),
-			'update_item'                => __( 'Update Tag', 'weblex-importer' ),
-			'add_new_item'               => __( 'Add New Tag', 'weblex-importer' ),
-			'new_item_name'              => __( 'New Tag Name', 'weblex-importer' ),
-			'separate_items_with_commas' => __( 'Separate tags with commas', 'weblex-importer' ),
-			'add_or_remove_items'        => __( 'Add or remove tags', 'weblex-importer' ),
-			'choose_from_most_used'      => __( 'Choose from the most used tags', 'weblex-importer' ),
-			'not_found'                  => __( 'No tags found.', 'weblex-importer' ),
-			'no_terms'                   => __( 'No tags', 'weblex-importer' ),
-			'items_list_navigation'      => __( 'Tags list navigation', 'weblex-importer' ),
-			'items_list'                 => __( 'Tags list', 'weblex-importer' ),
+			'name'                       => _x( 'Tags', 'post tag general name', 'webleximporter' ),
+			'singular_name'              => _x( 'Tag', 'post tag singular name', 'webleximporter' ),
+			'search_items'               => __( 'Search Tags', 'webleximporter' ),
+			'all_items'                  => __( 'All Tags', 'webleximporter' ),
+			'popular_items'              => __( 'Popular Tags', 'webleximporter' ),
+			'edit_item'                  => __( 'Edit Tag', 'webleximporter' ),
+			'view_item'                  => __( 'View Tag', 'webleximporter' ),
+			'update_item'                => __( 'Update Tag', 'webleximporter' ),
+			'add_new_item'               => __( 'Add New Tag', 'webleximporter' ),
+			'new_item_name'              => __( 'New Tag Name', 'webleximporter' ),
+			'separate_items_with_commas' => __( 'Separate tags with commas', 'webleximporter' ),
+			'add_or_remove_items'        => __( 'Add or remove tags', 'webleximporter' ),
+			'choose_from_most_used'      => __( 'Choose from the most used tags', 'webleximporter' ),
+			'not_found'                  => __( 'No tags found.', 'webleximporter' ),
+			'no_terms'                   => __( 'No tags', 'webleximporter' ),
+			'items_list_navigation'      => __( 'Tags list navigation', 'webleximporter' ),
+			'items_list'                 => __( 'Tags list', 'webleximporter' ),
 			/* translators: Post tag heading when selecting from the most used terms. */
-			'most_used'                  => _x( 'Most Used', 'post tag', 'weblex-importer' ),
-			'back_to_items'              => __( '&larr; Back to Tags', 'weblex-importer' ),
+			'most_used'                  => _x( 'Most Used', 'post tag', 'webleximporter' ),
+			'back_to_items'              => __( '&larr; Back to Tags', 'webleximporter' ),
 		);
 
 		$rewrite = array(
@@ -124,26 +124,26 @@ class WebLex_Importer_Taxonomies {
 	 */
 	public function register_category() {
 		$labels = array(
-			'name'                       => _x( 'Categories', 'post category general name', 'weblex-importer' ),
-			'singular_name'              => _x( 'Category', 'post category singular name', 'weblex-importer' ),
-			'search_items'               => __( 'Search Categories', 'weblex-importer' ),
-			'all_items'                  => __( 'All Categories', 'weblex-importer' ),
-			'popular_items'              => __( 'Popular Categories', 'weblex-importer' ),
-			'edit_item'                  => __( 'Edit Category', 'weblex-importer' ),
-			'view_item'                  => __( 'View Category', 'weblex-importer' ),
-			'update_item'                => __( 'Update Category', 'weblex-importer' ),
-			'add_new_item'               => __( 'Add New Category', 'weblex-importer' ),
-			'new_item_name'              => __( 'New Category Name', 'weblex-importer' ),
-			'separate_items_with_commas' => __( 'Separate categories with commas', 'weblex-importer' ),
-			'add_or_remove_items'        => __( 'Add or remove categories', 'weblex-importer' ),
-			'choose_from_most_used'      => __( 'Choose from the most used categories', 'weblex-importer' ),
-			'not_found'                  => __( 'No categories found.', 'weblex-importer' ),
-			'no_terms'                   => __( 'No categories', 'weblex-importer' ),
-			'items_list_navigation'      => __( 'Categories list navigation', 'weblex-importer' ),
-			'items_list'                 => __( 'Categories list', 'weblex-importer' ),
+			'name'                       => _x( 'Categories', 'post category general name', 'webleximporter' ),
+			'singular_name'              => _x( 'Category', 'post category singular name', 'webleximporter' ),
+			'search_items'               => __( 'Search Categories', 'webleximporter' ),
+			'all_items'                  => __( 'All Categories', 'webleximporter' ),
+			'popular_items'              => __( 'Popular Categories', 'webleximporter' ),
+			'edit_item'                  => __( 'Edit Category', 'webleximporter' ),
+			'view_item'                  => __( 'View Category', 'webleximporter' ),
+			'update_item'                => __( 'Update Category', 'webleximporter' ),
+			'add_new_item'               => __( 'Add New Category', 'webleximporter' ),
+			'new_item_name'              => __( 'New Category Name', 'webleximporter' ),
+			'separate_items_with_commas' => __( 'Separate categories with commas', 'webleximporter' ),
+			'add_or_remove_items'        => __( 'Add or remove categories', 'webleximporter' ),
+			'choose_from_most_used'      => __( 'Choose from the most used categories', 'webleximporter' ),
+			'not_found'                  => __( 'No categories found.', 'webleximporter' ),
+			'no_terms'                   => __( 'No categories', 'webleximporter' ),
+			'items_list_navigation'      => __( 'Categories list navigation', 'webleximporter' ),
+			'items_list'                 => __( 'Categories list', 'webleximporter' ),
 			/* translators: Post category heading when selecting from the most used terms. */
-			'most_used'                  => _x( 'Most Used', 'post category', 'weblex-importer' ),
-			'back_to_items'              => __( '&larr; Back to Categories', 'weblex-importer' ),
+			'most_used'                  => _x( 'Most Used', 'post category', 'webleximporter' ),
+			'back_to_items'              => __( '&larr; Back to Categories', 'webleximporter' ),
 		);
 
 		$rewrite = array(
@@ -175,7 +175,7 @@ class WebLex_Importer_Taxonomies {
 	 *
 	 * @param WP_Query $query The WP_Query instance (passed by reference).
 	 */
-	function pre_get_weblex_importer_posts( $query ) {
+	public function pre_get_WebLex_Importer_posts( WP_Query $query ) {
 		if ( ( $query->is_main_query() ) && is_tax( 'weblex-importer-tag' ) ) {
 			$query->set( 'post_type', 'weblex-importer-post' );
 		}

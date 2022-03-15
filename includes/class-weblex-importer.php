@@ -9,8 +9,8 @@
  * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package           WebLexImporter
- * @package           WebLexImporter/includes
+ * @package           WeblexImporter
+ * @package           WeblexImporter/includes
  */
 
 /**
@@ -23,8 +23,8 @@
  * version of the plugin.
  *
  * @since      0.0.0
- * @package           WebLexImporter
- * @package           WebLexImporter/includes
+ * @package           WeblexImporter
+ * @package           WeblexImporter/includes
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
 class WebLex_Importer {
@@ -132,7 +132,7 @@ class WebLex_Importer {
 	private function set_locale() {
 
 		$plugin_i18n = new WebLex_Importer_I18n();
-		$plugin_i18n->set_domain( 'weblex-importer' );
+		$plugin_i18n->set_domain( 'webleximporter' );
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -159,8 +159,8 @@ class WebLex_Importer {
 		$this->loader->add_action( 'admin_menu', $plugin_settings, 'setup_plugin_options_menu' );
 		$this->loader->add_action( 'admin_init', $plugin_settings, 'initialize_display_options' );
 
-		$this->loader->add_action( 'update_option_weblex_importer_options', $plugin_import, 'update_options', 10, 3 );
-		$this->loader->add_action( 'weblex_importer_cron_import', $plugin_import, 'cron_update_options' );
+		$this->loader->add_action( 'update_option_WebLex_Importer_options', $plugin_import, 'update_options', 10, 3 );
+		$this->loader->add_action( 'WebLex_Importer_cron_import', $plugin_import, 'cron_update_options' );
 
 		$this->loader->add_action( 'init', $plugin_post, 'register', 10, 0 );
 		$this->loader->add_action( 'admin_head', $plugin_post, 'css' );
@@ -169,7 +169,7 @@ class WebLex_Importer {
 		$this->loader->add_filter( 'manage_weblex-importer-post_posts_columns', $plugin_post, 'add_custom_columns' );
 
 		$this->loader->add_action( 'init', $plugin_taxonomies, 'register', 10, 0 );
-		$this->loader->add_action( 'pre_get_posts', $plugin_taxonomies, 'pre_get_weblex_importer_posts', 10, 1 );
+		$this->loader->add_action( 'pre_get_posts', $plugin_taxonomies, 'pre_get_WebLex_Importer_posts', 10, 1 );
 
 		$this->loader->add_filter( 'post_updated_messages', $plugin_post, 'updated_messages', 10, 1 );
 		$this->loader->add_filter( 'bulk_post_updated_messages', $plugin_post, 'bulk_updated_messages', 10, 2 );

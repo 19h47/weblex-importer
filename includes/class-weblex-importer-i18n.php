@@ -9,8 +9,8 @@
  * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package           WebLexImporter
- * @package           WebLexImporter/includes
+ * @package           WebLex_Importer
+ * @package           WebLex_Importer/includes
  */
 
 /**
@@ -20,8 +20,8 @@
  * so that it is ready for translation.
  *
  * @since      0.0.0
- * @package           WebLexImporter
- * @package           WebLexImporter/includes
+ * @package           WebLex_Importer
+ * @package           WebLex_Importer/includes
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
 class WebLex_Importer_I18n {

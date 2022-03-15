@@ -10,18 +10,18 @@
  *
  * @link              https://github.com/19h47/weblex-importer/
  * @since             0.0.0
- * @package           WebLexImporter
+ * @package           WebLex_Importer
  *
  * @wordpress-plugin
  * Plugin Name:       WebLex Importer
  * Plugin URI:        https://github.com/19h47/weblex-importer/
  * Description:       Import posts from an WebLex RSS feed.
- * Version:           0.0.28
+ * Version:           0.1.0
  * Author:            Jérémy Levron
  * Author URI:        https://19h47.fr/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       weblex-importer
+ * Text Domain:       webleximporter
  * Domain Path:       /languages
  * Tags:              importer, rss
  */
@@ -72,10 +72,10 @@ require WEBLEX_IMPORTER_DIR_PATH . 'includes/class-weblex-importer.php';
  *
  * @since    0.0.0
  */
-function run_weblex_importer() {
+function run_WebLex_Importer() {
 	require WEBLEX_IMPORTER_DIR_PATH . 'vendor/yahnis-elsts/plugin-update-checker/plugin-update-checker.php';
 
-	$plugin = new Weblex_Importer();
+	$plugin = new WebLex_Importer();
 	$plugin->run();
 
 	$update_checker = Puc_v4_Factory::buildUpdateChecker(
@@ -87,4 +87,4 @@ function run_weblex_importer() {
 	$update_checker->setBranch( 'wordpress-plugin' );
 }
 
-run_weblex_importer();
+run_WebLex_Importer();

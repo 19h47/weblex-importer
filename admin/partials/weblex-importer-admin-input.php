@@ -17,11 +17,11 @@
 	class="regular-text"
 	type="url" 
 	id="<?php echo $args['id']; ?>" 
-	name="weblex_importer_options[<?php echo $args['id']; ?>][url]"  
+	name="WebLex_Importer_options[<?php echo $args['id']; ?>][url]"  
 	value="<?php echo isset( $options[ $args['id'] ] ) ? $options[ $args['id'] ]['url'] : ''; ?>" 
 	placeholder="https://www.weblex.fr/flux.rss"
 />
-<input type="hidden" name="weblex_importer_options[<?php echo $args['id']; ?>][date]" value="<?php echo gmdate( 'Y-m-d H:i:s' ); ?>">
+<input type="hidden" name="WebLex_Importer_options[<?php echo $args['id']; ?>][date]" value="<?php echo gmdate( 'Y-m-d H:i:s' ); ?>">
 
 <?php if ( $term ) { ?>
 	<p class="description">

@@ -4,8 +4,8 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package           WebLexImporter
- * @subpackage WebLexImporter/templates
+ * @package           WebLex_Importer
+ * @subpackage WebLex_Importer/templates
  * @since 0.0.11
  */
 
@@ -62,7 +62,7 @@ if ( have_posts() ) : ?>
 					echo '<div class="posted-on">';
 					printf(
 					/* translators: %s: publish date. */
-						esc_html__( 'Published %s', 'weblex-importer' ),
+						esc_html__( 'Published %s', 'webleximporter' ),
 						$time_string // phpcs:ignore WordPress.Security.EscapeOutput
 					);
 					echo '</div>';
@@ -77,17 +77,17 @@ if ( have_posts() ) : ?>
 
 					<?php if ( get_the_content() ) : ?>
 						<p>
-							<a href="<?php the_permalink(); ?>"><?php _e( 'Read More', 'weblex-importer' ); ?></a>
+							<a href="<?php the_permalink(); ?>"><?php _e( 'Read More', 'webleximporter' ); ?></a>
 						</p>
 					<?php endif; ?>
 
 					<?php
 					wp_link_pages(
 						array(
-							'before'   => '<nav class="page-links" aria-label="' . esc_attr__( 'Page', 'weblex-importer' ) . '">',
+							'before'   => '<nav class="page-links" aria-label="' . esc_attr__( 'Page', 'webleximporter' ) . '">',
 							'after'    => '</nav>',
 							/* translators: %: page number. */
-							'pagelink' => esc_html__( 'Page %', 'weblex-importer' ),
+							'pagelink' => esc_html__( 'Page %', 'webleximporter' ),
 						)
 					);
 					?>
@@ -101,12 +101,12 @@ if ( have_posts() ) : ?>
 			<section class="no-results not-found">
 				<header class="page-header alignwide">
 					<h1 class="page-title">
-						<?php esc_html_e( 'Nothing here', 'weblex-importer' ); ?>
+						<?php esc_html_e( 'Nothing here', 'webleximporter' ); ?>
 					</h1>
 				</header><!-- .page-header -->
 
 				<div class="page-content default-max-width">
-					<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'weblex-importer' ); ?></p>
+					<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'webleximporter' ); ?></p>
 					<?php get_search_form(); ?>
 				</div><!-- .page-content -->
 			</section><!-- .no-results -->

@@ -6,8 +6,8 @@
  * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package           WebLexImporter
- * @package           WebLexImporter/includes
+ * @package           WebLex_Importer
+ * @package           WebLex_Importer/includes
  */
 
 /**
@@ -16,8 +16,8 @@
  * This class defines all code necessary to run during the plugin's activation.
  *
  * @since      0.0.0
- * @package           WebLexImporter
- * @package           WebLexImporter/includes
+ * @package           WebLex_Importer
+ * @package           WebLex_Importer/includes
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
 class WebLex_Importer_Activator {
@@ -32,8 +32,8 @@ class WebLex_Importer_Activator {
 	public static function activate() {
 		flush_rewrite_rules();
 
-		if ( ! wp_next_scheduled( 'weblex_importer_cron_import' ) ) {
-			wp_schedule_event( time(), 'daily', 'weblex_importer_cron_import' );
+		if ( ! wp_next_scheduled( 'WebLex_Importer_cron_import' ) ) {
+			wp_schedule_event( time(), 'daily', 'WebLex_Importer_cron_import' );
 		}
 	}
 }

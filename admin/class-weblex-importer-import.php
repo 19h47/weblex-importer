@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Import.
  *
@@ -10,28 +9,8 @@
  * @subpackage WebLex_Importer/admin
  */
 
-// $allposts = get_posts(
-// 	array(
-// 		'post_type'   => 'weblex-importer-post',
-// 		'numberposts' => -1,
-// 	)
-// );
-// foreach ( $allposts as $eachpost ) {
-// 	wp_delete_post( $eachpost->ID, true );
-// }
-
-// add_action( 'before_delete_post', 'wps_remove_attachment_with_post', 10 );
-// function wps_remove_attachment_with_post( $post_id ) {
-
-// 	if ( has_post_thumbnail( $post_id ) ) {
-// 		$attachment_id = get_post_thumbnail_id( $post_id );
-// 		wp_delete_attachment( $attachment_id, true );
-// 	}
-
-// }
-
 /**
- * Class WordPress_Plugin_Template_Settings
+ * Class WebLex_Importer_Import
  *
  */
 class WebLex_Importer_Import {
@@ -73,7 +52,7 @@ class WebLex_Importer_Import {
 	 * Cron
 	 */
 	public function cron_update_options() {
-		$options = get_option( 'weblex_importer_options' );
+		$options = get_option( 'WebLex_Importer_options' );
 
 		foreach ( $options as $key => $value ) {
 			if ( '' !== $value['url'] ) {
@@ -285,11 +264,11 @@ class WebLex_Importer_Import {
 		}
 
 		if ( null === $post ) {
-			return new WP_Error( 'insert_attachment_failed', __( 'Invalid post' ) );
+			return new WP_Error( 'insert_attachment_failed', __( 'Invalid post', 'webleximporter' ) );
 		}
 
 		if ( empty( $url ) ) {
-			return new WP_Error( 'insert_attachment_failed', __( 'Insert URL' ) );
+			return new WP_Error( 'insert_attachment_failed', __( 'Insert URL', 'webleximporter' ) );
 		}
 
 		$url = esc_url( $url );
@@ -298,7 +277,7 @@ class WebLex_Importer_Import {
 		preg_match( '/[^\?]+\.(jpe?g|jpe|gif|png)\b/i', $url, $matches );
 
 		if ( ! $matches ) {
-			return new WP_Error( 'insert_attachment_failed', __( 'Invalid image URL' ) );
+			return new WP_Error( 'insert_attachment_failed', __( 'Invalid image URL', 'webleximporter' ) );
 		}
 
 		// Array that represents a `$_FILES` upload array.
@@ -323,7 +302,7 @@ class WebLex_Importer_Import {
 		$post_thumbnail = set_post_thumbnail( $post->ID, $attachment_id );
 
 		if ( false === $post_thumbnail ) {
-			return new WP_Error( 'insert_attachment_failed', __( 'Problem to set post thumbnail' ) );
+			return new WP_Error( 'insert_attachment_failed', __( 'Problem to set post thumbnail', 'webleximporter' ) );
 		}
 
 		return $attachment_id;

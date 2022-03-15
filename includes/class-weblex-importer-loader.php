@@ -6,8 +6,8 @@
  * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package           WebLexImporter
- * @package           WebLexImporter/includes
+ * @package           WeblexImporter
+ * @package           WeblexImporter/includes
  */
 
 /**
@@ -17,8 +17,8 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package           WebLexImporter
- * @package           WebLexImporter/includes
+ * @package           WeblexImporter
+ * @package           WeblexImporter/includes
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
 class WebLex_Importer_Loader {
