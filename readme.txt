@@ -123,4 +123,7 @@ This section describes how to install the plugin and get it working.
 = 0.1.0 =
 * Naming
 
+= 0.1.1 =
+* Fix
+
 == Upgrade Notice ==

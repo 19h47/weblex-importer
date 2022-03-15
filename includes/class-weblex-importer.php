@@ -159,7 +159,7 @@ class WebLex_Importer {
 		$this->loader->add_action( 'admin_menu', $plugin_settings, 'setup_plugin_options_menu' );
 		$this->loader->add_action( 'admin_init', $plugin_settings, 'initialize_display_options' );
 
-		$this->loader->add_action( 'update_option_WebLex_Importer_options', $plugin_import, 'update_options', 10, 3 );
+		$this->loader->add_action( 'update_option_webLex_importer_options', $plugin_import, 'update_options', 10, 3 );
 		$this->loader->add_action( 'WebLex_Importer_cron_import', $plugin_import, 'cron_update_options' );
 
 		$this->loader->add_action( 'init', $plugin_post, 'register', 10, 0 );
