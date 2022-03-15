@@ -50,9 +50,11 @@ class WebLex_Importer_Import {
 
 	/**
 	 * Cron
+	 *
+	 * @access public
 	 */
 	public function cron_update_options() {
-		$options = get_option( 'WebLex_Importer_options' );
+		$options = get_option( 'weblex_importer_options' );
 
 		foreach ( $options as $key => $value ) {
 			if ( '' !== $value['url'] ) {

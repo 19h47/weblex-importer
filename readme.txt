@@ -129,4 +129,7 @@ This section describes how to install the plugin and get it working.
 = 0.1.2 =
 * Fix
 
+= 0.1.3 =
+* Fix weblex_importer_options in CRON job
+
 == Upgrade Notice ==
