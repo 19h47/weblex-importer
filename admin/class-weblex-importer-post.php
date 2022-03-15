@@ -10,6 +10,7 @@
  * @subpackage WebLex_RSS_Feed/admin
  */
 
+use WP_Post;
 
 class WebLex_Importer_Post {
 
@@ -183,18 +184,18 @@ class WebLex_Importer_Post {
 		);
 
 		$messages[ $this->post_type ] = array(
-			0  => '', // Unused. Messages start at index 1.
-			1  => __( 'Post updated.', 'weblex-importer' ) . $view_link_html,
-			2  => __( 'Custom field updated.', 'weblex-importer' ),
-			3  => __( 'Custom field deleted.', 'weblex-importer' ),
-			4  => __( 'Post updated.', 'weblex-importer' ),
+			0 => '', // Unused. Messages start at index 1.
+			1 => __( 'Post updated.', 'weblex-importer' ) . $view_link_html,
+			2 => __( 'Custom field updated.', 'weblex-importer' ),
+			3 => __( 'Custom field deleted.', 'weblex-importer' ),
+			4 => __( 'Post updated.', 'weblex-importer' ),
 			/* translators: %s: date and time of the revision */
-			5  => isset( $_GET['revision'] ) ? sprintf( __( 'Post restored to revision from %s.', 'weblex-importer' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false, // phpcs:ignore
-			6  => __( 'Post published.', 'weblex-importer' ) . $view_link_html,
-			7  => __( 'Post saved.', 'weblex-importer' ),
-			8  => __( 'Post submitted.', 'weblex-importer' ) . $preview_link_html,
-			9  => sprintf( __( 'Post scheduled for: %s.', 'weblex-importer' ), '<strong>' . $scheduled_date . '</strong>' ) . $scheduled_link_html, // phpcs:ignore
-			10 => __( 'Post draft updated.', 'weblex-importer' ) . $preview_link_html,
+		5  => isset( $_GET['revision'] ) ? sprintf( __( 'Post restored to revision from %s.', 'weblex-importer' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false, // phpcs:ignore
+		6     => __( 'Post published.', 'weblex-importer' ) . $view_link_html,
+		7     => __( 'Post saved.', 'weblex-importer' ),
+		8     => __( 'Post submitted.', 'weblex-importer' ) . $preview_link_html,
+		9  => sprintf( __( 'Post scheduled for: %s.', 'weblex-importer' ), '<strong>' . $scheduled_date . '</strong>' ) . $scheduled_link_html, // phpcs:ignore
+		10    => __( 'Post draft updated.', 'weblex-importer' ) . $preview_link_html,
 		);
 
 		return $messages;
@@ -295,5 +296,22 @@ class WebLex_Importer_Post {
 		);
 
 		register_post_type( $this->post_type, $args );
+	}
+
+
+	/**
+	 * Delete attachment
+	 *
+	 * @param int $postid Post ID.
+	 * @param WP_Post $post Post object.
+	 */
+	public function delete_attachment( int $postid, WP_Post $post ) {
+		$post_type = get_post_type( $postid );
+
+		if ( has_post_thumbnail( $postid ) && $post_type === $this->post_type ) {
+			$attachment_id = get_post_thumbnail_id( $postid );
+
+			wp_delete_attachment( $attachment_id, true );
+		}
 	}
 }

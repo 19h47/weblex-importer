@@ -116,4 +116,8 @@ This section describes how to install the plugin and get it working.
 = 0.0.28 =
 * Fix get_tag
 
+= 0.0.29 =
+* Add new slugs
+* Delete attachment when post is delete
+
 == Upgrade Notice ==

@@ -171,11 +171,10 @@ class WebLex_Importer {
 		$this->loader->add_action( 'init', $plugin_taxonomies, 'register', 10, 0 );
 		$this->loader->add_action( 'pre_get_posts', $plugin_taxonomies, 'pre_get_weblex_importer_posts', 10, 1 );
 
-		add_action( '', 'customize_customtaxonomy_archive_display' );
-
 		$this->loader->add_filter( 'post_updated_messages', $plugin_post, 'updated_messages', 10, 1 );
 		$this->loader->add_filter( 'bulk_post_updated_messages', $plugin_post, 'bulk_updated_messages', 10, 2 );
 
+		$this->loader->add_action( 'before_delete_post', $plugin_post, 'delete_attachment', 10, 2 );
 	}
 
 	/**

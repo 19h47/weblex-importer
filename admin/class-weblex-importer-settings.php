@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The settings of the plugin.
  *
@@ -125,13 +124,13 @@ class WebLex_Importer_Settings {
 				'id'          => 'actus',
 				'label'       => __( 'Actus', 'weblex-importer' ),
 				'description' => __( 'Les actualités', 'weblex-importer' ),
-				'slug'        => array( 'Les actualités', 'actus', 'actualites' ),
+				'slug'        => array( 'ACTUALITES', 'Les actualités', 'actus', 'actualites' ),
 			),
 			array(
 				'id'          => 'agenda',
 				'label'       => __( 'Agenda', 'weblex-importer' ),
 				'description' => __( "L'agenda fiscal et social", 'weblex-importer' ),
-				'slug'        => array( "L'agenda fiscal et social", 'agenda' ),
+				'slug'        => array( 'AGENDA', "L'agenda fiscal et social", 'agenda' ),
 			),
 			array(
 				'id'          => 'fiches',
@@ -143,13 +142,13 @@ class WebLex_Importer_Settings {
 				'id'          => 'indicateurs',
 				'label'       => __( 'Indicateurs', 'weblex-importer' ),
 				'description' => __( 'Les indicateurs chiffres et barèmes', 'weblex-importer' ),
-				'slug'        => array( 'Les indicateurs chiffres et barèmes', 'indicateurs' ),
+				'slug'        => array( 'INDICATEURS, CHIFFRES ET BAREMES', 'Les indicateurs chiffres et barèmes', 'indicateurs' ),
 			),
 			array(
 				'id'          => 'phdj',
 				'label'       => __( 'La petite Histoire du Jour', 'weblex-importer' ),
 				'description' => __( 'La petite histoire du jour', 'weblex-importer' ),
-				'slug'        => array( 'La petite histoire du jour', 'petite-histoire-du-jour' ),
+				'slug'        => array( 'LA PETITE HISTOIRE DU JOUR', 'La petite histoire du jour', 'petite-histoire-du-jour' ),
 			),
 			array(
 				'id'          => 'quiz-hebdo',
