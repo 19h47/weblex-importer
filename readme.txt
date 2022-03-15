@@ -138,4 +138,7 @@ This section describes how to install the plugin and get it working.
 = 0.1.5 =
 * Fix function name
 
+= 0.1.6 =
+* Change JS Quizz behavior
+
 == Upgrade Notice ==

@@ -15,6 +15,7 @@ $propalQuizz.addEventListener('click', function (event) {
     }
 
     if ('#reponse' === event.target.hash && event.target.parentNode.classList.contains('quizz-b')) {
-        return $rna.style.setProperty('display', 'block');
+        return $reponse.style.setProperty('display', 'block');
+        // return $rna.style.setProperty('display', 'block');
     }
 }, true);
