@@ -80,8 +80,8 @@ class WebLex_Importer_Settings {
 			<form method="post" action="options.php">
 			<?php
 
-			settings_fields( 'webLex_importer_options' );
-			do_settings_sections( 'webLex_importer_options' );
+			settings_fields( 'weblex_importer_options' );
+			do_settings_sections( 'weblex_importer_options' );
 
 			submit_button();
 
@@ -118,7 +118,7 @@ class WebLex_Importer_Settings {
 			'general_settings_section',                 // ID used to identify this section and with which to register options
 			__( 'RSS feeds', 'webleximporter' ),         // Title to be displayed on the administration page
 			array( $this, 'general_options_callback' ), // Callback used to render the description of the section
-			'webLex_importer_options'                   // Page on which to add this section of options
+			'weblex_importer_options'                   // Page on which to add this section of options
 		);
 
 		$feeds = array(
@@ -165,7 +165,7 @@ class WebLex_Importer_Settings {
 				'WebLex_Importer_option_' . $feed['id'],
 				$feed['label'],
 				array( $this, 'save_weblex_feed' ),
-				'webLex_importer_options',
+				'weblex_importer_options',
 				'general_settings_section',
 				array(
 					'description' => $feed['description'],
@@ -175,7 +175,7 @@ class WebLex_Importer_Settings {
 			);
 		}
 
-		register_setting( 'weblex_importer_options', 'webLex_importer_options' );
+		register_setting( 'weblex_importer_options', 'weblex_importer_options' );
 	}
 
 
@@ -185,7 +185,7 @@ class WebLex_Importer_Settings {
 	 * @param array $args
 	 */
 	public function save_weblex_feed( array $args ) {
-		$options = get_option( 'webLex_importer_options' );
+		$options = get_option( 'weblex_importer_options' );
 		$term    = $this->get_tag( $args['slug'] );
 
 		include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/weblex-importer-admin-input.php';
