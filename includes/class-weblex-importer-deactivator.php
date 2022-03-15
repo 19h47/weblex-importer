@@ -30,6 +30,6 @@ class WebLex_Importer_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
-		wp_clear_scheduled_hook( 'WebLex_Importer_cron_import' );
+		wp_clear_scheduled_hook( 'weblex_importer_cron_import' );
 	}
 }
