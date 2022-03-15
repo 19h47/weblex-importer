@@ -48,10 +48,8 @@ class WebLex_Importer_Template_Loader {
 	 * @param      string    $version    The version of this plugin.
 	 */
 	public function __construct( string $plugin_name, string $version ) {
-
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
-
 	}
 
 	/**
@@ -60,12 +58,14 @@ class WebLex_Importer_Template_Loader {
 	 * Handles template usage so that we can use our own templates instead of the theme's.
 	 *
 	 * @param string $template The path of the template to include.
+	 * 
+	 * @access public
 	 *
 	 * @see https://developer.wordpress.org/reference/hooks/template_include/
 	 *
 	 * @return string
 	 */
-	function template_loader( string $template ) : string {
+	public function template_loader( string $template ) : string {
 
 		if ( is_tax( 'weblex-importer-tag' ) ) {
 			$search_files = array( 'taxonomy-weblex-importer-tag.php' );

@@ -7,7 +7,7 @@ Requires PHP: 7.3.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Import posts from an WebLex RSS feed.
+Import posts from a WebLex RSS feed.
 
 == Description ==
 
