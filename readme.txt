@@ -135,4 +135,7 @@ This section describes how to install the plugin and get it working.
 = 0.1.4 =
 * Fix CRON job
 
+= 0.1.5 =
+* Fix function name
+
 == Upgrade Notice ==

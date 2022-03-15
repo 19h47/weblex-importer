@@ -16,7 +16,7 @@
  * Plugin Name:       WebLex Importer
  * Plugin URI:        https://github.com/19h47/weblex-importer/
  * Description:       Import posts from an WebLex RSS feed.
- * Version:           0.1.4
+ * Version:           0.1.5
  * Author:            Jérémy Levron
  * Author URI:        https://19h47.fr/
  * License:           GPL-2.0+
@@ -72,7 +72,7 @@ require WEBLEX_IMPORTER_DIR_PATH . 'includes/class-weblex-importer.php';
  *
  * @since    0.0.0
  */
-function run_WebLex_Importer() {
+function run_weblex_importer() {
 	require WEBLEX_IMPORTER_DIR_PATH . 'vendor/yahnis-elsts/plugin-update-checker/plugin-update-checker.php';
 
 	$plugin = new WebLex_Importer();
@@ -87,4 +87,4 @@ function run_WebLex_Importer() {
 	$update_checker->setBranch( 'wordpress-plugin' );
 }
 
-run_WebLex_Importer();
+run_weblex_importer();
