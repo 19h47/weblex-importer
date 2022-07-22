@@ -141,4 +141,8 @@ This section describes how to install the plugin and get it working.
 = 0.1.6 =
 * Change JS Quizz behavior
 
+= 0.1.7 =
+* Add LES INDICATEURS tag
+* Add L'AGENDA tag
+
 == Upgrade Notice ==

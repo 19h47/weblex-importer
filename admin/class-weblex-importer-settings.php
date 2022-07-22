@@ -11,7 +11,6 @@
 
 /**
  * Class WebLex_Importer_Settings
- *
  */
 class WebLex_Importer_Settings {
 
@@ -37,8 +36,8 @@ class WebLex_Importer_Settings {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    0.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string $plugin_name       The name of this plugin.
+	 * @param      string $version    The version of this plugin.
 	 */
 	public function __construct( string $plugin_name, string $version ) {
 
@@ -53,7 +52,7 @@ class WebLex_Importer_Settings {
 	 */
 	public function setup_plugin_options_menu() {
 
-		//Add the menu to the Plugins set of menu items
+		// Add the menu to the Plugins set of menu items
 		add_plugins_page(
 			__( 'WebLex Importer Options', 'webleximporter' ),
 			__( 'WebLex Importer Options', 'webleximporter' ),
@@ -132,7 +131,7 @@ class WebLex_Importer_Settings {
 				'id'          => 'agenda',
 				'label'       => __( 'Agenda', 'webleximporter' ),
 				'description' => __( "L'agenda fiscal et social", 'webleximporter' ),
-				'slug'        => array( 'AGENDA', "L'agenda fiscal et social", 'agenda' ),
+				'slug'        => array( "L'AGENDA", 'AGENDA', "L'agenda fiscal et social", 'agenda' ),
 			),
 			array(
 				'id'          => 'fiches',
@@ -144,7 +143,7 @@ class WebLex_Importer_Settings {
 				'id'          => 'indicateurs',
 				'label'       => __( 'Indicateurs', 'webleximporter' ),
 				'description' => __( 'Les indicateurs chiffres et barèmes', 'webleximporter' ),
-				'slug'        => array( 'INDICATEURS, CHIFFRES ET BAREMES', 'Les indicateurs chiffres et barèmes', 'indicateurs' ),
+				'slug'        => array( 'LES INDICATEURS', 'INDICATEURS, CHIFFRES ET BAREMES', 'Les indicateurs chiffres et barèmes', 'indicateurs' ),
 			),
 			array(
 				'id'          => 'phdj',
