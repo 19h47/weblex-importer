@@ -11,7 +11,6 @@
 
 /**
  * Class WebLex_Importer_Import
- *
  */
 class WebLex_Importer_Import {
 
@@ -37,8 +36,8 @@ class WebLex_Importer_Import {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    0.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string $plugin_name       The name of this plugin.
+	 * @param      string $version    The version of this plugin.
 	 */
 	public function __construct( string $plugin_name, string $version ) {
 
@@ -63,11 +62,12 @@ class WebLex_Importer_Import {
 		}
 	}
 
+
 	/**
 	 * Update options.
 	 *
-	 * @param mixed $old_value The old option value.
-	 * @param mixed $value The new option value.
+	 * @param mixed  $old_value The old option value.
+	 * @param mixed  $value The new option value.
 	 * @param string $option Option name.
 	 *
 	 * @return void
@@ -84,7 +84,7 @@ class WebLex_Importer_Import {
 	/**
 	 * Fetch
 	 *
-	 * @param string $url
+	 * @param string $url URL.
 	 *
 	 * @return void
 	 */
@@ -104,8 +104,8 @@ class WebLex_Importer_Import {
 				$query = new WP_Query(
 					array(
 						'post_type'  => 'weblex-importer-post',
-						'meta_key'   => 'weblex-importer-id',
-						'meta_value' => $item_id,
+						'meta_key'   => 'weblex-importer-id', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+						'meta_value' => $item_id, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
 					)
 				);
 
@@ -206,6 +206,8 @@ class WebLex_Importer_Import {
 	/**
 	 * Image url
 	 *
+	 * @param object $item Item.
+	 *
 	 * @since 0.0.18
 	 */
 	private function get_image_url( $item ) {
@@ -225,6 +227,8 @@ class WebLex_Importer_Import {
 
 	/**
 	 * Introduction
+	 *
+	 * @param object $item Item.
 	 *
 	 * @since 0.0.18
 	 *
@@ -250,8 +254,9 @@ class WebLex_Importer_Import {
 
 
 	/**
+	 * Set post thumbnail
 	 *
-	 * @param string $url
+	 * @param string      $url URL.
 	 * @param int|WP_Post $post         Post ID or post object where thumbnail should be attached.
 	 *
 	 * @return int|WP_Error The ID of the attachment or a WP_Error on failure.

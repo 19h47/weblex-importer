@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The plugin bootstrap file
  *
@@ -16,7 +15,7 @@
  * Plugin Name:       WebLex Importer
  * Plugin URI:        https://github.com/19h47/weblex-importer/
  * Description:       Import posts from an WebLex RSS feed.
- * Version:           0.1.7
+ * Version:           0.1.8
  * Author:            Jérémy Levron
  * Author URI:        https://19h47.fr/
  * License:           GPL-2.0+

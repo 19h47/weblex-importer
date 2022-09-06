@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -44,8 +43,8 @@ class WebLex_Importer_Admin {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    0.0.0
-	 * @param    string    $plugin_name       The name of this plugin.
-	 * @param    string    $version    The version of this plugin.
+	 * @param    string $plugin_name       The name of this plugin.
+	 * @param    string $version    The version of this plugin.
 	 */
 	public function __construct( string $plugin_name, string $version ) {
 
@@ -64,7 +63,6 @@ class WebLex_Importer_Admin {
 	 * - WebLex_Importer_Import.
 	 * - WebLex_Importer_Post.
 	 * - WebLex_Importer_Taxonomy.
-	 *
 	 *
 	 * @since    0.0.0
 	 * @access   private

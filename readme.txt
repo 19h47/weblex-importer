@@ -145,4 +145,7 @@ This section describes how to install the plugin and get it working.
 * Add LES INDICATEURS tag
 * Add L'AGENDA tag
 
+= 0.1.8 =
+* Clean code
+
 == Upgrade Notice ==

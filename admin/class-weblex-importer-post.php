@@ -9,6 +9,9 @@
  * @subpackage WebLex_Importer/admin
  */
 
+/**
+ * WebLex Importer Post
+ */
 class WebLex_Importer_Post {
 
 	/**
@@ -44,8 +47,8 @@ class WebLex_Importer_Post {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    0.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string $plugin_name       The name of this plugin.
+	 * @param      string $version    The version of this plugin.
 	 */
 	public function __construct( string $plugin_name, string $version ) {
 
@@ -299,7 +302,7 @@ class WebLex_Importer_Post {
 	/**
 	 * Delete attachment
 	 *
-	 * @param int $postid Post ID.
+	 * @param int     $postid Post ID.
 	 * @param WP_Post $post Post object.
 	 */
 	public function delete_attachment( int $postid, WP_Post $post ) {

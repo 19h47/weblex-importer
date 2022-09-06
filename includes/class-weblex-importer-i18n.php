@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Define the internationalization functionality
  *
@@ -9,8 +8,8 @@
  * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package           WebLex_Importer
- * @package           WebLex_Importer/includes
+ * @package    WebLex_Importer
+ * @subpackage WebLex_Importer/includes
  */
 
 /**
@@ -20,8 +19,8 @@
  * so that it is ready for translation.
  *
  * @since      0.0.0
- * @package           WebLex_Importer
- * @package           WebLex_Importer/includes
+ * @package    WebLex_Importer
+ * @subpackage WebLex_Importer/includes
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
 class WebLex_Importer_I18n {
@@ -53,7 +52,7 @@ class WebLex_Importer_I18n {
 	 * Set the domain equal to that of the specified domain.
 	 *
 	 * @since    0.0.0
-	 * @param    string    $domain    The domain that represents the locale of this plugin.
+	 * @param    string $domain    The domain that represents the locale of this plugin.
 	 */
 	public function set_domain( string $domain ) {
 		$this->domain = $domain;

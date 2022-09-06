@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Taxonomies of the plugin.
  *
@@ -9,7 +8,6 @@
  * @package    WebLex_Importer
  * @subpackage WebLex_Importer/admin
  */
-
 
 /**
  * WebLex Importer Taxonomies
@@ -39,8 +37,8 @@ class WebLex_Importer_Taxonomies {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    0.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string $plugin_name       The name of this plugin.
+	 * @param      string $version    The version of this plugin.
 	 */
 	public function __construct( string $plugin_name, string $version ) {
 
@@ -175,7 +173,7 @@ class WebLex_Importer_Taxonomies {
 	 *
 	 * @param WP_Query $query The WP_Query instance (passed by reference).
 	 */
-	public function pre_get_WebLex_Importer_posts( WP_Query $query ) {
+	public function pre_get_weblex_importer_posts( WP_Query $query ) {
 		if ( ( $query->is_main_query() ) && is_tax( 'weblex-importer-tag' ) ) {
 			$query->set( 'post_type', 'weblex-importer-post' );
 		}

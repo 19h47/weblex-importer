@@ -1,12 +1,11 @@
 <?php
-
 /**
  * The public-facing functionality of the plugin.
  *
  * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package           WebLex_Importer
+ * @package    WebLex_Importer
  * @subpackage WebLex_Importer/public
  */
 
@@ -16,7 +15,7 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package           WebLex_Importer
+ * @package    WebLex_Importer
  * @subpackage WebLex_Importer/public
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
@@ -44,8 +43,8 @@ class WebLex_Importer_Public {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of the plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string $plugin_name       The name of the plugin.
+	 * @param      string $version    The version of this plugin.
 	 */
 	public function __construct( string $plugin_name, string $version ) {
 
@@ -58,7 +57,6 @@ class WebLex_Importer_Public {
 
 	/**
 	 * Load the required dependencies for the Public facing functionality.
-	 *
 	 *
 	 * @since    0.0.0
 	 * @access   private

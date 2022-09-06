@@ -1,13 +1,12 @@
 <?php
-
 /**
  * Fired during plugin activation
  *
  * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package           WebLex_Importer
- * @package           WebLex_Importer/includes
+ * @package    WebLex_Importer
+ * @subpackage WebLex_Importer/includes
  */
 
 /**
@@ -16,8 +15,8 @@
  * This class defines all code necessary to run during the plugin's activation.
  *
  * @since      0.0.0
- * @package           WebLex_Importer
- * @package           WebLex_Importer/includes
+ * @package    WebLex_Importer
+ * @subpackage WebLex_Importer/includes
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
 class WebLex_Importer_Activator {

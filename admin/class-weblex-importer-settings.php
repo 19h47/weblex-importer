@@ -52,7 +52,7 @@ class WebLex_Importer_Settings {
 	 */
 	public function setup_plugin_options_menu() {
 
-		// Add the menu to the Plugins set of menu items
+		// Add the menu to the Plugins set of menu items.
 		add_plugins_page(
 			__( 'WebLex Importer Options', 'webleximporter' ),
 			__( 'WebLex Importer Options', 'webleximporter' ),
@@ -73,7 +73,7 @@ class WebLex_Importer_Settings {
 		?>
 		<div class="wrap">
 
-			<h2><?php _e( 'WebLex Importer Options', 'webleximporter' ); ?></h2>
+			<h2><?php esc_html_e( 'WebLex Importer Options', 'webleximporter' ); ?></h2>
 			<?php settings_errors(); ?>
 
 			<form method="post" action="options.php">
@@ -101,7 +101,7 @@ class WebLex_Importer_Settings {
 	public function general_options_callback() {
 		$options = get_option( 'weblex_importer_options' );
 
-		echo '<p>' . __( 'Enter URLs for WebLex RSS feed.', 'WeblexImporter' ) . '</p>';
+		echo '<p>' . esc_html__( 'Enter URLs for WebLex RSS feed.', 'WeblexImporter' ) . '</p>';
 	}
 
 
@@ -114,10 +114,10 @@ class WebLex_Importer_Settings {
 	public function initialize_display_options() {
 
 		add_settings_section(
-			'general_settings_section',                 // ID used to identify this section and with which to register options
-			__( 'RSS feeds', 'webleximporter' ),         // Title to be displayed on the administration page
-			array( $this, 'general_options_callback' ), // Callback used to render the description of the section
-			'weblex_importer_options'                   // Page on which to add this section of options
+			'general_settings_section',                 // ID used to identify this section and with which to register options.
+			__( 'RSS feeds', 'webleximporter' ),         // Title to be displayed on the administration page.
+			array( $this, 'general_options_callback' ), // Callback used to render the description of the section.
+			'weblex_importer_options'                   // Page on which to add this section of options.
 		);
 
 		$feeds = array(
@@ -181,7 +181,7 @@ class WebLex_Importer_Settings {
 	/**
 	 * Save WebLex feed
 	 *
-	 * @param array $args
+	 * @param array $args Args.
 	 */
 	public function save_weblex_feed( array $args ) {
 		$options = get_option( 'weblex_importer_options' );
@@ -192,9 +192,9 @@ class WebLex_Importer_Settings {
 
 
 	/**
-	 * Get Term
+	 * Get tag
 	 *
-	 * @param mixed $slug
+	 * @param mixed $slug Slug.
 	 */
 	public function get_tag( $slug ) {
 		$term = '';

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The file that defines the core plugin class
  *
@@ -9,8 +8,8 @@
  * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package           WeblexImporter
- * @package           WeblexImporter/includes
+ * @package    WebLex_Importer
+ * @subpackage WebLex_Importer/includes
  */
 
 /**
@@ -23,8 +22,8 @@
  * version of the plugin.
  *
  * @since      0.0.0
- * @package           WeblexImporter
- * @package           WeblexImporter/includes
+ * @package    WebLex_Importer
+ * @subpackage WebLex_Importer/includes
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
 class WebLex_Importer {
@@ -169,7 +168,7 @@ class WebLex_Importer {
 		$this->loader->add_filter( 'manage_weblex-importer-post_posts_columns', $plugin_post, 'add_custom_columns' );
 
 		$this->loader->add_action( 'init', $plugin_taxonomies, 'register', 10, 0 );
-		$this->loader->add_action( 'pre_get_posts', $plugin_taxonomies, 'pre_get_WebLex_Importer_posts', 10, 1 );
+		$this->loader->add_action( 'pre_get_posts', $plugin_taxonomies, 'pre_get_weblex_importer_posts', 10, 1 );
 
 		$this->loader->add_filter( 'post_updated_messages', $plugin_post, 'updated_messages', 10, 1 );
 		$this->loader->add_filter( 'bulk_post_updated_messages', $plugin_post, 'bulk_updated_messages', 10, 2 );

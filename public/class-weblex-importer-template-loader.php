@@ -1,12 +1,11 @@
 <?php
-
 /**
  * The public-facing functionality of the plugin.
  *
  * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package           WeblexImporter
+ * @package    WeblexImporter
  * @subpackage WeblexImporter/public
  */
 
@@ -16,7 +15,7 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package           WeblexImporter
+ * @package    WeblexImporter
  * @subpackage WeblexImporter/public
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
@@ -44,8 +43,8 @@ class WebLex_Importer_Template_Loader {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of the plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string $plugin_name       The name of the plugin.
+	 * @param      string $version    The version of this plugin.
 	 */
 	public function __construct( string $plugin_name, string $version ) {
 		$this->plugin_name = $plugin_name;
@@ -58,7 +57,7 @@ class WebLex_Importer_Template_Loader {
 	 * Handles template usage so that we can use our own templates instead of the theme's.
 	 *
 	 * @param string $template The path of the template to include.
-	 * 
+	 *
 	 * @access public
 	 *
 	 * @see https://developer.wordpress.org/reference/hooks/template_include/
