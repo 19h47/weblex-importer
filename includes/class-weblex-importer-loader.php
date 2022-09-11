@@ -31,6 +31,7 @@ class WebLex_Importer_Loader {
 	 */
 	protected $actions;
 
+
 	/**
 	 * The array of filters registered with WordPress.
 	 *
@@ -40,17 +41,17 @@ class WebLex_Importer_Loader {
 	 */
 	protected $filters;
 
+
 	/**
 	 * Initialize the collections used to maintain the actions and filters.
 	 *
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-
 		$this->actions = array();
 		$this->filters = array();
-
 	}
+
 
 	/**
 	 * Add a new action to the collection to be registered with WordPress.
@@ -66,6 +67,7 @@ class WebLex_Importer_Loader {
 		$this->actions = $this->add( $this->actions, $hook, $component, $callback, $priority, $accepted_args );
 	}
 
+
 	/**
 	 * Add a new filter to the collection to be registered with WordPress.
 	 *
@@ -79,6 +81,7 @@ class WebLex_Importer_Loader {
 	public function add_filter( $hook, $component, $callback, $priority = 10, $accepted_args = 1 ) {
 		$this->filters = $this->add( $this->filters, $hook, $component, $callback, $priority, $accepted_args );
 	}
+
 
 	/**
 	 * A utility function that is used to register the actions and hooks into a single
@@ -105,8 +108,8 @@ class WebLex_Importer_Loader {
 		);
 
 		return $hooks;
-
 	}
+
 
 	/**
 	 * Register the filters and actions with WordPress.
@@ -122,7 +125,6 @@ class WebLex_Importer_Loader {
 		foreach ( $this->actions as $hook ) {
 			add_action( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
 		}
-
 	}
 
 }

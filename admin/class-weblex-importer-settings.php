@@ -47,20 +47,20 @@ class WebLex_Importer_Settings {
 	}
 
 	/**
-	 * This function introduces the theme options into the 'Appearance' menu and into a top-level
-	 * 'WPPB Demo' menu.
+	 * Set options page
+	 *
+	 * @see https://developer.wordpress.org/reference/functions/add_options_page/
+	 *
+	 * @return void
 	 */
-	public function setup_plugin_options_menu() {
-
-		// Add the menu to the Plugins set of menu items.
-		add_plugins_page(
-			__( 'WebLex Importer Options', 'webleximporter' ),
+	public function setup_options_page() : void {
+		add_options_page(
+			__( 'WebLex Importer', 'webleximporter' ),
 			__( 'WebLex Importer Options', 'webleximporter' ),
 			'manage_options',
 			'weblex_importer_options',
 			array( $this, 'render_settings_page_content' )
 		);
-
 	}
 
 
@@ -123,9 +123,9 @@ class WebLex_Importer_Settings {
 		$feeds = array(
 			array(
 				'id'          => 'actus',
-				'label'       => __( 'Actus', 'webleximporter' ),
+				'label'       => __( 'Actualités', 'webleximporter' ),
 				'description' => __( 'Les actualités', 'webleximporter' ),
-				'slug'        => array( 'ACTUALITES', 'Les actualités', 'actus', 'actualites' ),
+				'slug'        => array( 'Actualités', 'ACTUALITES', 'Les actualités', 'actus', 'actualites' ),
 			),
 			array(
 				'id'          => 'agenda',
@@ -156,6 +156,12 @@ class WebLex_Importer_Settings {
 				'label'       => __( 'Quiz Hebdo', 'webleximporter' ),
 				'description' => __( 'Le Quiz Hebdo', 'webleximporter' ),
 				'slug'        => array( 'Le Quiz Hebdo', 'quiz-hebdo', 'le-quiz-hebdo' ),
+			),
+			array(
+				'id'          => 'infos-sociales',
+				'label'       => __( 'Infos sociales', 'webleximporter' ),
+				'description' => __( 'Les informations sociales', 'webleximporter' ),
+				'slug'        => array( 'Infos sociales' ),
 			),
 		);
 

@@ -38,6 +38,7 @@ class WebLex_Importer {
 	 */
 	protected $loader;
 
+
 	/**
 	 * The unique identifier of this plugin.
 	 *
@@ -47,6 +48,7 @@ class WebLex_Importer {
 	 */
 	protected $plugin_name;
 
+
 	/**
 	 * The current version of the plugin.
 	 *
@@ -55,6 +57,7 @@ class WebLex_Importer {
 	 * @var      string    $version    The current version of the plugin.
 	 */
 	protected $version;
+
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -66,7 +69,7 @@ class WebLex_Importer {
 	 * @since    0.0.0
 	 */
 	public function __construct() {
-		$this->plugin_name = 'weblex-importer';
+		$this->plugin_name = 'webleximporter';
 		$this->version     = '0.0.0';
 
 		$this->load_dependencies();
@@ -74,6 +77,7 @@ class WebLex_Importer {
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 	}
+
 
 	/**
 	 * Load the required dependencies for this plugin.
@@ -119,6 +123,7 @@ class WebLex_Importer {
 		$this->loader = new WebLex_Importer_Loader();
 	}
 
+
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
@@ -136,6 +141,7 @@ class WebLex_Importer {
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
 	}
+
 
 	/**
 	 * Register all of the hooks related to the admin area functionality
@@ -155,7 +161,7 @@ class WebLex_Importer {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
-		$this->loader->add_action( 'admin_menu', $plugin_settings, 'setup_plugin_options_menu' );
+		$this->loader->add_action( 'admin_menu', $plugin_settings, 'setup_options_page' );
 		$this->loader->add_action( 'admin_init', $plugin_settings, 'initialize_display_options' );
 
 		$this->loader->add_action( 'update_option_weblex_importer_options', $plugin_import, 'update_options', 10, 3 );
@@ -176,6 +182,7 @@ class WebLex_Importer {
 		$this->loader->add_action( 'before_delete_post', $plugin_post, 'delete_attachment', 10, 2 );
 	}
 
+
 	/**
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
@@ -195,6 +202,7 @@ class WebLex_Importer {
 
 	}
 
+
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
@@ -203,6 +211,7 @@ class WebLex_Importer {
 	public function run() {
 		$this->loader->run();
 	}
+
 
 	/**
 	 * The name of the plugin used to uniquely identify it within the context of
@@ -215,6 +224,7 @@ class WebLex_Importer {
 		return $this->plugin_name;
 	}
 
+
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
@@ -224,6 +234,7 @@ class WebLex_Importer {
 	public function get_loader() {
 		return $this->loader;
 	}
+
 
 	/**
 	 * Retrieve the version number of the plugin.

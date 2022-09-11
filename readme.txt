@@ -148,4 +148,8 @@ This section describes how to install the plugin and get it working.
 = 0.1.8 =
 * Clean code
 
+= 0.2.0 =
+* Adding Activities taxonomy
+* Get Activities from feed
+
 == Upgrade Notice ==

@@ -125,6 +125,7 @@ class WebLex_Importer_Import {
 						$updated_post_id = wp_update_post( $post );
 
 						if ( 0 !== $updated_post_id ) {
+							wp_set_object_terms( $updated_post_id, $post_activities, 'weblex-importer-activities', false );
 							wp_set_object_terms( $updated_post_id, $term_id, 'weblex-importer-tag', false );
 							wp_set_object_terms( $updated_post_id, $post_tags, 'weblex-importer-category', false );
 						}
@@ -222,6 +223,35 @@ class WebLex_Importer_Import {
 		}
 
 		return $item->get_item_tags( '', 'image' )[0]['child']['']['url'][0]['data'];
+	}
+
+
+	/**
+	 * Activites
+	 *
+	 * @param object $item Item.
+	 *
+	 * @since 0.1.9
+	 *
+	 * @return array
+	 */
+	private function get_activite( $item ) : array {
+		$activites = array();
+
+		if ( ! $item->get_item_tags( '', 'activite' ) ) {
+			return $activites;
+		}
+
+		if ( ! isset( $item->get_item_tags( '', 'activite' )[0] ) ) {
+			return $activites;
+		}
+
+		return array_map(
+			function( $activity ) {
+				return $activity[0]['data'];
+			},
+			$item->get_item_tags( '', 'activite' )
+		);
 	}
 
 
