@@ -23,6 +23,7 @@ class WebLex_Importer_Import {
 	 */
 	private $plugin_name;
 
+
 	/**
 	 * The version of this plugin.
 	 *
@@ -31,6 +32,17 @@ class WebLex_Importer_Import {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
+
+
+	/**
+	 * XML Namespaces
+	 *
+	 * @since  0.2.0
+	 * @access private
+	 * @var    string $xml_namesapce The URL of the XML namespace.
+	 */
+	private $xml_namespace = 'http://www.w3.org/2005/Atom';
+
 
 	/**
 	 * Initialize the class and set its properties.
@@ -99,7 +111,8 @@ class WebLex_Importer_Import {
 				$item_id       = $item->get_id( false );
 				$item_pub_date = gmdate( $item->get_date( 'Y-m-d H:i:s' ) );
 
-				$post_tags = $this->extract_categories( $item->get_categories() );
+				$post_tags       = $this->extract_categories( $item->get_categories() );
+				$post_activities = $this->get_activities( $item );
 
 				$query = new WP_Query(
 					array(
@@ -125,7 +138,10 @@ class WebLex_Importer_Import {
 						$updated_post_id = wp_update_post( $post );
 
 						if ( 0 !== $updated_post_id ) {
-							wp_set_object_terms( $updated_post_id, $post_activities, 'weblex-importer-activities', false );
+							if ( $post_activities ) {
+								wp_set_object_terms( $updated_post_id, $post_activities, 'weblex-importer-activity', false );
+							}
+
 							wp_set_object_terms( $updated_post_id, $term_id, 'weblex-importer-tag', false );
 							wp_set_object_terms( $updated_post_id, $post_tags, 'weblex-importer-category', false );
 						}
@@ -150,6 +166,10 @@ class WebLex_Importer_Import {
 					$inserted_post_id = wp_insert_post( $post );
 
 					if ( 0 !== $inserted_post_id ) {
+						if ( $post_activities ) {
+							wp_set_object_terms( $inserted_post_id, $post_activities, 'weblex-importer-activity', false );
+						}
+
 						wp_set_object_terms( $inserted_post_id, $term_id, 'weblex-importer-tag', true );
 						wp_set_object_terms( $inserted_post_id, $post_tags, 'weblex-importer-category', false );
 
@@ -227,7 +247,7 @@ class WebLex_Importer_Import {
 
 
 	/**
-	 * Activites
+	 * Get activities
 	 *
 	 * @param object $item Item.
 	 *
@@ -235,22 +255,22 @@ class WebLex_Importer_Import {
 	 *
 	 * @return array
 	 */
-	private function get_activite( $item ) : array {
+	private function get_activities( $item ) : array {
 		$activites = array();
 
-		if ( ! $item->get_item_tags( '', 'activite' ) ) {
+		if ( ! $item->get_item_tags( '', 'activites' ) ) {
 			return $activites;
 		}
 
-		if ( ! isset( $item->get_item_tags( '', 'activite' )[0] ) ) {
+		if ( ! isset( $item->get_item_tags( '', 'activites' )[0] ) ) {
 			return $activites;
 		}
 
 		return array_map(
-			function( $activity ) {
-				return $activity[0]['data'];
+			function( $activite ) {
+				return $activite['data'];
 			},
-			$item->get_item_tags( '', 'activite' )
+			$item->get_item_tags( '', 'activites' )[0]['child']['']['activite']
 		);
 	}
 

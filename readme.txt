@@ -152,4 +152,7 @@ This section describes how to install the plugin and get it working.
 * Adding Activities taxonomy
 * Get Activities from feed
 
+= 0.2.1 =
+* Fix and test Activities taxonomy
+
 == Upgrade Notice ==

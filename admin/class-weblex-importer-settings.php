@@ -56,7 +56,7 @@ class WebLex_Importer_Settings {
 	public function setup_options_page() : void {
 		add_options_page(
 			__( 'WebLex Importer', 'webleximporter' ),
-			__( 'WebLex Importer Options', 'webleximporter' ),
+			__( 'WebLex Importer', 'webleximporter' ),
 			'manage_options',
 			'weblex_importer_options',
 			array( $this, 'render_settings_page_content' )
@@ -158,10 +158,10 @@ class WebLex_Importer_Settings {
 				'slug'        => array( 'Le Quiz Hebdo', 'quiz-hebdo', 'le-quiz-hebdo' ),
 			),
 			array(
-				'id'          => 'infos-sociales',
-				'label'       => __( 'Infos sociales', 'webleximporter' ),
-				'description' => __( 'Les informations sociales', 'webleximporter' ),
-				'slug'        => array( 'Infos sociales' ),
+				'id'          => 'les-actualites-sectorielles',
+				'label'       => __( 'Les actualités sectorielles', 'webleximporter' ),
+				'description' => __( 'Les actualités sectorielles', 'webleximporter' ),
+				'slug'        => array( 'LES ACTUALITES SECTORIELLES', 'Les actualités sectorielles' ),
 			),
 		);
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WebLex Importer\n"
-"POT-Creation-Date: 2022-09-11 19:02+0200\n"
-"PO-Revision-Date: 2022-09-11 19:04+0200\n"
+"POT-Creation-Date: 2022-09-12 11:03+0200\n"
+"PO-Revision-Date: 2022-09-12 11:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -22,19 +22,19 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 
-#: admin/class-weblex-importer-import.php:298
+#: admin/class-weblex-importer-import.php:321
 msgid "Invalid post"
 msgstr ""
 
-#: admin/class-weblex-importer-import.php:302
+#: admin/class-weblex-importer-import.php:325
 msgid "Insert URL"
 msgstr ""
 
-#: admin/class-weblex-importer-import.php:311
+#: admin/class-weblex-importer-import.php:334
 msgid "Invalid image URL"
 msgstr ""
 
-#: admin/class-weblex-importer-import.php:336
+#: admin/class-weblex-importer-import.php:359
 msgid "Problem to set post thumbnail"
 msgstr ""
 
@@ -265,10 +265,10 @@ msgstr "Article"
 
 #. Plugin Name of the plugin/theme
 #: admin/class-weblex-importer-settings.php:58
+#: admin/class-weblex-importer-settings.php:59
 msgid "WebLex Importer"
 msgstr "Importateur WebLex"
 
-#: admin/class-weblex-importer-settings.php:59
 #: admin/class-weblex-importer-settings.php:76
 msgid "WebLex Importer Options"
 msgstr "Options de l’importateur WebLex"
@@ -330,7 +330,7 @@ msgid "Le Quiz Hebdo"
 msgstr ""
 
 #: admin/class-weblex-importer-settings.php:162
-msgid "Infos sociales"
+msgid "Les actualités sectorielles"
 msgstr ""
 
 #: admin/class-weblex-importer-settings.php:163
