@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying categories
+ * The template for displaying activities
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -12,11 +12,11 @@
 get_header();
 
 $description = get_queried_object() ? get_queried_object()->description : false;
-
+var_dump( have_posts() );
 ?>
 <div class="container-wrap">
 	<div class="container">
-
+			   
 		<?php if ( have_posts() ) : ?>
 			<header class="page-header alignwide">
 				<h1 class="page-title"><?php echo esc_html( get_queried_object()->name ); ?></h1>
@@ -26,7 +26,6 @@ $description = get_queried_object() ? get_queried_object()->description : false;
 					</div>
 				<?php endif; ?>
 			</header><!-- .page-header -->
-
 			<?php while ( have_posts() ) : ?>
 
 				<?php the_post(); ?>

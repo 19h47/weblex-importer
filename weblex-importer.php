@@ -15,7 +15,7 @@
  * Plugin Name:       WebLex Importer
  * Plugin URI:        https://github.com/19h47/weblex-importer/
  * Description:       Import posts from an WebLex RSS feed.
- * Version:           0.2.1
+ * Version:           0.2.2
  * Author:            Jérémy Levron
  * Author URI:        https://19h47.fr/
  * License:           GPL-2.0+
@@ -52,8 +52,32 @@ function deactivate_weblex_importer() {
 	WebLex_Importer_Deactivator::deactivate();
 }
 
+
 register_activation_hook( __FILE__, 'activate_weblex_importer' );
 register_deactivation_hook( __FILE__, 'deactivate_weblex_importer' );
+
+
+add_action( 'upgrader_process_complete', 'my_upgrade_function', 10, 2 );
+
+/**
+ * Update WebLex Importer
+ *
+ * @param WP_Upgrader $upgrader WP_Upgrader instance. In other contexts this might be a Theme_Upgrader, Plugin_Upgrader, Core_Upgrade, or Language_Pack_Upgrader instance.
+ * @param array       $hook_extra Array of bulk item update data.
+ *
+ * @see https://developer.wordpress.org/reference/hooks/upgrader_process_complete/
+ */
+function update_weblex_importer( WP_Upgrader $upgrader, array $hook_extra ) {
+	$current_plugin_path_name = plugin_basename( __FILE__ );
+
+	if ( 'update' === $hook_extra['action'] && 'plugin' === $hook_extra['type'] ) {
+		foreach ( $hook_extra['plugins'] as $plugin ) {
+			if ( $plugin === $current_plugin_path_name ) {
+				flush_rewrite_rules();
+			}
+		}
+	}
+}
 
 
 /**

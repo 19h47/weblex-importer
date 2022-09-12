@@ -30,6 +30,7 @@ class WebLex_Importer_Template_Loader {
 	 */
 	private $plugin_name;
 
+
 	/**
 	 * The version of this plugin.
 	 *
@@ -38,6 +39,7 @@ class WebLex_Importer_Template_Loader {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
+
 
 	/**
 	 * Initialize the class and set its properties.
@@ -50,6 +52,7 @@ class WebLex_Importer_Template_Loader {
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
 	}
+
 
 	/**
 	 * Load a template.
@@ -85,6 +88,17 @@ class WebLex_Importer_Template_Loader {
 				return $template;
 			} else {
 				$template = WEBLEX_IMPORTER_DIR_PATH . 'templates/taxonomy-weblex-importer-category.php';
+			}
+		}
+
+		if ( is_tax( 'weblex-importer-activity' ) ) {
+			$search_files = array( 'taxonomy-weblex-importer-activity.php' );
+			$template     = locate_template( $search_files );
+
+			if ( $template ) {
+				return $template;
+			} else {
+				$template = WEBLEX_IMPORTER_DIR_PATH . 'templates/taxonomy-weblex-importer-activity.php';
 			}
 		}
 

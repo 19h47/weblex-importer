@@ -237,5 +237,9 @@ class WebLex_Importer_Taxonomies {
 		if ( ( $query->is_main_query() ) && is_tax( 'weblex-importer-category' ) ) {
 			$query->set( 'post_type', 'weblex-importer-post' );
 		}
+
+		if ( ( $query->is_main_query() ) && is_tax( 'weblex-importer-activity' ) ) {
+			$query->set( 'post_type', 'weblex-importer-post' );
+		}
 	}
 }

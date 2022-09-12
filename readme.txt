@@ -155,4 +155,7 @@ This section describes how to install the plugin and get it working.
 = 0.2.1 =
 * Fix and test Activities taxonomy
 
+= 0.2.2 =
+* Add activity taxonomy archive template
+
 == Upgrade Notice ==
