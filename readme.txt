@@ -158,4 +158,7 @@ This section describes how to install the plugin and get it working.
 = 0.2.2 =
 * Add activity taxonomy archive template
 
+= 0.2.3 =
+* Remove var_dump
+
 == Upgrade Notice ==

@@ -12,7 +12,7 @@
 get_header();
 
 $description = get_queried_object() ? get_queried_object()->description : false;
-var_dump( have_posts() );
+
 ?>
 <div class="container-wrap">
 	<div class="container">
