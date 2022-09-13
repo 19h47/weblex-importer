@@ -69,7 +69,7 @@ $description = get_queried_object() ? get_queried_object()->description : false;
 						?>
 
 						<?php echo get_the_term_list( get_the_ID(), 'weblex-importer-category', '<div>', ', ', '</div>' ); ?>
-						<?php echo get_the_term_list( get_the_ID(), 'weblex-importer-tag', '<div>', ', ', '</div>' ); ?>
+						<!-- <?php echo get_the_term_list( get_the_ID(), 'weblex-importer-tag', '<div>', ', ', '</div>' ); ?> -->
 						<?php echo get_the_term_list( get_the_ID(), 'weblex-importer-activity', '<div>', ', ', '</div>' ); ?>
 					</header><!-- .entry-header -->
 
