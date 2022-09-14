@@ -168,4 +168,7 @@ This section describes how to install the plugin and get it working.
 * Fixes JS
 * Add keyword taxonomy
 
+= 0.3.0 =
+* Change ID logique
+
 == Upgrade Notice ==
