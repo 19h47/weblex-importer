@@ -110,7 +110,7 @@ class WebLex_Importer_Import {
 			$term_id = $this->get_tag_by_name( $title );
 
 			foreach ( $rss->get_items( 0, $rss->get_item_quantity( 0 ) ) as $item ) {
-				$item_id       = md5( serialize( $item ) );
+				$item_id       = $item->get_id();
 				$item_pub_date = gmdate( $item->get_date( 'Y-m-d H:i:s' ) );
 
 				$post_tags       = $this->extract_categories( $item->get_categories() );
@@ -130,6 +130,10 @@ class WebLex_Importer_Import {
 
 				if ( $query->have_posts() ) {
 					$post = $query->next_post();
+
+					if ( strtotime( $post->post_modified ) === strtotime( $item_pub_date ) ) {
+						continue;
+					}
 
 					if ( strtotime( $post->post_modified ) < strtotime( $item_pub_date ) ) {
 
