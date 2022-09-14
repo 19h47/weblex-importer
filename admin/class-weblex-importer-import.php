@@ -99,6 +99,7 @@ class WebLex_Importer_Import {
 	 * @param string $url URL.
 	 *
 	 * @see https://developer.wordpress.org/reference/functions/fetch_feed/
+	 * @see https://simplepie.org/api/class-SimplePie_Item.html#_get_id
 	 *
 	 * @return void
 	 */
