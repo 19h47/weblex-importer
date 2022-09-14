@@ -3,7 +3,7 @@ var $propalQuizz = document.querySelector('.propal-quizz');
 var $rna = document.querySelector('#rna');
 var $reponse = document.querySelector('#reponse');
 
-if ($rna && $response) {
+if ($rna && $reponse) {
     $rna.style.setProperty('display', 'none');
     $reponse.style.setProperty('display', 'none');
 

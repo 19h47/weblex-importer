@@ -164,4 +164,8 @@ This section describes how to install the plugin and get it working.
 = 0.2.4 =
 * Remove tag from teaser
 
+= 0.2.5 =
+* Fixes JS
+* Add keyword taxonomy
+
 == Upgrade Notice ==

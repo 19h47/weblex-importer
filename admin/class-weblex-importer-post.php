@@ -292,7 +292,7 @@ class WebLex_Importer_Post {
 			'rewrite'             => $rewrite,
 			'show_in_rest'        => true,
 			'show_in_graphql'     => true,
-			'taxonomies'          => array( 'weblex-importer-activity', 'weblex-importer-category', 'weblex-importer-tag' ),
+			'taxonomies'          => array( 'weblex-importer-activity', 'weblex-importer-category', 'weblex-importer-keyword', 'weblex-importer-tag' ),
 		);
 
 		register_post_type( $this->post_type, $args );

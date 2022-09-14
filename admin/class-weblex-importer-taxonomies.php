@@ -60,6 +60,7 @@ class WebLex_Importer_Taxonomies {
 		$this->register_activity();
 		$this->register_category();
 		$this->register_tag();
+		$this->register_keyword();
 	}
 
 
@@ -94,7 +95,7 @@ class WebLex_Importer_Taxonomies {
 		);
 
 		$rewrite = array(
-			'slug'         => 'les-infos-du-jour-activities',
+			'slug'         => 'weblex-importer-activities',
 			'with_front'   => true,
 			'hierarchical' => false,
 		);
@@ -147,7 +148,7 @@ class WebLex_Importer_Taxonomies {
 		);
 
 		$rewrite = array(
-			'slug'         => 'les-infos-du-jour-categories',
+			'slug'         => 'weblex-importer-categories',
 			'with_front'   => true,
 			'hierarchical' => false,
 		);
@@ -199,7 +200,7 @@ class WebLex_Importer_Taxonomies {
 		);
 
 		$rewrite = array(
-			'slug'         => 'les-infos-du-jour-tag',
+			'slug'         => 'weblex-importer-tags',
 			'with_front'   => true,
 			'hierarchical' => false,
 		);
@@ -222,6 +223,59 @@ class WebLex_Importer_Taxonomies {
 	}
 
 
+	/**
+	 * Register keyword
+	 *
+	 * @return void
+	 */
+	public function register_keyword() {
+		$labels = array(
+			'name'                       => _x( 'Keywords', 'post keyword general name', 'webleximporter' ),
+			'singular_name'              => _x( 'Keyword', 'post keyword singular name', 'webleximporter' ),
+			'search_items'               => __( 'Search Keywords', 'webleximporter' ),
+			'all_items'                  => __( 'All Keywords', 'webleximporter' ),
+			'popular_items'              => __( 'Popular Keywords', 'webleximporter' ),
+			'edit_item'                  => __( 'Edit Keyword', 'webleximporter' ),
+			'view_item'                  => __( 'View Keyword', 'webleximporter' ),
+			'update_item'                => __( 'Update Keyword', 'webleximporter' ),
+			'add_new_item'               => __( 'Add New Keyword', 'webleximporter' ),
+			'new_item_name'              => __( 'New Keyword Name', 'webleximporter' ),
+			'separate_items_with_commas' => __( 'Separate keywords with commas', 'webleximporter' ),
+			'add_or_remove_items'        => __( 'Add or remove keywords', 'webleximporter' ),
+			'choose_from_most_used'      => __( 'Choose from the most used keywords', 'webleximporter' ),
+			'not_found'                  => __( 'No keywords found.', 'webleximporter' ),
+			'no_terms'                   => __( 'No keywords', 'webleximporter' ),
+			'items_list_navigation'      => __( 'Keywords list navigation', 'webleximporter' ),
+			'items_list'                 => __( 'Keywords list', 'webleximporter' ),
+			/* translators: Post keyword heading when selecting from the most used terms. */
+			'most_used'                  => _x( 'Most Used', 'post keyword', 'webleximporter' ),
+			'back_to_items'              => __( '&larr; Back to Keywords', 'webleximporter' ),
+		);
+
+		$rewrite = array(
+			'slug'         => 'weblex-importer-keywords',
+			'with_front'   => true,
+			'hierarchical' => false,
+		);
+
+		$args = array(
+			'labels'             => $labels,
+			'hierarchical'       => false,
+			'public'             => true,
+			'publicly_queryable' => true,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'show_in_nav_menus'  => true,
+			'show_in_quick_edit' => true,
+			'show_admin_column'  => true,
+			'show_in_rest'       => true,
+			'rewrite'            => $rewrite,
+		);
+
+		register_taxonomy( 'weblex-importer-keyword', array( 'weblex-importer-post' ), $args );
+	}
+
+
 
 
 	/**
@@ -239,6 +293,10 @@ class WebLex_Importer_Taxonomies {
 		}
 
 		if ( ( $query->is_main_query() ) && is_tax( 'weblex-importer-activity' ) ) {
+			$query->set( 'post_type', 'weblex-importer-post' );
+		}
+
+		if ( ( $query->is_main_query() ) && is_tax( 'weblex-importer-keyword' ) ) {
 			$query->set( 'post_type', 'weblex-importer-post' );
 		}
 	}

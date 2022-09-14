@@ -129,7 +129,7 @@ class WebLex_Importer_Settings {
 			),
 			array(
 				'id'          => 'agenda',
-				'label'       => __( 'Agenda', 'webleximporter' ),
+				'label'       => __( "L'agenda fiscal et social", 'webleximporter' ),
 				'description' => __( "L'agenda fiscal et social", 'webleximporter' ),
 				'slug'        => array( "L'AGENDA", 'AGENDA', "L'agenda fiscal et social", 'agenda' ),
 			),
@@ -156,12 +156,6 @@ class WebLex_Importer_Settings {
 				'label'       => __( 'Quiz Hebdo', 'webleximporter' ),
 				'description' => __( 'Le Quiz Hebdo', 'webleximporter' ),
 				'slug'        => array( 'Le Quiz Hebdo', 'quiz-hebdo', 'le-quiz-hebdo' ),
-			),
-			array(
-				'id'          => 'les-actualites-sectorielles',
-				'label'       => __( 'Les actualités sectorielles', 'webleximporter' ),
-				'description' => __( 'Les actualités sectorielles', 'webleximporter' ),
-				'slug'        => array( 'LES ACTUALITES SECTORIELLES', 'Les actualités sectorielles' ),
 			),
 		);
 
