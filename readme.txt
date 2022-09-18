@@ -177,4 +177,7 @@ This section describes how to install the plugin and get it working.
 = 0.3.2 =
 * Remove date on category archive
 
+= 0.3.3 =
+* Hierachical tag
+
 == Upgrade Notice ==

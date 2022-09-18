@@ -207,7 +207,7 @@ class WebLex_Importer_Taxonomies {
 
 		$args = array(
 			'labels'             => $labels,
-			'hierarchical'       => false,
+			'hierarchical'       => true,
 			'public'             => true,
 			'publicly_queryable' => true,
 			'show_ui'            => true,
