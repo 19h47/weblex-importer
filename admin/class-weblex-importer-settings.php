@@ -131,7 +131,7 @@ class WebLex_Importer_Settings {
 				'id'          => 'agenda',
 				'label'       => __( "L'agenda fiscal et social", 'webleximporter' ),
 				'description' => __( "L'agenda fiscal et social", 'webleximporter' ),
-				'slug'        => array( "L'AGENDA", 'AGENDA', "L'agenda fiscal et social", 'agenda' ),
+				'slug'        => array( "L'AGENDA", 'AGENDA', 'L’agenda fiscal et social', "L'agenda fiscal et social", "L'agenda fiscal et social", 'agenda' ),
 			),
 			array(
 				'id'          => 'fiches',

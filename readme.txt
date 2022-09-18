@@ -174,4 +174,7 @@ This section describes how to install the plugin and get it working.
 = 0.3.1 =
 * Performance
 
+= 0.3.2 =
+* Remove date on category archive
+
 == Upgrade Notice ==

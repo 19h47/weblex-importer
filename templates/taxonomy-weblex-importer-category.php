@@ -52,20 +52,20 @@ $description = get_queried_object() ? get_queried_object()->description : false;
 
 						<?php
 
-						$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+						// $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 
-						$time_string = sprintf(
-							$time_string,
-							esc_attr( get_the_date( DATE_W3C ) ),
-							esc_html( get_the_date() )
-						);
-						echo '<div class="posted-on">';
-						printf(
-						/* translators: %s: publish date. */
-							esc_html__( 'Published %s', 'webleximporter' ),
-							$time_string // phpcs:ignore WordPress.Security.EscapeOutput
-						);
-						echo '</div>';
+						// $time_string = sprintf(
+						// $time_string,
+						// esc_attr( get_the_date( DATE_W3C ) ),
+						// esc_html( get_the_date() )
+						// );
+						// echo '<div class="posted-on">';
+						// printf(
+						// /* translators: %s: publish date. */
+						// esc_html__( 'Published %s', 'webleximporter' ),
+						// $time_string // phpcs:ignore WordPress.Security.EscapeOutput
+						// );
+						// echo '</div>';
 
 						?>
 
