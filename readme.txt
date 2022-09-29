@@ -186,4 +186,7 @@ This section describes how to install the plugin and get it working.
 = 0.5.0 =
 * Recent posts widget
 
+= 0.6.0 =
+* Update translations
+
 == Upgrade Notice ==
