@@ -8,8 +8,8 @@
  * @link       https://github.com/19h47/weblex-importer
  * @since      1.0.0
  *
- * @package    WebLex_Importer
- * @subpackage WebLex_Importer/admin/partials
+ * @package    Weblex_Importer
+ * @subpackage Weblex_Importer/admin/partials
  */
 ?>
 

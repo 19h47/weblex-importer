@@ -5,14 +5,14 @@
  * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package    WebLex_Importer
- * @subpackage WebLex_Importer/admin
+ * @package    Weblex_Importer
+ * @subpackage Weblex_Importer/admin
  */
 
 /**
- * Class WebLex_Importer_Import
+ * Class Weblex_Importer_Import
  */
-class WebLex_Importer_Import {
+class Weblex_Importer_Import {
 
 	/**
 	 * The ID of this plugin.
@@ -167,8 +167,8 @@ class WebLex_Importer_Import {
 					}
 				} else {
 					$post = array(
-						'post_type'    => 'weblex-importer-post',
 						'post_title'   => $item->get_title(), // The title of the post.
+						'post_type'    => 'weblex-importer-post',
 						'post_status'  => 'publish',
 						'post_date'    => $item_pub_date, // The time the post was made.
 						'post_excerpt' => $this->get_introduction( $item ),

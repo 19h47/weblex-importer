@@ -5,8 +5,8 @@
  * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package    WebLex_Importer
- * @subpackage WebLex_Importer/admin
+ * @package    Weblex_Importer
+ * @subpackage Weblex_Importer/admin
  */
 
 /**
@@ -15,11 +15,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    WebLex_Importer
- * @subpackage WebLex_Importer/admin
+ * @package    Weblex_Importer
+ * @subpackage Weblex_Importer/admin
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
-class WebLex_Importer_Admin {
+class Weblex_Importer_Admin {
 
 	/**
 	 * The ID of this plugin.
@@ -59,10 +59,10 @@ class WebLex_Importer_Admin {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - WebLex_Importer_Settings. Registers the admin settings and page.
-	 * - WebLex_Importer_Import.
-	 * - WebLex_Importer_Post.
-	 * - WebLex_Importer_Taxonomy.
+	 * - Weblex_Importer_Settings. Registers the admin settings and page.
+	 * - Weblex_Importer_Import.
+	 * - Weblex_Importer_Post.
+	 * - Weblex_Importer_Taxonomy.
 	 *
 	 * @since    0.0.0
 	 * @access   private

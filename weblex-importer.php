@@ -9,13 +9,13 @@
  *
  * @link              https://github.com/19h47/weblex-importer/
  * @since             0.0.0
- * @package           WebLex_Importer
+ * @package           Weblex_Importer
  *
  * @wordpress-plugin
- * Plugin Name:       WebLex Importer
+ * Plugin Name:       Weblex Importer
  * Plugin URI:        https://github.com/19h47/weblex-importer/
- * Description:       Import posts from an WebLex RSS feed.
- * Version:           0.3.3
+ * Description:       Import posts from an Weblex RSS feed.
+ * Version:           0.5.0
  * Author:            Jérémy Levron
  * Author URI:        https://19h47.fr/
  * License:           GPL-2.0+
@@ -39,7 +39,7 @@ define( 'WEBLEX_IMPORTER_DIR_PATH', plugin_dir_path( __FILE__ ) );
  */
 function activate_weblex_importer() {
 	require_once WEBLEX_IMPORTER_DIR_PATH . 'includes/class-weblex-importer-activator.php';
-	WebLex_Importer_Activator::activate();
+	Weblex_Importer_Activator::activate();
 }
 
 
@@ -49,7 +49,7 @@ function activate_weblex_importer() {
  */
 function deactivate_weblex_importer() {
 	require_once WEBLEX_IMPORTER_DIR_PATH . 'includes/class-weblex-importer-deactivator.php';
-	WebLex_Importer_Deactivator::deactivate();
+	Weblex_Importer_Deactivator::deactivate();
 }
 
 
@@ -57,10 +57,10 @@ register_activation_hook( __FILE__, 'activate_weblex_importer' );
 register_deactivation_hook( __FILE__, 'deactivate_weblex_importer' );
 
 
-add_action( 'upgrader_process_complete', 'my_upgrade_function', 10, 2 );
+add_action( 'upgrader_process_complete', 'update_weblex_importer', 10, 2 );
 
 /**
- * Update WebLex Importer
+ * Update Weblex Importer
  *
  * @param WP_Upgrader $upgrader WP_Upgrader instance. In other contexts this might be a Theme_Upgrader, Plugin_Upgrader, Core_Upgrade, or Language_Pack_Upgrader instance.
  * @param array       $hook_extra Array of bulk item update data.
@@ -98,7 +98,7 @@ require WEBLEX_IMPORTER_DIR_PATH . 'includes/class-weblex-importer.php';
 function run_weblex_importer() {
 	require WEBLEX_IMPORTER_DIR_PATH . 'vendor/yahnis-elsts/plugin-update-checker/plugin-update-checker.php';
 
-	$plugin = new WebLex_Importer();
+	$plugin = new Weblex_Importer();
 	$plugin->run();
 
 	$update_checker = Puc_v4_Factory::buildUpdateChecker(

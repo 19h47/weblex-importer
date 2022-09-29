@@ -1,3 +1,3 @@
-# WebLex Importer
+# Weblex Importer
 
-Import posts from a **WebLex** RSS feed.
+Import posts from a **Weblex** RSS feed.

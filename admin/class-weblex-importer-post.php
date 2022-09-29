@@ -5,14 +5,14 @@
  * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package    WebLex_Importer
- * @subpackage WebLex_Importer/admin
+ * @package    Weblex_Importer
+ * @subpackage Weblex_Importer/admin
  */
 
 /**
- * WebLex Importer Post
+ * Weblex Importer Post
  */
-class WebLex_Importer_Post {
+class Weblex_Importer_Post {
 
 	/**
 	 * The ID of this plugin.

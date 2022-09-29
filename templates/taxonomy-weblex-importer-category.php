@@ -4,8 +4,8 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package           WebLex_Importer
- * @subpackage WebLex_Importer/templates
+ * @package           Weblex_Importer
+ * @subpackage Weblex_Importer/templates
  * @since 0.0.11
  */
 

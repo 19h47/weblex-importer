@@ -5,14 +5,14 @@
  * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package    WebLex_Importer
- * @subpackage WebLex_Importer/admin
+ * @package    Weblex_Importer
+ * @subpackage Weblex_Importer/admin
  */
 
 /**
- * WebLex Importer Taxonomies
+ * Weblex Importer Taxonomies
  */
-class WebLex_Importer_Taxonomies {
+class Weblex_Importer_Taxonomies {
 
 	/**
 	 * The ID of this plugin.
@@ -279,7 +279,7 @@ class WebLex_Importer_Taxonomies {
 
 
 	/**
-	 * Pre get WebLex importer posts
+	 * Pre get Weblex importer posts
 	 *
 	 * @param WP_Query $query The WP_Query instance (passed by reference).
 	 */

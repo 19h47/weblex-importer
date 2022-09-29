@@ -5,14 +5,14 @@
  * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package    WebLex_Importer
- * @subpackage WebLex_Importer/admin
+ * @package    Weblex_Importer
+ * @subpackage Weblex_Importer/admin
  */
 
 /**
- * Class WebLex_Importer_Settings
+ * Class Weblex_Importer_Settings
  */
-class WebLex_Importer_Settings {
+class Weblex_Importer_Settings {
 
 	/**
 	 * The ID of this plugin.
@@ -55,8 +55,8 @@ class WebLex_Importer_Settings {
 	 */
 	public function setup_options_page() : void {
 		add_options_page(
-			__( 'WebLex Importer', 'webleximporter' ),
-			__( 'WebLex Importer', 'webleximporter' ),
+			__( 'Weblex Importer', 'webleximporter' ),
+			__( 'Weblex Importer', 'webleximporter' ),
 			'manage_options',
 			'weblex_importer_options',
 			array( $this, 'render_settings_page_content' )
@@ -73,7 +73,7 @@ class WebLex_Importer_Settings {
 		?>
 		<div class="wrap">
 
-			<h2><?php esc_html_e( 'WebLex Importer Options', 'webleximporter' ); ?></h2>
+			<h2><?php esc_html_e( 'Weblex Importer Options', 'webleximporter' ); ?></h2>
 			<?php settings_errors(); ?>
 
 			<form method="post" action="options.php">
@@ -101,7 +101,7 @@ class WebLex_Importer_Settings {
 	public function general_options_callback() {
 		$options = get_option( 'weblex_importer_options' );
 
-		echo '<p>' . esc_html__( 'Enter URLs for WebLex RSS feed.', 'WeblexImporter' ) . '</p>';
+		echo '<p>' . esc_html__( 'Enter URLs for Weblex RSS feed.', 'WeblexImporter' ) . '</p>';
 	}
 
 
@@ -161,7 +161,7 @@ class WebLex_Importer_Settings {
 
 		foreach ( $feeds as $feed ) {
 			add_settings_field(
-				'WebLex_Importer_option_' . $feed['id'],
+				'Weblex_Importer_option_' . $feed['id'],
 				$feed['label'],
 				array( $this, 'save_weblex_feed' ),
 				'weblex_importer_options',
@@ -179,7 +179,7 @@ class WebLex_Importer_Settings {
 
 
 	/**
-	 * Save WebLex feed
+	 * Save Weblex feed
 	 *
 	 * @param array $args Args.
 	 */

@@ -8,8 +8,8 @@
  * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package    WebLex_Importer
- * @subpackage WebLex_Importer/includes
+ * @package    Weblex_Importer
+ * @subpackage Weblex_Importer/includes
  */
 
 /**
@@ -22,11 +22,11 @@
  * version of the plugin.
  *
  * @since      0.0.0
- * @package    WebLex_Importer
- * @subpackage WebLex_Importer/includes
+ * @package    Weblex_Importer
+ * @subpackage Weblex_Importer/includes
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
-class WebLex_Importer {
+class Weblex_Importer {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -34,7 +34,7 @@ class WebLex_Importer {
 	 *
 	 * @since    0.0.0
 	 * @access   protected
-	 * @var      WebLex_Importer_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Weblex_Importer_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -75,6 +75,7 @@ class WebLex_Importer {
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
+		$this->define_includes_hooks();
 		$this->define_public_hooks();
 	}
 
@@ -84,10 +85,10 @@ class WebLex_Importer {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - WebLex_Importer_Loader. Orchestrates the hooks of the plugin.
-	 * - WebLex_Importer_i18n. Defines internationalization functionality.
-	 * - WebLex_Importer_Admin. Defines all hooks for the admin area.
-	 * - WebLex_Importer_Public. Defines all hooks for the public side of the site.
+	 * - Weblex_Importer_Loader. Orchestrates the hooks of the plugin.
+	 * - Weblex_Importer_i18n. Defines internationalization functionality.
+	 * - Weblex_Importer_Admin. Defines all hooks for the admin area.
+	 * - Weblex_Importer_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -96,6 +97,11 @@ class WebLex_Importer {
 	 * @access   private
 	 */
 	private function load_dependencies() {
+
+		/**
+		 * The class responsible for defining all actions related to the includes functionality.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-weblex-importer-includes.php';
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
@@ -120,14 +126,19 @@ class WebLex_Importer {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-weblex-importer-public.php';
 
-		$this->loader = new WebLex_Importer_Loader();
+		/**
+		 * This is a sample custom widget.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/widgets/class-weblex-importer-widget-recent-posts.php';
+
+		$this->loader = new Weblex_Importer_Loader();
 	}
 
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the WebLex_Importer_i18n class in order to set the domain and to register the hook
+	 * Uses the Weblex_Importer_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    0.0.0
@@ -135,7 +146,7 @@ class WebLex_Importer {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new WebLex_Importer_I18n();
+		$plugin_i18n = new Weblex_Importer_I18n();
 		$plugin_i18n->set_domain( 'webleximporter' );
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
@@ -152,11 +163,11 @@ class WebLex_Importer {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin      = new WebLex_Importer_Admin( $this->get_plugin_name(), $this->get_version() );
-		$plugin_settings   = new WebLex_Importer_Settings( $this->get_plugin_name(), $this->get_version() );
-		$plugin_import     = new WebLex_Importer_Import( $this->get_plugin_name(), $this->get_version() );
-		$plugin_post       = new WebLex_Importer_Post( $this->get_plugin_name(), $this->get_version() );
-		$plugin_taxonomies = new WebLex_Importer_Taxonomies( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin      = new Weblex_Importer_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_settings   = new Weblex_Importer_Settings( $this->get_plugin_name(), $this->get_version() );
+		$plugin_import     = new Weblex_Importer_Import( $this->get_plugin_name(), $this->get_version() );
+		$plugin_post       = new Weblex_Importer_Post( $this->get_plugin_name(), $this->get_version() );
+		$plugin_taxonomies = new Weblex_Importer_Taxonomies( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -184,6 +195,19 @@ class WebLex_Importer {
 
 
 	/**
+	 * Register all of the hooks related to the includes functionality of the plugin.
+	 *
+	 * @since    0.5.0
+	 * @access   private
+	 */
+	private function define_includes_hooks() {
+		$plugin_includes = new Weblex_Importer_Includes( $this->get_plugin_name(), $this->get_version() );
+
+		$this->loader->add_action( 'widgets_init', $plugin_includes, 'register_widgets' );
+	}
+
+
+	/**
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
 	 *
@@ -192,8 +216,8 @@ class WebLex_Importer {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public          = new WebLex_Importer_Public( $this->get_plugin_name(), $this->get_version() );
-		$plugin_template_loader = new WebLex_Importer_Template_Loader( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public          = new Weblex_Importer_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_template_loader = new Weblex_Importer_Template_Loader( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -229,7 +253,7 @@ class WebLex_Importer {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     0.0.0
-	 * @return    WebLex_Importer_Loader    Orchestrates the hooks of the plugin.
+	 * @return    Weblex_Importer_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

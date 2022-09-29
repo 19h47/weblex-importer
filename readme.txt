@@ -1,4 +1,4 @@
-=== WebLex Importer ===
+=== Weblex Importer ===
 Contributors: 19h47
 Tags: rss, importer
 Requires at least: 5.8
@@ -7,7 +7,7 @@ Requires PHP: 7.3.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Import posts from a WebLex RSS feed.
+Import posts from a Weblex RSS feed.
 
 == Description ==
 
@@ -179,5 +179,11 @@ This section describes how to install the plugin and get it working.
 
 = 0.3.3 =
 * Hierachical tag
+
+= 0.4.0 =
+* WebLex to Weblex
+
+= 0.5.0 =
+* Recent posts widget
 
 == Upgrade Notice ==

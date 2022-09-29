@@ -5,8 +5,8 @@
  * @link       https://github.com/19h47/weblex-importer/
  * @since      0.0.0
  *
- * @package    WebLex_Importer
- * @subpackage WebLex_Importer/public
+ * @package    Weblex_Importer
+ * @subpackage Weblex_Importer/public
  */
 
 /**
@@ -15,11 +15,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    WebLex_Importer
- * @subpackage WebLex_Importer/public
+ * @package    Weblex_Importer
+ * @subpackage Weblex_Importer/public
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
-class WebLex_Importer_Public {
+class Weblex_Importer_Public {
 
 	/**
 	 * The ID of this plugin.
@@ -77,10 +77,10 @@ class WebLex_Importer_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in WebLex_Importer_Loader as all of the hooks are defined
+		 * defined in Weblex_Importer_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The WebLex_Importer_Loader will then create the relationship
+		 * The Weblex_Importer_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
@@ -100,10 +100,10 @@ class WebLex_Importer_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in WebLex_Importer_Loader as all of the hooks are defined
+		 * defined in Weblex_Importer_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The WebLex_Importer_Loader will then create the relationship
+		 * The Weblex_Importer_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */

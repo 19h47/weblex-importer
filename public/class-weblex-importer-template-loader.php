@@ -19,7 +19,7 @@
  * @subpackage WeblexImporter/public
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
-class WebLex_Importer_Template_Loader {
+class Weblex_Importer_Template_Loader {
 
 	/**
 	 * The ID of this plugin.

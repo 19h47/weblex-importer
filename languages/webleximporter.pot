@@ -1,7 +1,7 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: WebLex Importer\n"
+"Project-Id-Version: Weblex Importer\n"
 "POT-Creation-Date: 2022-09-12 11:03+0200\n"
 "PO-Revision-Date: 2021-08-23 15:27+0200\n"
 "Last-Translator: \n"
@@ -266,15 +266,15 @@ msgstr ""
 #. Plugin Name of the plugin/theme
 #: admin/class-weblex-importer-settings.php:58
 #: admin/class-weblex-importer-settings.php:59
-msgid "WebLex Importer"
+msgid "Weblex Importer"
 msgstr ""
 
 #: admin/class-weblex-importer-settings.php:76
-msgid "WebLex Importer Options"
+msgid "Weblex Importer Options"
 msgstr ""
 
 #: admin/class-weblex-importer-settings.php:104
-msgid "Enter URLs for WebLex RSS feed."
+msgid "Enter URLs for Weblex RSS feed."
 msgstr ""
 
 #: admin/class-weblex-importer-settings.php:118
@@ -617,7 +617,7 @@ msgid "https://github.com/19h47/weblex-importer/"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Import posts from an WebLex RSS feed."
+msgid "Import posts from an Weblex RSS feed."
 msgstr ""
 
 #. Author of the plugin/theme
