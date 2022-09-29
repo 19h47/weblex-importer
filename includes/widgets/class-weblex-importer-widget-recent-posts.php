@@ -46,7 +46,7 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 			$args['widget_id'] = $this->id;
 		}
 
-		$default_title = __( 'Recent Posts' );
+		$default_title = __( 'Recent Posts', 'webleximporter' );
 		$title         = ( ! empty( $instance['title'] ) ) ? $instance['title'] : $default_title;
 
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
