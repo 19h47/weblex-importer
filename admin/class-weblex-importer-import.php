@@ -108,7 +108,7 @@ class Weblex_Importer_Import {
 
 		if ( ! is_wp_error( $rss ) ) {
 			$title   = $rss->get_title();
-			$term_id = $this->get_tag_by_name( $title );
+			$term_id = $this->get_tag_by_name( sanitize_title( $title ) );
 
 			foreach ( $rss->get_items( 0, $rss->get_item_quantity( 0 ) ) as $item ) {
 				$item_id       = md5( serialize( $item->data ) );
@@ -227,11 +227,13 @@ class Weblex_Importer_Import {
 	 *
 	 * @param string $name Term name.
 	 *
+	 * @see https://developer.wordpress.org/reference/functions/get_term_by/
+	 *
 	 * @since    0.0.0
 	 * @return int
 	 */
 	private function get_tag_by_name( string $name ) : int {
-		$term = get_term_by( 'name', $name, 'weblex-importer-tag' );
+		$term = get_term_by( 'slug', $name, 'weblex-importer-tag' );
 
 		if ( false === $term ) {
 			$term = wp_insert_term( $name, 'weblex-importer-tag' );

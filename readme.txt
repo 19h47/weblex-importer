@@ -190,6 +190,9 @@ This section describes how to install the plugin and get it working.
 * Update translations
 
 = 0.6.1 =
-* missing translation
+* Missing translation
+
+= 0.7.0 =
+* Fix get_tag_by_name (get term by slug instead of name)
 
 == Upgrade Notice ==
