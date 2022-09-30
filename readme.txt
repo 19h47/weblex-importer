@@ -195,4 +195,7 @@ This section describes how to install the plugin and get it working.
 = 0.7.0 =
 * Fix get_tag_by_name (get term by slug instead of name)
 
+= 0.8.0 =
+* Show thumbnail in Recent posts widget
+
 == Upgrade Notice ==

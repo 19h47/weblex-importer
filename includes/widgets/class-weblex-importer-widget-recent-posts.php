@@ -56,7 +56,8 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 		if ( ! $number ) {
 			$number = 5;
 		}
-		$show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
+		$show_date      = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
+		$show_thumbnail = isset( $instance['show_thumbnail'] ) ? $instance['show_thumbnail'] : false;
 
 		$r = new WP_Query(
 			/**
@@ -120,9 +121,51 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 				}
 				?>
 				<li>
-					<a href="<?php the_permalink( $recent_post->ID ); ?>"<?php echo esc_attr( $aria_current ); ?>><?php echo esc_html( $title ); ?></a>
-					<?php if ( $show_date ) : ?>
-						<span class="post-date"><?php echo get_the_date( '', $recent_post->ID ); ?></span>
+					<?php if ( $show_thumbnail ) : ?>
+						<article 
+							id="<?php echo esc_attr( $recent_post->post_type ); ?>-<?php echo esc_attr( $recent_post->ID ); ?>"
+							class="<?php echo esc_attr( implode( ' ', get_post_class( '', $recent_post->ID ) ) ); ?>"
+						>
+							<?php echo wp_kses_post( get_the_post_thumbnail( $recent_post->ID ) ); ?>
+							
+							<header class="entry-header">
+								<h2 class="entry-title">
+									<?php echo esc_html( $title ); ?>
+								</h2>
+							</header>
+
+							<div class="entry-content"><?php echo wp_kses_post( get_the_excerpt( $recent_post->ID ) ); ?></div>
+
+							<div class="entry-footer">
+								<?php if ( has_term( '', 'weblex-importer-tag', $recent_post->ID ) ) : ?>
+									<?php
+									printf(
+										/* translators: %s: list of tags. */
+										'<span class="tags-links">' . esc_html__( 'Tagged as %s', 'webleximporter' ) . ' </span>',
+										get_the_term_list( $recent_post->ID, 'weblex-importer-tag', '', ', ' )
+									);
+									?>
+								<?php endif ?>
+								
+								<?php if ( has_term( '', 'weblex-importer-category', $recent_post->ID ) ) : ?>
+									<?php
+									printf(
+										/* translators: %s: list of categories. */
+										'<span class="cat-links">' . esc_html__( 'Categorized as %s', 'webleximporter' ) . ' </span>',
+										get_the_term_list( $recent_post->ID, 'weblex-importer-category', '', ', ' )
+									);
+									?>
+								<?php endif ?>
+							</div>
+
+						</article>
+					<?php else : ?>
+						<a href="<?php the_permalink( $recent_post->ID ); ?>"<?php echo esc_attr( $aria_current ); ?>>
+							<?php echo esc_html( $title ); ?>
+						</a>
+						<?php if ( $show_date ) : ?>
+							<span class="post-date"><?php echo get_the_date( '', $recent_post->ID ); ?></span>
+						<?php endif; ?>
 					<?php endif; ?>
 				</li>
 			<?php endforeach; ?>
@@ -147,10 +190,12 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 	 * @return array Updated settings to save.
 	 */
 	public function update( $new_instance, $old_instance ) {
-		$instance              = $old_instance;
-		$instance['title']     = sanitize_text_field( $new_instance['title'] );
-		$instance['number']    = (int) $new_instance['number'];
-		$instance['show_date'] = isset( $new_instance['show_date'] ) ? (bool) $new_instance['show_date'] : false;
+		$instance                   = $old_instance;
+		$instance['title']          = sanitize_text_field( $new_instance['title'] );
+		$instance['number']         = (int) $new_instance['number'];
+		$instance['show_date']      = isset( $new_instance['show_date'] ) ? (bool) $new_instance['show_date'] : false;
+		$instance['show_thumbnail'] = isset( $new_instance['show_thumbnail'] ) ? (bool) $new_instance['show_thumbnail'] : false;
+
 		return $instance;
 	}
 
@@ -162,9 +207,10 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 	 * @param array $instance Current settings.
 	 */
 	public function form( $instance ) {
-		$title     = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
-		$number    = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
-		$show_date = isset( $instance['show_date'] ) ? (bool) $instance['show_date'] : false;
+		$title          = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
+		$number         = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
+		$show_date      = isset( $instance['show_date'] ) ? (bool) $instance['show_date'] : false;
+		$show_thumbnail = isset( $instance['show_thumbnail'] ) ? (bool) $instance['show_thumbnail'] : false;
 		?>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
@@ -206,6 +252,19 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 				<?php esc_html_e( 'Display post date?', 'webleximporter' ); ?>
 			</label>
 		</p>
+
+		<p>
+			<input 
+				class="checkbox" 
+				type="checkbox"<?php checked( $show_thumbnail ); ?> 
+				id="<?php echo esc_attr( $this->get_field_id( 'show_thumbnail' ) ); ?>" 
+				name="<?php echo esc_attr( $this->get_field_name( 'show_thumbnail' ) ); ?>" 
+			/>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'show_thumbnail' ) ); ?>">
+				<?php esc_html_e( 'Display thumbnail?', 'webleximporter' ); ?>
+			</label>
+		</p>
+		
 		<?php
 	}
 }
