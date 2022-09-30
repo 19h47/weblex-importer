@@ -164,10 +164,11 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 									<?php endif ?>
 
 									<?php if ( has_term( '', 'weblex-importer-category', $recent_post->ID ) ) : ?>
+										<?php $categories = get_the_terms( $recent_post->ID, 'weblex-importer-category' ); ?>
 										<?php
 										printf(
 											/* translators: %s: list of categories. */
-											'<p style="margin: 0;" class="cat-links">' . esc_html__( 'Categorized as %s', 'webleximporter' ) . ' </p>',
+											'<p style="margin: 0;" class="cat-links">' . esc_html( _n( 'Categorized as %s', 'Categorized as %s', count( $categories ), 'webleximporter' ) ) . ' </p>',
 											get_the_term_list( $recent_post->ID, 'weblex-importer-category', '', ', ' )
 										);
 										?>

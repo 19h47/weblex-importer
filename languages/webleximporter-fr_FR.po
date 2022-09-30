@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weblex Importer\n"
-"POT-Creation-Date: 2022-09-30 13:33+0200\n"
-"PO-Revision-Date: 2022-09-30 13:35+0200\n"
+"POT-Creation-Date: 2022-09-30 13:42+0200\n"
+"PO-Revision-Date: 2022-09-30 13:43+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -669,24 +669,26 @@ msgid "Tagged as %s"
 msgstr "Marqué comme %s"
 
 #. translators: %s: list of categories.
-#: includes/widgets/class-weblex-importer-widget-recent-posts.php:170
+#: includes/widgets/class-weblex-importer-widget-recent-posts.php:171
 #, php-format
 msgid "Categorized as %s"
-msgstr "Classé dans la catégorie %s"
+msgid_plural "Categorized as %s"
+msgstr[0] "Classé dans la catégorie %s"
+msgstr[1] "Classé dans les catégories %s"
 
-#: includes/widgets/class-weblex-importer-widget-recent-posts.php:236
+#: includes/widgets/class-weblex-importer-widget-recent-posts.php:237
 msgid "Title:"
 msgstr "Titre :"
 
-#: includes/widgets/class-weblex-importer-widget-recent-posts.php:249
+#: includes/widgets/class-weblex-importer-widget-recent-posts.php:250
 msgid "Number of posts to show:"
 msgstr "Nombre d’articles à afficher :"
 
-#: includes/widgets/class-weblex-importer-widget-recent-posts.php:271
+#: includes/widgets/class-weblex-importer-widget-recent-posts.php:272
 msgid "Display post date?"
 msgstr "Afficher la date de l'article ?"
 
-#: includes/widgets/class-weblex-importer-widget-recent-posts.php:283
+#: includes/widgets/class-weblex-importer-widget-recent-posts.php:284
 msgid "Display thumbnail?"
 msgstr "Afficher l’image mise en avant ?"
 
