@@ -109,7 +109,7 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 		}
 		?>
 
-		<<?php echo esc_attr( $show_thumbnail ? 'div' : 'ul' ); ?> <?php echo $show_thumbnail ? 'style="list-style-type: none; display: flex; flex-wrap: wrap; row-gap: 30px; margi-right: -1rem; margin-left: -1rem;"' : ''; ?>>
+		<<?php echo esc_attr( $show_thumbnail ? 'div' : 'ul' ); ?> <?php echo $show_thumbnail ? 'style="display: flex; flex-wrap: wrap; row-gap: 30px; margi-right: -1rem; margin-left: -1rem;"' : ''; ?>>
 			<?php foreach ( $r->posts as $recent_post ) : ?>
 				<?php
 				$post_title   = get_the_title( $recent_post->ID );
@@ -136,35 +136,44 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 								</figure>
 							<?php endif ?>
 							
-							<header class="entry-header">
-								<h3 class="entry-title">
-									<?php echo esc_html( $title ); ?>
-								</h3>
+							<header 
+								class="entry-header" 
+								style="<?php has_post_thumbnail( $recent_post->ID ) ? 'margin-top: 1.5rem;"' : ''; ?>"
+							>
+								<h2 class="entry-title" style="font-size: 1.5rem;">
+									<a href="<?php echo esc_url( get_the_permalink( $recent_post->ID ) ); ?>">
+										<?php echo esc_html( $title ); ?>
+									</a>
+								</h2>
 							</header>
 
-							<div class="entry-content"><?php echo wp_kses_post( get_the_excerpt( $recent_post->ID ) ); ?></div>
-
-							<div class="entry-footer">
-								<?php if ( has_term( '', 'weblex-importer-tag', $recent_post->ID ) ) : ?>
-									<?php
-									printf(
-										/* translators: %s: list of tags. */
-										'<span class="tags-links">' . esc_html__( 'Tagged as %s', 'webleximporter' ) . ' </span>',
-										get_the_term_list( $recent_post->ID, 'weblex-importer-tag', '', ', ' )
-									);
-									?>
-								<?php endif ?>
-								
-								<?php if ( has_term( '', 'weblex-importer-category', $recent_post->ID ) ) : ?>
-									<?php
-									printf(
-										/* translators: %s: list of categories. */
-										'<span class="cat-links">' . esc_html__( 'Categorized as %s', 'webleximporter' ) . ' </span>',
-										get_the_term_list( $recent_post->ID, 'weblex-importer-category', '', ', ' )
-									);
-									?>
-								<?php endif ?>
+							<div class="entry-content" style="font-size: 0.875rem;">
+								<?php echo wp_kses_post( get_the_excerpt( $recent_post->ID ) ); ?>
 							</div>
+							
+							<?php if ( has_term( '', 'weblex-importer-tag', $recent_post->ID ) or has_term( '', 'weblex-importer-category', $recent_post->ID ) ) : ?>
+								<div class="entry-footer" style="font-size: 0.875rem; margin-top: 0.5rem;">
+									<?php if ( has_term( '', 'weblex-importer-tag', $recent_post->ID ) ) : ?>
+										<?php
+										printf(
+											/* translators: %s: list of tags. */
+											'<p style="margin: 0;" class="tags-links">' . esc_html__( 'Tagged as %s', 'webleximporter' ) . ' </p>',
+											get_the_term_list( $recent_post->ID, 'weblex-importer-tag', '', ', ' )
+										);
+										?>
+									<?php endif ?>
+									
+									<?php if ( has_term( '', 'weblex-importer-category', $recent_post->ID ) ) : ?>
+										<?php
+										printf(
+											/* translators: %s: list of categories. */
+											'<p style="margin: 0;" class="cat-links">' . esc_html__( 'Categorized as %s', 'webleximporter' ) . ' </p>',
+											get_the_term_list( $recent_post->ID, 'weblex-importer-category', '', ', ' )
+										);
+										?>
+									<?php endif ?>
+								</div>
+							<?php endif ?>
 
 						</article>
 					</div>
