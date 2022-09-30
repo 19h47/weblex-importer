@@ -204,4 +204,7 @@ This section describes how to install the plugin and get it working.
 = 0.8.2 =
 * Fix
 
+= 0.8.3 =
+* Fix
+
 == Upgrade Notice ==
