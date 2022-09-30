@@ -198,4 +198,7 @@ This section describes how to install the plugin and get it working.
 = 0.8.0 =
 * Show thumbnail in Recent posts widget
 
+= 0.8.1 =
+* Fix
+
 == Upgrade Notice ==

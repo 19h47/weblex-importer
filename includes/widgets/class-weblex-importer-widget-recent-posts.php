@@ -109,7 +109,7 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 		}
 		?>
 
-		<ul>
+		<<?php echo esc_attr( $show_thumbnail ? 'div' : 'ul' ); ?> <?php echo $show_thumbnail ? 'style="list-style-type: none; display: flex; flex-wrap: wrap; row-gap: 30px; margi-right: -1rem; margin-left: -1rem;' : ''; ?>>
 			<?php foreach ( $r->posts as $recent_post ) : ?>
 				<?php
 				$post_title   = get_the_title( $recent_post->ID );
@@ -120,18 +120,26 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 					$aria_current = ' aria-current="page"';
 				}
 				?>
-				<li>
-					<?php if ( $show_thumbnail ) : ?>
+
+				<?php if ( $show_thumbnail ) : ?>
+					<div style="padding-top: 1rem; padding-bottom: 1rem; width: <?php echo esc_attr( round( 100 / $number, 8 ) ); ?>%;">
 						<article 
 							id="<?php echo esc_attr( $recent_post->post_type ); ?>-<?php echo esc_attr( $recent_post->ID ); ?>"
 							class="<?php echo esc_attr( implode( ' ', get_post_class( '', $recent_post->ID ) ) ); ?>"
+							style=""
 						>
-							<?php echo wp_kses_post( get_the_post_thumbnail( $recent_post->ID ) ); ?>
+							<?php if ( has_post_thumbnail( $recent_post->ID ) ) : ?>
+								<figure class="post-thumbnail">
+									<a href="<?php echo esc_url( get_the_permalink( $recent_post->ID ) ); ?>">
+										<?php echo wp_kses_post( get_the_post_thumbnail( $recent_post->ID ) ); ?>
+									</a>
+								</figure>
+							<?php endif ?>
 							
 							<header class="entry-header">
-								<h2 class="entry-title">
+								<h3 class="entry-title">
 									<?php echo esc_html( $title ); ?>
-								</h2>
+								</h3>
 							</header>
 
 							<div class="entry-content"><?php echo wp_kses_post( get_the_excerpt( $recent_post->ID ) ); ?></div>
@@ -159,17 +167,20 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 							</div>
 
 						</article>
-					<?php else : ?>
+					</div>
+				<?php else : ?>
+					<li>
 						<a href="<?php the_permalink( $recent_post->ID ); ?>"<?php echo esc_attr( $aria_current ); ?>>
 							<?php echo esc_html( $title ); ?>
 						</a>
 						<?php if ( $show_date ) : ?>
 							<span class="post-date"><?php echo get_the_date( '', $recent_post->ID ); ?></span>
 						<?php endif; ?>
-					<?php endif; ?>
-				</li>
+					</li>
+				<?php endif; ?>
+				
 			<?php endforeach; ?>
-		</ul>
+		</<?php echo esc_attr( $show_thumbnail ? 'div' : 'ul' ); ?>>
 
 		<?php
 		if ( 'html5' === $format ) {
