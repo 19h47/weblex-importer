@@ -138,7 +138,7 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 							
 							<header 
 								class="entry-header" 
-								style="<?php has_post_thumbnail( $recent_post->ID ) ? 'margin-top: 1.5rem;"' : ''; ?>"
+								style="<?php echo has_post_thumbnail( $recent_post->ID ) ? 'margin-top: 1.5rem;"' : ''; ?>"
 							>
 								<h2 class="entry-title" style="font-size: 1.5rem;">
 									<a href="<?php echo esc_url( get_the_permalink( $recent_post->ID ) ); ?>">
@@ -147,7 +147,7 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 								</h2>
 							</header>
 
-							<div class="entry-content" style="font-size: 0.875rem;">
+							<div class="entry-content" style="font-size: 0.875rem; margin-top: 1.5rem;">
 								<?php echo wp_kses_post( get_the_excerpt( $recent_post->ID ) ); ?>
 							</div>
 							
