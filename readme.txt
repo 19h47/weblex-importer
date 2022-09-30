@@ -220,4 +220,7 @@ This section describes how to install the plugin and get it working.
 = 0.8.7 =
 * i18n
 
+= 0.8.8 =
+* i18n
+
 == Upgrade Notice ==

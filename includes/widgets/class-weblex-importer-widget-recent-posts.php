@@ -109,7 +109,7 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 		}
 		?>
 
-		<<?php echo esc_attr( $show_thumbnail ? 'div' : 'ul' ); ?> <?php echo $show_thumbnail ? 'style="display: flex; flex-wrap: wrap; row-gap: 30px; margi-right: -1rem; margin-left: -1rem;"' : ''; ?>>
+		<<?php echo esc_attr( $show_thumbnail ? 'div' : 'ul' ); ?> <?php echo $show_thumbnail ? 'style="display: flex; flex-wrap: wrap; row-gap: 30px; margin-right: -1rem; margin-left: -1rem;"' : ''; ?>>
 			<?php foreach ( $r->posts as $recent_post ) : ?>
 				<?php
 				$post_title   = get_the_title( $recent_post->ID );
@@ -122,7 +122,7 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 				?>
 
 				<?php if ( $show_thumbnail ) : ?>
-					<div style="padding-right: 1rem; padding-left: 1rem; width: <?php echo esc_attr( round( 100 / $number, 8 ) ); ?>%;">
+					<div style="padding-right: 1rem; padding-left: 1rem; width: <?php echo esc_attr( round( 100 / 3, 8 ) ); ?>%;">
 						<article 
 							id="<?php echo esc_attr( $recent_post->post_type ); ?>-<?php echo esc_attr( $recent_post->ID ); ?>"
 							class="<?php echo esc_attr( implode( ' ', get_post_class( '', $recent_post->ID ) ) ); ?>"
