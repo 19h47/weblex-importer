@@ -109,7 +109,7 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 		}
 		?>
 
-		<<?php echo esc_attr( $show_thumbnail ? 'div' : 'ul' ); ?> <?php echo $show_thumbnail ? 'style="list-style-type: none; display: flex; flex-wrap: wrap; row-gap: 30px; margi-right: -1rem; margin-left: -1rem;' : ''; ?>>
+		<<?php echo esc_attr( $show_thumbnail ? 'div' : 'ul' ); ?> <?php echo $show_thumbnail ? 'style="list-style-type: none; display: flex; flex-wrap: wrap; row-gap: 30px; margi-right: -1rem; margin-left: -1rem;"' : ''; ?>>
 			<?php foreach ( $r->posts as $recent_post ) : ?>
 				<?php
 				$post_title   = get_the_title( $recent_post->ID );
