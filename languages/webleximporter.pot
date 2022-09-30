@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weblex Importer\n"
-"POT-Creation-Date: 2022-09-29 10:49+0200\n"
+"POT-Creation-Date: 2022-09-30 13:30+0200\n"
 "PO-Revision-Date: 2021-08-23 15:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -22,19 +22,19 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 
-#: admin/class-weblex-importer-import.php:371
+#: admin/class-weblex-importer-import.php:373
 msgid "Invalid post"
 msgstr ""
 
-#: admin/class-weblex-importer-import.php:375
+#: admin/class-weblex-importer-import.php:377
 msgid "Insert URL"
 msgstr ""
 
-#: admin/class-weblex-importer-import.php:384
+#: admin/class-weblex-importer-import.php:386
 msgid "Invalid image URL"
 msgstr ""
 
-#: admin/class-weblex-importer-import.php:409
+#: admin/class-weblex-importer-import.php:411
 msgid "Problem to set post thumbnail"
 msgstr ""
 
@@ -658,20 +658,36 @@ msgstr ""
 msgid "Recent Posts"
 msgstr ""
 
-#: includes/widgets/class-weblex-importer-widget-recent-posts.php:115
+#: includes/widgets/class-weblex-importer-widget-recent-posts.php:116
 msgid "(no title)"
 msgstr ""
 
-#: includes/widgets/class-weblex-importer-widget-recent-posts.php:171
+#. translators: %s: list of tags.
+#: includes/widgets/class-weblex-importer-widget-recent-posts.php:160
+#, php-format
+msgid "Tagged as %s"
+msgstr ""
+
+#. translators: %s: list of categories.
+#: includes/widgets/class-weblex-importer-widget-recent-posts.php:170
+#, php-format
+msgid "Categorized as %s"
+msgstr ""
+
+#: includes/widgets/class-weblex-importer-widget-recent-posts.php:237
 msgid "Title:"
 msgstr ""
 
-#: includes/widgets/class-weblex-importer-widget-recent-posts.php:184
+#: includes/widgets/class-weblex-importer-widget-recent-posts.php:250
 msgid "Number of posts to show:"
 msgstr ""
 
-#: includes/widgets/class-weblex-importer-widget-recent-posts.php:206
+#: includes/widgets/class-weblex-importer-widget-recent-posts.php:272
 msgid "Display post date?"
+msgstr ""
+
+#: includes/widgets/class-weblex-importer-widget-recent-posts.php:284
+msgid "Display thumbnail?"
 msgstr ""
 
 #. translators: %s: publish date.

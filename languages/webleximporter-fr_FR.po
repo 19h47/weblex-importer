@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weblex Importer\n"
-"POT-Creation-Date: 2022-09-29 10:49+0200\n"
-"PO-Revision-Date: 2022-09-29 10:50+0200\n"
+"POT-Creation-Date: 2022-09-30 13:33+0200\n"
+"PO-Revision-Date: 2022-09-30 13:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -22,19 +22,19 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 
-#: admin/class-weblex-importer-import.php:371
+#: admin/class-weblex-importer-import.php:373
 msgid "Invalid post"
 msgstr "Article non valide"
 
-#: admin/class-weblex-importer-import.php:375
+#: admin/class-weblex-importer-import.php:377
 msgid "Insert URL"
 msgstr "Insérer une URL"
 
-#: admin/class-weblex-importer-import.php:384
+#: admin/class-weblex-importer-import.php:386
 msgid "Invalid image URL"
 msgstr "URL de l'image invalide"
 
-#: admin/class-weblex-importer-import.php:409
+#: admin/class-weblex-importer-import.php:411
 msgid "Problem to set post thumbnail"
 msgstr "Problème pour définir l’image mise en avant"
 
@@ -350,11 +350,11 @@ msgstr "Activités populaires"
 
 #: admin/class-weblex-importer-taxonomies.php:80
 msgid "Edit Activity"
-msgstr ""
+msgstr "Modifier l'activité"
 
 #: admin/class-weblex-importer-taxonomies.php:81
 msgid "View Activity"
-msgstr ""
+msgstr "Voir l'activité"
 
 #: admin/class-weblex-importer-taxonomies.php:82
 msgid "Update Activity"
@@ -386,7 +386,7 @@ msgstr "Aucune activité trouvée."
 
 #: admin/class-weblex-importer-taxonomies.php:89
 msgid "No activities"
-msgstr ""
+msgstr "Aucune activités"
 
 #: admin/class-weblex-importer-taxonomies.php:90
 msgid "Activities list navigation"
@@ -648,7 +648,7 @@ msgstr "&larr; Retour aux mots clefs"
 
 #: includes/widgets/class-weblex-importer-widget-recent-posts.php:25
 msgid "Your site&#8217;s most recent Weblex Posts."
-msgstr ""
+msgstr "Les publications Weblex les plus récentes de votre site."
 
 #: includes/widgets/class-weblex-importer-widget-recent-posts.php:30
 msgid "Weblex Importer Recent Posts"
@@ -658,21 +658,37 @@ msgstr "Articles récents de Weblex"
 msgid "Recent Posts"
 msgstr "Articles récents"
 
-#: includes/widgets/class-weblex-importer-widget-recent-posts.php:115
+#: includes/widgets/class-weblex-importer-widget-recent-posts.php:116
 msgid "(no title)"
 msgstr "(aucun titre)"
 
-#: includes/widgets/class-weblex-importer-widget-recent-posts.php:171
+#. translators: %s: list of tags.
+#: includes/widgets/class-weblex-importer-widget-recent-posts.php:160
+#, php-format
+msgid "Tagged as %s"
+msgstr "Marqué comme %s"
+
+#. translators: %s: list of categories.
+#: includes/widgets/class-weblex-importer-widget-recent-posts.php:170
+#, php-format
+msgid "Categorized as %s"
+msgstr "Classé dans la catégorie %s"
+
+#: includes/widgets/class-weblex-importer-widget-recent-posts.php:236
 msgid "Title:"
 msgstr "Titre :"
 
-#: includes/widgets/class-weblex-importer-widget-recent-posts.php:184
+#: includes/widgets/class-weblex-importer-widget-recent-posts.php:249
 msgid "Number of posts to show:"
 msgstr "Nombre d’articles à afficher :"
 
-#: includes/widgets/class-weblex-importer-widget-recent-posts.php:206
+#: includes/widgets/class-weblex-importer-widget-recent-posts.php:271
 msgid "Display post date?"
 msgstr "Afficher la date de l'article ?"
+
+#: includes/widgets/class-weblex-importer-widget-recent-posts.php:283
+msgid "Display thumbnail?"
+msgstr "Afficher l’image mise en avant ?"
 
 #. translators: %s: publish date.
 #: templates/taxonomy-weblex-importer-activity.php:64

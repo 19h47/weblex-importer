@@ -101,7 +101,7 @@ class Weblex_Importer_Settings {
 	public function general_options_callback() {
 		$options = get_option( 'weblex_importer_options' );
 
-		echo '<p>' . esc_html__( 'Enter URLs for Weblex RSS feed.', 'WeblexImporter' ) . '</p>';
+		echo '<p>' . esc_html__( 'Enter URLs for Weblex RSS feed.', 'webleximporter' ) . '</p>';
 	}
 
 

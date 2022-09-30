@@ -135,7 +135,7 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 									</a>
 								</figure>
 							<?php endif ?>
-							
+
 							<header 
 								class="entry-header" 
 								style="<?php echo has_post_thumbnail( $recent_post->ID ) ? 'margin-top: 1.5rem;"' : ''; ?>"
@@ -150,8 +150,8 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 							<div class="entry-content" style="font-size: 0.875rem; margin-top: 1.5rem;">
 								<?php echo wp_kses_post( get_the_excerpt( $recent_post->ID ) ); ?>
 							</div>
-							
-							<?php if ( has_term( '', 'weblex-importer-tag', $recent_post->ID ) or has_term( '', 'weblex-importer-category', $recent_post->ID ) ) : ?>
+
+							<?php if ( has_term( '', 'weblex-importer-tag', $recent_post->ID ) || has_term( '', 'weblex-importer-category', $recent_post->ID ) ) : ?>
 								<div class="entry-footer" style="font-size: 0.875rem; margin-top: 0.5rem;">
 									<?php if ( has_term( '', 'weblex-importer-tag', $recent_post->ID ) ) : ?>
 										<?php
@@ -162,7 +162,7 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 										);
 										?>
 									<?php endif ?>
-									
+
 									<?php if ( has_term( '', 'weblex-importer-category', $recent_post->ID ) ) : ?>
 										<?php
 										printf(
@@ -187,7 +187,6 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 						<?php endif; ?>
 					</li>
 				<?php endif; ?>
-				
 			<?php endforeach; ?>
 		</<?php echo esc_attr( $show_thumbnail ? 'div' : 'ul' ); ?>>
 
@@ -284,7 +283,6 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 				<?php esc_html_e( 'Display thumbnail?', 'webleximporter' ); ?>
 			</label>
 		</p>
-		
 		<?php
 	}
 }
