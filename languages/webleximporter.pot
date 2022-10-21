@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weblex Importer\n"
-"POT-Creation-Date: 2022-09-30 13:43+0200\n"
+"POT-Creation-Date: 2022-10-21 12:10+0200\n"
 "PO-Revision-Date: 2021-08-23 15:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -22,19 +22,19 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 
-#: admin/class-weblex-importer-import.php:373
+#: admin/class-weblex-importer-import.php:377
 msgid "Invalid post"
 msgstr ""
 
-#: admin/class-weblex-importer-import.php:377
+#: admin/class-weblex-importer-import.php:381
 msgid "Insert URL"
 msgstr ""
 
-#: admin/class-weblex-importer-import.php:386
+#: admin/class-weblex-importer-import.php:390
 msgid "Invalid image URL"
 msgstr ""
 
-#: admin/class-weblex-importer-import.php:411
+#: admin/class-weblex-importer-import.php:415
 msgid "Problem to set post thumbnail"
 msgstr ""
 
@@ -260,6 +260,7 @@ msgid "post updated."
 msgstr ""
 
 #: admin/class-weblex-importer-post.php:278
+#: admin/class-weblex-importer-settings.php:179
 msgid "Post"
 msgstr ""
 
@@ -324,6 +325,10 @@ msgstr ""
 
 #: admin/class-weblex-importer-settings.php:157
 msgid "Le Quiz Hebdo"
+msgstr ""
+
+#: admin/class-weblex-importer-settings.php:184
+msgid "Import Weblex posts as WordPress posts"
 msgstr ""
 
 #: admin/class-weblex-importer-taxonomies.php:75
