@@ -74,17 +74,16 @@ class Weblex_Importer_Settings {
 		<div class="wrap">
 
 			<h2><?php esc_html_e( 'Weblex Importer Options', 'webleximporter' ); ?></h2>
-			<?php settings_errors(); ?>
 
 			<form method="post" action="options.php">
-			<?php
+				<?php
 
-			settings_fields( 'weblex_importer_options' );
-			do_settings_sections( 'weblex_importer_options' );
+				do_settings_sections( 'weblex_importer_options' );
+				settings_fields( 'weblex_importer_options' );
 
-			submit_button();
+				submit_button();
 
-			?>
+				?>
 			</form>
 
 		</div><!-- /.wrap -->
@@ -98,10 +97,19 @@ class Weblex_Importer_Settings {
 	 * It's called from the 'wppb-demo_initialize_theme_options' function by being passed as a parameter
 	 * in the add_settings_section function.
 	 */
-	public function general_options_callback() {
-		$options = get_option( 'weblex_importer_options' );
-
+	public function feeds_options_callback() {
 		echo '<p>' . esc_html__( 'Enter URLs for Weblex RSS feed.', 'webleximporter' ) . '</p>';
+	}
+
+
+	/**
+	 * This function provides a simple description for the General Options page.
+	 *
+	 * It's called from the 'wppb-demo_initialize_theme_options' function by being passed as a parameter
+	 * in the add_settings_section function.
+	 */
+	public function general_options_callback() {
+		echo '<p>' . esc_html__( 'General options.', 'webleximporter' ) . '</p>';
 	}
 
 
@@ -112,11 +120,10 @@ class Weblex_Importer_Settings {
 	 * This function is registered with the 'admin_init' hook.
 	 */
 	public function initialize_display_options() {
-
 		add_settings_section(
-			'general_settings_section',                 // ID used to identify this section and with which to register options.
+			'feeds_settings_section',                 // ID used to identify this section and with which to register options.
 			__( 'RSS feeds', 'webleximporter' ),         // Title to be displayed on the administration page.
-			array( $this, 'general_options_callback' ), // Callback used to render the description of the section.
+			array( $this, 'feeds_options_callback' ), // Callback used to render the description of the section.
 			'weblex_importer_options'                   // Page on which to add this section of options.
 		);
 
@@ -165,7 +172,7 @@ class Weblex_Importer_Settings {
 				$feed['label'],
 				array( $this, 'save_weblex_feed_input' ),
 				'weblex_importer_options',
-				'general_settings_section',
+				'feeds_settings_section',
 				array(
 					'description' => $feed['description'],
 					'id'          => $feed['id'],
@@ -174,12 +181,19 @@ class Weblex_Importer_Settings {
 			);
 		}
 
+		add_settings_section(
+			'general_settings_section',                 // Slug-name to identify the section. Used in the 'id' attribute of tags.
+			__( 'Options', 'webleximporter' ),          // Formatted title of the section. Shown as the heading for the section.
+			array( $this, 'general_options_callback' ), // Function that echos out any content at the top of the section (between heading and fields).
+			'weblex_importer_options'                   // The slug-name of the settings page on which to show the section. Built-in pages include 'general', 'reading', 'writing', 'discussion', 'media', etc.
+		);
+
 		add_settings_field(
-			'Weblex_Importer_option_post',
-			__( 'Post', 'webleximporter' ),
-			array( $this, 'save_weblex_feed_checkbox' ),
-			'weblex_importer_options',
-			'general_settings_section',
+			'weblex_importer_post', // Slug-name to identify the field. Used in the 'id' attribute of tags.
+			__( 'Post', 'webleximporter' ), // Formatted title of the field. Shown as the label for the field during output.
+			array( $this, 'save_weblex_feed_checkbox' ), // Function that fills the field with the desired form inputs. The function should echo its output.
+			'weblex_importer_options', // The slug-name of the settings page on which to show the section (general, reading, writing, ...).
+			'general_settings_section', // The slug-name of the section of the settings page in which to show the box.
 			array(
 				'description' => __( 'Import Weblex posts as WordPress posts', 'webleximporter' ),
 				'id'          => 'post',
@@ -187,6 +201,7 @@ class Weblex_Importer_Settings {
 		);
 
 		register_setting( 'weblex_importer_options', 'weblex_importer_options' );
+		register_setting( 'weblex_importer_options', 'weblex_importer_feeds' );
 	}
 
 
@@ -196,8 +211,9 @@ class Weblex_Importer_Settings {
 	 * @param array $args Args.
 	 */
 	public function save_weblex_feed_input( array $args ) {
-		$options = get_option( 'weblex_importer_options' );
-		$term    = $this->get_tag( $args['slug'] );
+		$options   = get_option( 'weblex_importer_options' );
+		$term      = $this->get_tag( $args['slug'] );
+		$post_type = weblex_importer_get_post_type();
 
 		include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/weblex-importer-admin-input.php';
 	}

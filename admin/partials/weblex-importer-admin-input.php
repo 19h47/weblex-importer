@@ -28,9 +28,17 @@
 	value="<?php echo esc_attr( gmdate( 'Y-m-d H:i:s' ) ); ?>"
 >
 
-<?php if ( $term ) { ?>
+<?php if ( $term && 'weblex-importer-post' === $post_type ) { ?>
 	<p class="description">
 		<a href="<?php echo esc_url( get_term_link( $term->term_id, 'weblex-importer-tag' ) ); ?>" target="_blank">
+			<?php echo esc_html( $args['description'] ); ?>
+		</a>
+	</p>
+<?php } ?>
+
+<?php if ( $term && 'post' === $post_type ) { ?>
+	<p class="description">
+		<a href="<?php echo esc_url( get_category_link( $term->term_id ) ); ?>" target="_blank">
 			<?php echo esc_html( $args['description'] ); ?>
 		</a>
 	</p>

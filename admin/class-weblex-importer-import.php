@@ -118,9 +118,9 @@ class Weblex_Importer_Import {
 				$post_activities = $this->get_activities( $item );
 				$post_keywords   = $this->get_keywords( $item );
 
-				$post_type = '0' === get_option( 'weblex_importer_options' )['post'] ? 'weblex-importer-post' : 'post';
-				$category  = '0' === get_option( 'weblex_importer_options' )['post'] ? 'weblex-importer-post' : 'category';
-				$tag       = '0' === get_option( 'weblex_importer_options' )['post'] ? 'weblex-importer-post' : 'post_tag';
+				$post_type = weblex_importer_get_post_type();
+				$category  = 'weblex-importer-post' === weblex_importer_get_post_type() ? 'weblex-importer-category' : 'post_tag';
+				$tag       = 'weblex-importer-post' === weblex_importer_get_post_type() ? 'weblex-importer-tag' : 'category';
 
 				$query = new WP_Query(
 					array(
