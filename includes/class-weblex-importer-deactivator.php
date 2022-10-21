@@ -30,5 +30,19 @@ class Weblex_Importer_Deactivator {
 	 */
 	public static function deactivate() {
 		wp_clear_scheduled_hook( 'weblex_importer_cron_import' );
+
+		$weblex_importer_posts = get_posts(
+			array(
+				'post_type'           => 'weblex-importer-post',
+				'posts_per_page'      => -1,
+				'no_found_rows'       => true,
+				'ignore_sticky_posts' => true,
+				'suppress_filters'    => true,
+			)
+		);
+
+		foreach ( $weblex_importer_posts as $post ) {
+			wp_delete_post( $post->ID, true );
+		}
 	}
 }

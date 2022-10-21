@@ -111,16 +111,20 @@ class Weblex_Importer_Import {
 			$term_id = $this->get_tag_by_name( sanitize_title( $title ) );
 
 			foreach ( $rss->get_items( 0, $rss->get_item_quantity( 0 ) ) as $item ) {
-				$item_id       = md5( serialize( $item->data ) );
+				$item_id       = md5( serialize( $item->data ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
 				$item_pub_date = gmdate( $item->get_date( 'Y-m-d H:i:s' ) );
 
 				$post_tags       = $this->extract_categories( $item->get_categories() );
 				$post_activities = $this->get_activities( $item );
 				$post_keywords   = $this->get_keywords( $item );
 
+				$post_type = '0' === get_option( 'weblex_importer_options' )['post'] ? 'weblex-importer-post' : 'post';
+				$category  = '0' === get_option( 'weblex_importer_options' )['post'] ? 'weblex-importer-post' : 'category';
+				$tag       = '0' === get_option( 'weblex_importer_options' )['post'] ? 'weblex-importer-post' : 'post_tag';
+
 				$query = new WP_Query(
 					array(
-						'post_type'              => 'weblex-importer-post',
+						'post_type'              => $post_type,
 						'meta_key'               => 'weblex-importer-id', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
 						'meta_value'             => $item_id, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
 						'no_found_rows'          => true,
@@ -157,8 +161,8 @@ class Weblex_Importer_Import {
 								wp_set_object_terms( $updated_post_id, $post_keywords, 'weblex-importer-keyword', false );
 							}
 
-							wp_set_object_terms( $updated_post_id, $term_id, 'weblex-importer-tag', false );
-							wp_set_object_terms( $updated_post_id, $post_tags, 'weblex-importer-category', false );
+							wp_set_object_terms( $updated_post_id, $term_id, $tag, false );
+							wp_set_object_terms( $updated_post_id, $post_tags, $category, false );
 						}
 
 						if ( $this->get_image_url( $item ) ) {
@@ -168,7 +172,7 @@ class Weblex_Importer_Import {
 				} else {
 					$post = array(
 						'post_title'   => $item->get_title(), // The title of the post.
-						'post_type'    => 'weblex-importer-post',
+						'post_type'    => $post_type,
 						'post_status'  => 'publish',
 						'post_date'    => $item_pub_date, // The time the post was made.
 						'post_excerpt' => $this->get_introduction( $item ),
@@ -189,8 +193,8 @@ class Weblex_Importer_Import {
 							wp_set_object_terms( $inserted_post_id, $post_keywords, 'weblex-importer-keyword', false );
 						}
 
-						wp_set_object_terms( $inserted_post_id, $term_id, 'weblex-importer-tag', true );
-						wp_set_object_terms( $inserted_post_id, $post_tags, 'weblex-importer-category', false );
+						wp_set_object_terms( $inserted_post_id, $term_id, $tag, true );
+						wp_set_object_terms( $inserted_post_id, $post_tags, $category, false );
 
 						update_post_meta( $inserted_post_id, 'weblex-importer-id', $item_id );
 					}

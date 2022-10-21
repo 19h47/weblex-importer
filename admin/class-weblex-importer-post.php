@@ -184,18 +184,18 @@ class Weblex_Importer_Post {
 		);
 
 		$messages[ $this->post_type ] = array(
-			0 => '', // Unused. Messages start at index 1.
-			1 => __( 'Post updated.', 'webleximporter' ) . $view_link_html,
-			2 => __( 'Custom field updated.', 'webleximporter' ),
-			3 => __( 'Custom field deleted.', 'webleximporter' ),
-			4 => __( 'Post updated.', 'webleximporter' ),
+			0  => '', // Unused. Messages start at index 1.
+			1  => __( 'Post updated.', 'webleximporter' ) . $view_link_html,
+			2  => __( 'Custom field updated.', 'webleximporter' ),
+			3  => __( 'Custom field deleted.', 'webleximporter' ),
+			4  => __( 'Post updated.', 'webleximporter' ),
 			/* translators: %s: date and time of the revision */
-		5  => isset( $_GET['revision'] ) ? sprintf( __( 'Post restored to revision from %s.', 'webleximporter' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false, // phpcs:ignore
-		6     => __( 'Post published.', 'webleximporter' ) . $view_link_html,
-		7     => __( 'Post saved.', 'webleximporter' ),
-		8     => __( 'Post submitted.', 'webleximporter' ) . $preview_link_html,
-		9  => sprintf( __( 'Post scheduled for: %s.', 'webleximporter' ), '<strong>' . $scheduled_date . '</strong>' ) . $scheduled_link_html, // phpcs:ignore
-		10    => __( 'Post draft updated.', 'webleximporter' ) . $preview_link_html,
+		    5  => isset( $_GET['revision'] ) ? sprintf( __( 'Post restored to revision from %s.', 'webleximporter' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false, // phpcs:ignore
+			6  => __( 'Post published.', 'webleximporter' ) . $view_link_html,
+			7  => __( 'Post saved.', 'webleximporter' ),
+			8  => __( 'Post submitted.', 'webleximporter' ) . $preview_link_html,
+		    9  => sprintf( __( 'Post scheduled for: %s.', 'webleximporter' ), '<strong>' . $scheduled_date . '</strong>' ) . $scheduled_link_html, // phpcs:ignore
+			10 => __( 'Post draft updated.', 'webleximporter' ) . $preview_link_html,
 		);
 
 		return $messages;

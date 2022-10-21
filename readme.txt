@@ -223,4 +223,7 @@ This section describes how to install the plugin and get it working.
 = 0.8.8 =
 * i18n
 
+= 1.0.0 =
+* Option to import post as WordPress post
+
 == Upgrade Notice ==

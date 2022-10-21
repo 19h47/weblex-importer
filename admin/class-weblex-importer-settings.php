@@ -161,9 +161,9 @@ class Weblex_Importer_Settings {
 
 		foreach ( $feeds as $feed ) {
 			add_settings_field(
-				'Weblex_Importer_option_' . $feed['id'],
+				'weblex_importer_option_' . $feed['id'],
 				$feed['label'],
-				array( $this, 'save_weblex_feed' ),
+				array( $this, 'save_weblex_feed_input' ),
 				'weblex_importer_options',
 				'general_settings_section',
 				array(
@@ -174,20 +174,44 @@ class Weblex_Importer_Settings {
 			);
 		}
 
+		add_settings_field(
+			'Weblex_Importer_option_post',
+			__( 'Post', 'webleximporter' ),
+			array( $this, 'save_weblex_feed_checkbox' ),
+			'weblex_importer_options',
+			'general_settings_section',
+			array(
+				'description' => __( 'Import Weblex posts as WordPress posts', 'webleximporter' ),
+				'id'          => 'post',
+			)
+		);
+
 		register_setting( 'weblex_importer_options', 'weblex_importer_options' );
 	}
 
 
 	/**
-	 * Save Weblex feed
+	 * Save Weblex feed input
 	 *
 	 * @param array $args Args.
 	 */
-	public function save_weblex_feed( array $args ) {
+	public function save_weblex_feed_input( array $args ) {
 		$options = get_option( 'weblex_importer_options' );
 		$term    = $this->get_tag( $args['slug'] );
 
 		include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/weblex-importer-admin-input.php';
+	}
+
+
+	/**
+	 * Save Weblex feed checkbox
+	 *
+	 * @param array $args Args.
+	 */
+	public function save_weblex_feed_checkbox( array $args ) {
+		$options = get_option( 'weblex_importer_options' );
+
+		include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/weblex-importer-admin-checkbox.php';
 	}
 
 
