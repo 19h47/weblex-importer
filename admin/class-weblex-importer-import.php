@@ -85,8 +85,12 @@ class Weblex_Importer_Import {
 	 * @return void
 	 */
 	public function update_options( $old_value, $value, $option ) : void {
+		if ( $value['post'] !== $old_value['post'] ) {
+			return;
+		}
+
 		foreach ( $value as $key => $v ) {
-			if ( '' !== $v['url'] ) {
+			if ( '' !== $v['url'] && $old_value[ $key ]['date'] !== $v['date'] ) {
 				$this->fetch( $v['url'] );
 			}
 		}

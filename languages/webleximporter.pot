@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weblex Importer\n"
-"POT-Creation-Date: 2022-10-21 12:10+0200\n"
+"POT-Creation-Date: 2022-10-21 14:27+0200\n"
 "PO-Revision-Date: 2021-08-23 15:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -22,19 +22,19 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 
-#: admin/class-weblex-importer-import.php:377
+#: admin/class-weblex-importer-import.php:381
 msgid "Invalid post"
 msgstr ""
 
-#: admin/class-weblex-importer-import.php:381
+#: admin/class-weblex-importer-import.php:385
 msgid "Insert URL"
 msgstr ""
 
-#: admin/class-weblex-importer-import.php:390
+#: admin/class-weblex-importer-import.php:394
 msgid "Invalid image URL"
 msgstr ""
 
-#: admin/class-weblex-importer-import.php:415
+#: admin/class-weblex-importer-import.php:419
 msgid "Problem to set post thumbnail"
 msgstr ""
 
@@ -260,7 +260,7 @@ msgid "post updated."
 msgstr ""
 
 #: admin/class-weblex-importer-post.php:278
-#: admin/class-weblex-importer-settings.php:179
+#: admin/class-weblex-importer-settings.php:193
 msgid "Post"
 msgstr ""
 
@@ -274,60 +274,68 @@ msgstr ""
 msgid "Weblex Importer Options"
 msgstr ""
 
-#: admin/class-weblex-importer-settings.php:104
+#: admin/class-weblex-importer-settings.php:101
 msgid "Enter URLs for Weblex RSS feed."
 msgstr ""
 
-#: admin/class-weblex-importer-settings.php:118
+#: admin/class-weblex-importer-settings.php:112
+msgid "General options."
+msgstr ""
+
+#: admin/class-weblex-importer-settings.php:125
 msgid "RSS feeds"
 msgstr ""
 
-#: admin/class-weblex-importer-settings.php:126
+#: admin/class-weblex-importer-settings.php:133
 msgid "Actualités"
 msgstr ""
 
-#: admin/class-weblex-importer-settings.php:127
+#: admin/class-weblex-importer-settings.php:134
 msgid "Les actualités"
 msgstr ""
 
-#: admin/class-weblex-importer-settings.php:132
-#: admin/class-weblex-importer-settings.php:133
+#: admin/class-weblex-importer-settings.php:139
+#: admin/class-weblex-importer-settings.php:140
 msgid "L'agenda fiscal et social"
 msgstr ""
 
-#: admin/class-weblex-importer-settings.php:138
+#: admin/class-weblex-importer-settings.php:145
 msgid "Fiches"
 msgstr ""
 
-#: admin/class-weblex-importer-settings.php:139
+#: admin/class-weblex-importer-settings.php:146
 msgid "Les fiches pratiques"
 msgstr ""
 
-#: admin/class-weblex-importer-settings.php:144
+#: admin/class-weblex-importer-settings.php:151
 msgid "Indicateurs"
 msgstr ""
 
-#: admin/class-weblex-importer-settings.php:145
+#: admin/class-weblex-importer-settings.php:152
 msgid "Les indicateurs chiffres et barèmes"
 msgstr ""
 
-#: admin/class-weblex-importer-settings.php:150
+#: admin/class-weblex-importer-settings.php:157
 msgid "La petite Histoire du Jour"
 msgstr ""
 
-#: admin/class-weblex-importer-settings.php:151
+#: admin/class-weblex-importer-settings.php:158
 msgid "La petite histoire du jour"
 msgstr ""
 
-#: admin/class-weblex-importer-settings.php:156
+#: admin/class-weblex-importer-settings.php:163
 msgid "Quiz Hebdo"
 msgstr ""
 
-#: admin/class-weblex-importer-settings.php:157
+#: admin/class-weblex-importer-settings.php:164
 msgid "Le Quiz Hebdo"
 msgstr ""
 
-#: admin/class-weblex-importer-settings.php:184
+#: admin/class-weblex-importer-settings.php:186
+msgid "Options"
+msgstr ""
+
+#: admin/class-weblex-importer-settings.php:198
 msgid "Import Weblex posts as WordPress posts"
 msgstr ""
 

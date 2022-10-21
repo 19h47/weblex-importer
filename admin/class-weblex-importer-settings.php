@@ -239,7 +239,7 @@ class Weblex_Importer_Settings {
 	public function get_tag( $slug ) {
 		$term = '';
 
-		if ( is_array( $slug ) ) {
+		if ( is_array( $slug ) && 'weblex-importer-post' === weblex_importer_get_post_type() ) {
 			foreach ( $slug as $s ) {
 				$term = get_term_by( 'slug', sanitize_title( $s ), 'weblex-importer-tag' );
 
@@ -247,10 +247,18 @@ class Weblex_Importer_Settings {
 					return $term;
 				}
 			}
-
-			return $term;
 		}
 
-		return get_term_by( 'slug', sanitize_title( $slug ), 'weblex-importer-tag' );
+		if ( is_array( $slug ) && 'post' === weblex_importer_get_post_type() ) {
+			foreach ( $slug as $s ) {
+				$term = get_term_by( 'slug', sanitize_title( $s ), 'category' );
+
+				if ( is_object( $term ) ) {
+					return $term;
+				}
+			}
+		}
+
+		return $term;
 	}
 }
