@@ -198,7 +198,7 @@ class Weblex_Importer_Import {
 						}
 
 						wp_set_object_terms( $inserted_post_id, $term_id, $tag, true );
-						wp_set_object_terms( $inserted_post_id, $post_tags, $category, false );
+						wp_set_object_terms( $inserted_post_id, array( $post_tags ), $category, false );
 
 						update_post_meta( $inserted_post_id, 'weblex-importer-id', $item_id );
 					}
@@ -223,7 +223,7 @@ class Weblex_Importer_Import {
 		$tags = array();
 
 		foreach ( $categories as $category ) {
-			array_push( $tags, $category->get_term() );
+			array_push( $tags, (int) $category->get_term() );
 		}
 
 		return $tags;
