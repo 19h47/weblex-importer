@@ -247,4 +247,7 @@ This section describes how to install the plugin and get it working.
 = 1.0.7 =
 * Fix
 
+= 1.0.8 =
+* Fix
+
 == Upgrade Notice ==

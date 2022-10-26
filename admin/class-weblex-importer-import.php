@@ -123,8 +123,9 @@ class Weblex_Importer_Import {
 				$post_keywords   = $this->get_keywords( $item );
 
 				$post_type = weblex_importer_get_post_type();
-				$category  = 'weblex-importer-post' === $post_type ? 'weblex-importer-category' : 'category';
-				$tag       = 'weblex-importer-post' === $post_type ? 'weblex-importer-tag' : 'post_tag';
+
+				$tag      = 'weblex-importer-post' === $post_type ? 'weblex-importer-tag' : 'post_tag';
+				$category = 'weblex-importer-post' === $post_type ? 'weblex-importer-category' : 'category';
 
 				$query = new WP_Query(
 					array(
@@ -223,7 +224,7 @@ class Weblex_Importer_Import {
 		$tags = array();
 
 		foreach ( $categories as $category ) {
-			array_push( $tags, (int) $category->get_term() );
+			array_push( $tags, $category->get_term() );
 		}
 
 		return $tags;
