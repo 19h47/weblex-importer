@@ -111,14 +111,14 @@ class Weblex_Importer_Import {
 		$rss = fetch_feed( $url );
 
 		if ( ! is_wp_error( $rss ) ) {
-			$title   = $rss->get_title();
-			$term_id = $this->get_tag_by_name( sanitize_title( $title ) );
+			$title    = $rss->get_title();
+			$post_tag = $this->get_tag_by_name( sanitize_title( $title ) );
 
 			foreach ( $rss->get_items( 0, $rss->get_item_quantity( 0 ) ) as $item ) {
 				$item_id       = md5( serialize( $item->data ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
 				$item_pub_date = gmdate( $item->get_date( 'Y-m-d H:i:s' ) );
 
-				$post_tags       = $this->extract_categories( $item->get_categories() );
+				$post_categories = $this->extract_categories( $item->get_categories() );
 				$post_activities = $this->get_activities( $item );
 				$post_keywords   = $this->get_keywords( $item );
 
@@ -166,8 +166,8 @@ class Weblex_Importer_Import {
 								wp_set_object_terms( $updated_post_id, $post_keywords, 'weblex-importer-keyword', false );
 							}
 
-							wp_set_object_terms( $updated_post_id, $term_id, $tag, false );
-							wp_set_object_terms( $updated_post_id, $post_tags, $category, false );
+							wp_set_object_terms( $updated_post_id, $post_tag, $tag, false );
+							wp_set_object_terms( $updated_post_id, $post_categories, $category, false );
 						}
 
 						if ( $this->get_image_url( $item ) ) {
@@ -198,8 +198,8 @@ class Weblex_Importer_Import {
 							wp_set_object_terms( $inserted_post_id, $post_keywords, 'weblex-importer-keyword', false );
 						}
 
-						wp_set_object_terms( $inserted_post_id, $term_id, $tag, true );
-						wp_set_object_terms( $inserted_post_id, $post_tags, $category, false );
+						wp_set_object_terms( $inserted_post_id, $post_tag, $tag, false );
+						wp_set_object_terms( $inserted_post_id, $post_categories, $category, false );
 
 						update_post_meta( $inserted_post_id, 'weblex-importer-id', $item_id );
 					}
