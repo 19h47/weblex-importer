@@ -253,4 +253,10 @@ This section describes how to install the plugin and get it working.
 = 1.0.9 =
 * Fix
 
+= 1.0.10 =
+* Fix
+
+= 1.0.11 =
+* Fix
+
 == Upgrade Notice ==

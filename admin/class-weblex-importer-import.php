@@ -112,7 +112,7 @@ class Weblex_Importer_Import {
 
 		if ( ! is_wp_error( $rss ) ) {
 			$title    = $rss->get_title();
-			$post_tag = $this->get_tag_by_name( sanitize_title( $title ) );
+			$post_tag = $this->get_tag_by_name( $title );
 
 			foreach ( $rss->get_items( 0, $rss->get_item_quantity( 0 ) ) as $item ) {
 				$item_id       = md5( serialize( $item->data ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
@@ -221,13 +221,20 @@ class Weblex_Importer_Import {
 	 * @return array $tags
 	 */
 	private function extract_categories( $categories ) : array {
-		$tags = array();
+		$post_type = weblex_importer_get_post_type();
+		$terms     = array();
 
 		foreach ( $categories as $category ) {
-			array_push( $tags, $category->get_term() );
+			$term = get_term_by( 'name', $category->get_term(), 'weblex-importer-post' === $post_type ? 'weblex-importer-category' : 'category', ARRAY_A );
+
+			if ( false === $term ) {
+				$term = wp_insert_term( $category->get_term(), 'weblex-importer-post' === $post_type ? 'weblex-importer-category' : 'category' );
+			}
+
+			array_push( $terms, $term['term_id'] );
 		}
 
-		return $tags;
+		return $terms;
 	}
 
 
@@ -243,15 +250,13 @@ class Weblex_Importer_Import {
 	 */
 	private function get_tag_by_name( string $name ) : int {
 		$post_type = weblex_importer_get_post_type();
-		$term      = get_term_by( 'slug', $name, 'weblex-importer-post' === $post_type ? 'weblex-importer-tag' : 'post_tag' );
+		$term      = get_term_by( 'slug', $name, 'weblex-importer-post' === $post_type ? 'weblex-importer-tag' : 'post_tag', ARRAY_A );
 
 		if ( false === $term ) {
 			$term = wp_insert_term( $name, 'weblex-importer-post' === $post_type ? 'weblex-importer-tag' : 'post_tag' );
-
-			return (int) $term['term_id'];
 		}
 
-		return (int) $term->term_id;
+		return (int) $term['term_id'];
 	}
 
 
