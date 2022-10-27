@@ -132,7 +132,7 @@ class Weblex_Importer_Settings {
 				'id'          => 'actus',
 				'label'       => __( 'Actualités', 'webleximporter' ),
 				'description' => __( 'Les actualités', 'webleximporter' ),
-				'slug'        => array( 'Actualités', 'ACTUALITES', 'Les actualités', 'actus', 'actualites' ),
+				'slug'        => array( 'LES ACTUALITES', 'Actualités', 'ACTUALITES', 'Les actualités', 'actus', 'actualites' ),
 			),
 			array(
 				'id'          => 'agenda',
@@ -162,7 +162,7 @@ class Weblex_Importer_Settings {
 				'id'          => 'quiz-hebdo',
 				'label'       => __( 'Quiz Hebdo', 'webleximporter' ),
 				'description' => __( 'Le Quiz Hebdo', 'webleximporter' ),
-				'slug'        => array( 'LE QUIZ HEBDO', 'Le Quiz Hebdo', 'quiz-hebdo', 'le-quiz-hebdo' ),
+				'slug'        => array( 'LE QUIZ HEBDO', 'Le quiz hebdo', 'Le Quiz Hebdo', 'quiz-hebdo', 'le-quiz-hebdo' ),
 			),
 		);
 
