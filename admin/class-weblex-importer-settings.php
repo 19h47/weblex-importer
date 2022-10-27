@@ -162,7 +162,7 @@ class Weblex_Importer_Settings {
 				'id'          => 'quiz-hebdo',
 				'label'       => __( 'Quiz Hebdo', 'webleximporter' ),
 				'description' => __( 'Le Quiz Hebdo', 'webleximporter' ),
-				'slug'        => array( 'Le Quiz Hebdo', 'quiz-hebdo', 'le-quiz-hebdo' ),
+				'slug'        => array( 'LE QUIZ HEBDO', 'Le Quiz Hebdo', 'quiz-hebdo', 'le-quiz-hebdo' ),
 			),
 		);
 
