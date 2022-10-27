@@ -308,10 +308,12 @@ class Weblex_Importer_Post {
 	public function delete_attachment( int $postid, WP_Post $post ) {
 		$post_type = get_post_type( $postid );
 
-		if ( has_post_thumbnail( $postid ) && $post_type === $this->post_type ) {
+		if ( has_post_thumbnail( $postid ) && weblex_importer_get_post_type() === $post_type && metadata_exists( weblex_importer_get_post_type(), $postid, 'weblex-importer-id' ) ) {
 			$attachment_id = get_post_thumbnail_id( $postid );
 
-			wp_delete_attachment( $attachment_id, true );
+			if ( $attachment_id ) {
+				wp_delete_attachment( $attachment_id, true );
+			}
 		}
 	}
 }

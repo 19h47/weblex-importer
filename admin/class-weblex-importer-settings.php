@@ -251,7 +251,7 @@ class Weblex_Importer_Settings {
 
 		if ( is_array( $slug ) && 'post' === weblex_importer_get_post_type() ) {
 			foreach ( $slug as $s ) {
-				$term = get_term_by( 'slug', sanitize_title( $s ), 'category' );
+				$term = get_term_by( 'slug', sanitize_title( $s ), 'post_tag' );
 
 				if ( is_object( $term ) ) {
 					return $term;

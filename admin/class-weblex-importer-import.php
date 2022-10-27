@@ -108,21 +108,21 @@ class Weblex_Importer_Import {
 	 * @return void
 	 */
 	public function fetch( $url ) : void {
-		$rss = fetch_feed( $url );
+		$post_type = weblex_importer_get_post_type();
+		$rss       = fetch_feed( $url );
+		$quntity   = 'weblex-importer-post' === $post_type ? $rss->get_item_quantity( 0 ) : 400;
 
 		if ( ! is_wp_error( $rss ) ) {
 			$title    = $rss->get_title();
 			$post_tag = $this->get_tag_by_name( $title );
 
-			foreach ( $rss->get_items( 0, $rss->get_item_quantity( 0 ) ) as $item ) {
+			foreach ( $rss->get_items( 0, $quntity ) as $item ) {
 				$item_id       = md5( serialize( $item->data ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
 				$item_pub_date = gmdate( $item->get_date( 'Y-m-d H:i:s' ) );
 
 				$post_categories = $this->extract_categories( $item->get_categories() );
 				$post_activities = $this->get_activities( $item );
 				$post_keywords   = $this->get_keywords( $item );
-
-				$post_type = weblex_importer_get_post_type();
 
 				$tag      = 'weblex-importer-post' === $post_type ? 'weblex-importer-tag' : 'post_tag';
 				$category = 'weblex-importer-post' === $post_type ? 'weblex-importer-category' : 'category';
