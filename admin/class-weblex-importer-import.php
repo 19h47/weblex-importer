@@ -110,13 +110,14 @@ class Weblex_Importer_Import {
 	public function fetch( $url ) : void {
 		$post_type = weblex_importer_get_post_type();
 		$rss       = fetch_feed( $url );
-		$quntity   = 'weblex-importer-post' === $post_type ? $rss->get_item_quantity( 0 ) : 400;
 
 		if ( ! is_wp_error( $rss ) ) {
+			$quantity = 'weblex-importer-post' === $post_type ? $rss->get_item_quantity( 0 ) : 400;
+
 			$title    = $rss->get_title();
 			$post_tag = $this->get_tag_by_name( $title );
 
-			foreach ( $rss->get_items( 0, $quntity ) as $item ) {
+			foreach ( $rss->get_items( 0, $quantity ) as $item ) {
 				$item_id       = md5( serialize( $item->data ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
 				$item_pub_date = gmdate( $item->get_date( 'Y-m-d H:i:s' ) );
 
