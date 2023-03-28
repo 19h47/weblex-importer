@@ -132,13 +132,13 @@ class Weblex_Importer_Settings {
 				'id'          => 'actus',
 				'label'       => __( 'Actualités', 'webleximporter' ),
 				'description' => __( 'Les actualités', 'webleximporter' ),
-				'slug'        => array( 'LES ACTUALITES', 'Actualités', 'ACTUALITES', 'Les actualités', 'actus', 'actualites' ),
+				'slug'        => array( 'NRCO ||| LES ACTUALITES', 'LES ACTUALITES', 'Actualités', 'ACTUALITES', 'Les actualités', 'actus', 'actualites' ),
 			),
 			array(
 				'id'          => 'agenda',
 				'label'       => __( "L'agenda fiscal et social", 'webleximporter' ),
 				'description' => __( "L'agenda fiscal et social", 'webleximporter' ),
-				'slug'        => array( "L'AGENDA", 'AGENDA', 'L’agenda fiscal et social', "L'agenda fiscal et social", "L'agenda fiscal et social", 'agenda' ),
+				'slug'        => array( 'NRCO ||| AGENDA', "L'AGENDA", 'AGENDA', 'L’agenda fiscal et social', "L'agenda fiscal et social", "L'agenda fiscal et social", 'agenda' ),
 			),
 			array(
 				'id'          => 'fiches',
@@ -150,19 +150,19 @@ class Weblex_Importer_Settings {
 				'id'          => 'indicateurs',
 				'label'       => __( 'Indicateurs', 'webleximporter' ),
 				'description' => __( 'Les indicateurs chiffres et barèmes', 'webleximporter' ),
-				'slug'        => array( 'LES INDICATEURS', 'INDICATEURS, CHIFFRES ET BAREMES', 'Les indicateurs chiffres et barèmes', 'indicateurs' ),
+				'slug'        => array( 'NRCO ||| LES INDICATEURS', 'LES INDICATEURS', 'INDICATEURS, CHIFFRES ET BAREMES', 'Les indicateurs chiffres et barèmes', 'indicateurs' ),
 			),
 			array(
 				'id'          => 'phdj',
 				'label'       => __( 'La petite Histoire du Jour', 'webleximporter' ),
 				'description' => __( 'La petite histoire du jour', 'webleximporter' ),
-				'slug'        => array( 'LA PETITE HISTOIRE DU JOUR', 'La petite histoire du jour', 'petite-histoire-du-jour' ),
+				'slug'        => array( 'NRCO ||| LA PETITE HISTOIRE DU JOUR', 'LA PETITE HISTOIRE DU JOUR', 'La petite histoire du jour', 'petite-histoire-du-jour' ),
 			),
 			array(
 				'id'          => 'quiz-hebdo',
 				'label'       => __( 'Quiz Hebdo', 'webleximporter' ),
 				'description' => __( 'Le Quiz Hebdo', 'webleximporter' ),
-				'slug'        => array( 'LE QUIZ HEBDO', 'Le quiz hebdo', 'Le Quiz Hebdo', 'quiz-hebdo', 'le-quiz-hebdo' ),
+				'slug'        => array( 'NRCO ||| LE QUIZ HEBDO', 'LE QUIZ HEBDO', 'Le quiz hebdo', 'Le Quiz Hebdo', 'quiz-hebdo', 'le-quiz-hebdo' ),
 			),
 		);
 

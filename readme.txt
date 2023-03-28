@@ -271,4 +271,7 @@ This section describes how to install the plugin and get it working.
 = 1.0.15 =
 * Fix get_activities method
 
+= 1.0.16 =
+* Add NR-CO tag names
+
 == Upgrade Notice ==
