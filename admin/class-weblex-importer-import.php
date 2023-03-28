@@ -303,6 +303,10 @@ class Weblex_Importer_Import {
 			return $activites;
 		}
 
+		if ( is_null( $item->get_item_tags( '', 'activites' )[0]['child']['']['activite'] ) ) {
+			return $activites;
+		}
+
 		return array_map(
 			function( $activite ) {
 				return $activite['data'];
