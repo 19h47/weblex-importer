@@ -138,7 +138,7 @@ class Weblex_Importer_Settings {
 				'id'          => 'agenda',
 				'label'       => __( "L'agenda fiscal et social", 'webleximporter' ),
 				'description' => __( "L'agenda fiscal et social", 'webleximporter' ),
-				'slug'        => array( 'NRCO ||| AGENDA', "L'AGENDA", 'AGENDA', 'L’agenda fiscal et social', "L'agenda fiscal et social", "L'agenda fiscal et social", 'agenda' ),
+				'slug'        => array( 'NRCO ||| AGENDA', "L'AGENDA", 'L’agenda', 'AGENDA', 'L’agenda fiscal et social', "L'agenda fiscal et social", "L'agenda fiscal et social", 'agenda' ),
 			),
 			array(
 				'id'          => 'fiches',
@@ -150,7 +150,7 @@ class Weblex_Importer_Settings {
 				'id'          => 'indicateurs',
 				'label'       => __( 'Indicateurs', 'webleximporter' ),
 				'description' => __( 'Les indicateurs chiffres et barèmes', 'webleximporter' ),
-				'slug'        => array( 'NRCO ||| LES INDICATEURS', 'LES INDICATEURS', 'INDICATEURS, CHIFFRES ET BAREMES', 'Les indicateurs chiffres et barèmes', 'indicateurs' ),
+				'slug'        => array( 'NRCO ||| LES INDICATEURS', 'Les indicateurs', 'LES INDICATEURS', 'INDICATEURS, CHIFFRES ET BAREMES', 'Les indicateurs chiffres et barèmes', 'indicateurs' ),
 			),
 			array(
 				'id'          => 'phdj',
