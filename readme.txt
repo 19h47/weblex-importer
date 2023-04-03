@@ -277,4 +277,7 @@ This section describes how to install the plugin and get it working.
 = 1.0.17 =
 * Add tag name 
 
+= 1.0.18 =
+* Deenqueue empty CSS file
+
 == Upgrade Notice ==

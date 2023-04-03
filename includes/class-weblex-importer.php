@@ -221,7 +221,7 @@ class Weblex_Importer {
 		$plugin_public          = new Weblex_Importer_Public( $this->get_plugin_name(), $this->get_version() );
 		$plugin_template_loader = new Weblex_Importer_Template_Loader( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
+		// $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
 		$this->loader->add_filter( 'template_include', $plugin_template_loader, 'template_loader', 10, 1 );
