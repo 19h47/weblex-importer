@@ -15,7 +15,7 @@
  * Plugin Name:       Weblex Importer
  * Plugin URI:        https://github.com/19h47/weblex-importer/
  * Description:       Import posts from an Weblex RSS feed.
- * Version:           1.0.18
+ * Version:           1.0.19
  * Author:            Jérémy Levron
  * Author URI:        https://19h47.fr/
  * License:           GPL-2.0+
@@ -85,7 +85,11 @@ function update_weblex_importer( WP_Upgrader $upgrader, array $hook_extra ) {
  * @return string Default 'post'.
  */
 function weblex_importer_get_post_type() : string {
-	$post_type = get_option( 'weblex_importer_options' )['post'];
+	$post_type = get_option( 'weblex_importer_options' );
+
+	if ( ! array_key_exists( 'post', $post_type ) ) {
+		return 'weblex-importer-post';
+	}
 
 	if ( null === $post_type || '0' === $post_type ) {
 		return 'weblex-importer-post';
