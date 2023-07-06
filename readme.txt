@@ -283,4 +283,7 @@ This section describes how to install the plugin and get it working.
 = 1.0.19 =
 * Check if option post exist
 
+= 1.0.20 =
+* Check if option post type exist
+
 == Upgrade Notice ==
