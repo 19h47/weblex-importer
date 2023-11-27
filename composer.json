@@ -1,5 +1,8 @@
 {
-    "require": {
-        "yahnis-elsts/plugin-update-checker": "^4.11"
-    }
+  "name": "19h47/wordpress-plugin",
+  "description": "Import posts from a Weblex RSS feed.",
+  "type": "wordpress-plugin",
+  "require": {
+      "yahnis-elsts/plugin-update-checker": "^4.11"
+  }
 }
