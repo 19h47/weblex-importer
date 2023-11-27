@@ -2,6 +2,7 @@
   "name": "19h47/wordpress-plugin",
   "description": "Import posts from a Weblex RSS feed.",
   "type": "wordpress-plugin",
+  "version": "1.0.20",
   "require": {
       "yahnis-elsts/plugin-update-checker": "^4.11"
   }
