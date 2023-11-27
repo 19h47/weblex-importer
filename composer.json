@@ -1,5 +1,12 @@
 {
   "name": "19h47/wordpress-plugin",
+  "extra": {
+      "installer-paths": {
+          "web/app/plugins/{$name}/": [
+              "type:wordpress-plugin"
+          ]
+      },
+  },
   "description": "Import posts from a Weblex RSS feed.",
   "type": "wordpress-plugin",
   "version": "1.0.20",
