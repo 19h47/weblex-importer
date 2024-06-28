@@ -30,6 +30,8 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
 define( 'WEBLEX_IMPORTER_DIR_PATH', plugin_dir_path( __FILE__ ) );
 
 /**
@@ -124,7 +126,7 @@ function run_weblex_importer() {
 	$plugin = new Weblex_Importer();
 	$plugin->run();
 
-	$update_checker = Puc_v4_Factory::buildUpdateChecker(
+	$update_checker = PucFactory::buildUpdateChecker(
 		'https://github.com/19h47/weblex-importer/',
 		__FILE__,
 		'weblex-importer'

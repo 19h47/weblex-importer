@@ -1,33 +1,32 @@
-<?php return array (
-  'root' => 
-  array (
-    'pretty_version' => 'dev-main',
-    'version' => 'dev-main',
-    'aliases' => 
-    array (
+<?php return array(
+    'root' => array(
+        'name' => '19h47/wordpress-plugin',
+        'pretty_version' => '1.0.21',
+        'version' => '1.0.21.0',
+        'reference' => null,
+        'type' => 'wordpress-plugin',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
     ),
-    'reference' => '488a3df6ab9c1ecf62c06c3fe4d11f4101a8facf',
-    'name' => '__root__',
-  ),
-  'versions' => 
-  array (
-    '__root__' => 
-    array (
-      'pretty_version' => 'dev-main',
-      'version' => 'dev-main',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '488a3df6ab9c1ecf62c06c3fe4d11f4101a8facf',
+    'versions' => array(
+        '19h47/wordpress-plugin' => array(
+            'pretty_version' => '1.0.21',
+            'version' => '1.0.21.0',
+            'reference' => null,
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'yahnis-elsts/plugin-update-checker' => array(
+            'pretty_version' => 'v5.4',
+            'version' => '5.4.0.0',
+            'reference' => 'e8e53e6d98e37fa7c895c93417f52e3775494715',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../yahnis-elsts/plugin-update-checker',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
     ),
-    'yahnis-elsts/plugin-update-checker' => 
-    array (
-      'pretty_version' => 'v4.11',
-      'version' => '4.11.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '3155f2d3f1ca5e7ed3f25b256f020e370515af43',
-    ),
-  ),
 );

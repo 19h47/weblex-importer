@@ -286,4 +286,8 @@ This section describes how to install the plugin and get it working.
 = 1.0.20 =
 * Check if option post type exist
 
+= 1.0.21 =
+* Remove unnecessary type
+* Upgrade dependencies
+
 == Upgrade Notice ==

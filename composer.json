@@ -5,12 +5,12 @@
           "web/app/plugins/{$name}/": [
               "type:wordpress-plugin"
           ]
-      },
+      }
   },
   "description": "Import posts from a Weblex RSS feed.",
   "type": "wordpress-plugin",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "require": {
-      "yahnis-elsts/plugin-update-checker": "^4.11"
+      "yahnis-elsts/plugin-update-checker": "^5.4"
   }
 }
