@@ -50,25 +50,6 @@ $description = get_queried_object() ? get_queried_object()->description : false;
 
 						<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 
-						<?php
-
-						// $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-
-						// $time_string = sprintf(
-						// $time_string,
-						// esc_attr( get_the_date( DATE_W3C ) ),
-						// esc_html( get_the_date() )
-						// );
-						// echo '<div class="posted-on">';
-						// printf(
-						// /* translators: %s: publish date. */
-						// esc_html__( 'Published %s', 'webleximporter' ),
-						// $time_string // phpcs:ignore WordPress.Security.EscapeOutput
-						// );
-						// echo '</div>';
-
-						?>
-
 						<?php echo get_the_term_list( get_the_ID(), 'weblex-importer-category', '<div>', ', ', '</div>' ); ?>
 						<!-- <?php echo get_the_term_list( get_the_ID(), 'weblex-importer-tag', '<div>', ', ', '</div>' ); ?> -->
 						<?php echo get_the_term_list( get_the_ID(), 'weblex-importer-activity', '<div>', ', ', '</div>' ); ?>

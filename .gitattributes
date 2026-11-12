@@ -1,0 +1,10 @@
+# Left out of the GitHub release archive installed by WordPress.
+.github export-ignore
+.gitattributes export-ignore
+.gitignore export-ignore
+composer.json export-ignore
+composer.lock export-ignore
+phpcs.xml export-ignore
+README.md export-ignore
+phpunit.xml.dist export-ignore
+tests export-ignore

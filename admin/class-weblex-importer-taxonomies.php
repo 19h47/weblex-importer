@@ -44,7 +44,6 @@ class Weblex_Importer_Taxonomies {
 
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
-
 	}
 
 
@@ -55,7 +54,7 @@ class Weblex_Importer_Taxonomies {
 	 *
 	 * @return void
 	 */
-	public function register() : void {
+	public function register(): void {
 
 		$this->register_activity();
 		$this->register_category();
@@ -70,7 +69,7 @@ class Weblex_Importer_Taxonomies {
 	 *
 	 * @return void
 	 */
-	public function register_activity() : void {
+	public function register_activity(): void {
 		$labels = array(
 			'name'                       => _x( 'Activities', 'post activity general name', 'webleximporter' ),
 			'singular_name'              => _x( 'Activity', 'post activity singular name', 'webleximporter' ),

@@ -234,7 +234,7 @@ class Weblex_Importer_Widget_Recent_Posts extends WP_Widget {
 		?>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
-				<?php esc_html_e( 'Title:' ); ?>
+				<?php esc_html_e( 'Title:' ); // phpcs:ignore WordPress.WP.I18n.MissingArgDomain -- String translated by WordPress. ?>
 			</label>
 			<input 
 				class="widefat" 

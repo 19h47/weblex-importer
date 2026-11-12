@@ -76,6 +76,7 @@ class Weblex_Importer {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_includes_hooks();
+		$this->define_updater_hooks();
 		$this->define_public_hooks();
 	}
 
@@ -101,35 +102,40 @@ class Weblex_Importer {
 		/**
 		 * The class responsible for defining all actions related to the includes functionality.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-weblex-importer-includes.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-weblex-importer-includes.php';
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-weblex-importer-loader.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-weblex-importer-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-weblex-importer-i18n.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-weblex-importer-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-importer-admin.php';
+		require_once plugin_dir_path( __DIR__ ) . 'admin/class-weblex-importer-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-weblex-importer-public.php';
+		require_once plugin_dir_path( __DIR__ ) . 'public/class-weblex-importer-public.php';
 
 		/**
 		 * This is a sample custom widget.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/widgets/class-weblex-importer-widget-recent-posts.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/widgets/class-weblex-importer-widget-recent-posts.php';
+
+		/**
+		 * The class responsible for the updates of the plugin from GitHub releases.
+		 */
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-weblex-importer-updater.php';
 
 		$this->loader = new Weblex_Importer_Loader();
 	}
@@ -150,7 +156,6 @@ class Weblex_Importer {
 		$plugin_i18n->set_domain( 'webleximporter' );
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
 	}
 
 
@@ -168,9 +173,6 @@ class Weblex_Importer {
 		$plugin_import     = new Weblex_Importer_Import( $this->get_plugin_name(), $this->get_version() );
 		$plugin_post       = new Weblex_Importer_Post( $this->get_plugin_name(), $this->get_version() );
 		$plugin_taxonomies = new Weblex_Importer_Taxonomies( $this->get_plugin_name(), $this->get_version() );
-
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
 		$this->loader->add_action( 'admin_menu', $plugin_settings, 'setup_options_page' );
 		$this->loader->add_action( 'admin_init', $plugin_settings, 'initialize_display_options' );
@@ -210,6 +212,21 @@ class Weblex_Importer {
 
 
 	/**
+	 * Register all of the hooks related to the updates of the plugin.
+	 *
+	 * @since    1.1.0
+	 * @access   private
+	 */
+	private function define_updater_hooks() {
+		$plugin_updater = new Weblex_Importer_Updater( plugin_basename( WEBLEX_IMPORTER_FILE ) );
+
+		$this->loader->add_filter( 'update_plugins_github.com', $plugin_updater, 'check_update', 10, 3 );
+		$this->loader->add_filter( 'plugins_api', $plugin_updater, 'get_plugin_information', 20, 3 );
+		$this->loader->add_filter( 'upgrader_source_selection', $plugin_updater, 'rename_source', 10, 4 );
+	}
+
+
+	/**
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
 	 *
@@ -221,11 +238,9 @@ class Weblex_Importer {
 		$plugin_public          = new Weblex_Importer_Public( $this->get_plugin_name(), $this->get_version() );
 		$plugin_template_loader = new Weblex_Importer_Template_Loader( $this->get_plugin_name(), $this->get_version() );
 
-		// $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
 		$this->loader->add_filter( 'template_include', $plugin_template_loader, 'template_loader', 10, 1 );
-
 	}
 
 

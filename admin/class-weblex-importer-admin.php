@@ -9,12 +9,10 @@
  * @subpackage Weblex_Importer/admin
  */
 
- 
 /**
  * The admin-specific functionality of the plugin.
  *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
+ * Loads the classes of the admin area.
  *
  * @package    Weblex_Importer
  * @subpackage Weblex_Importer/admin
@@ -71,52 +69,9 @@ class Weblex_Importer_Admin {
 	 * @access   private
 	 */
 	private function load_dependencies() {
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-importer-settings.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-importer-import.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-importer-post.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-weblex-importer-taxonomies.php';
-	}
-
-
-	/**
-	 * Register the stylesheets for the admin area.
-	 *
-	 * @since    0.0.0
-	 */
-	public function enqueue_styles() : void {
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Wppb_Demo_Plugin_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Wppb_Demo_Plugin_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/weblex-importer-admin.css', array(), $this->version, 'all' );
-	}
-
-
-	/**
-	 * Register the JavaScript for the admin area.
-	 *
-	 * @since    0.0.0
-	 */
-	public function enqueue_scripts() {
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Wppb_Demo_Plugin_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Wppb_Demo_Plugin_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/weblex-importer-admin.js', array( 'jquery' ), $this->version, false );
-
+		require_once plugin_dir_path( __DIR__ ) . 'admin/class-weblex-importer-settings.php';
+		require_once plugin_dir_path( __DIR__ ) . 'admin/class-weblex-importer-import.php';
+		require_once plugin_dir_path( __DIR__ ) . 'admin/class-weblex-importer-post.php';
+		require_once plugin_dir_path( __DIR__ ) . 'admin/class-weblex-importer-taxonomies.php';
 	}
 }
