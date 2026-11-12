@@ -14,8 +14,10 @@
  * @wordpress-plugin
  * Plugin Name:       Weblex Importer
  * Plugin URI:        https://github.com/19h47/weblex-importer/
- * Description:       Import posts from an Weblex RSS feed.
- * Version:           1.0.21
+ * Description:       Import posts from a Weblex RSS feed.
+ * Version:           1.1.0
+ * Requires at least: 5.8
+ * Requires PHP:      7.4
  * Author:            Jérémy Levron
  * Author URI:        https://19h47.fr/
  * License:           GPL-2.0+
@@ -23,6 +25,7 @@
  * Text Domain:       webleximporter
  * Domain Path:       /languages
  * Tags:              importer, rss
+ * Update URI:        https://github.com/19h47/weblex-importer
  */
 
 // If this file is called directly, abort.
@@ -30,8 +33,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
-
+define( 'WEBLEX_IMPORTER_FILE', __FILE__ );
 define( 'WEBLEX_IMPORTER_DIR_PATH', plugin_dir_path( __FILE__ ) );
 
 /**
@@ -86,7 +88,7 @@ function update_weblex_importer( WP_Upgrader $upgrader, array $hook_extra ) {
  *
  * @return string Default 'post'.
  */
-function weblex_importer_get_post_type() : string {
+function weblex_importer_get_post_type(): string {
 	$post_type = get_option( 'weblex_importer_options' );
 
 	if ( ! $post_type ) {
@@ -121,18 +123,8 @@ require WEBLEX_IMPORTER_DIR_PATH . 'includes/class-weblex-importer.php';
  * @since    0.0.0
  */
 function run_weblex_importer() {
-	require WEBLEX_IMPORTER_DIR_PATH . 'vendor/yahnis-elsts/plugin-update-checker/plugin-update-checker.php';
-
 	$plugin = new Weblex_Importer();
 	$plugin->run();
-
-	$update_checker = PucFactory::buildUpdateChecker(
-		'https://github.com/19h47/weblex-importer/',
-		__FILE__,
-		'weblex-importer'
-	);
-
-	$update_checker->setBranch( 'wordpress-plugin' );
 }
 
 run_weblex_importer();

@@ -57,5 +57,4 @@ class Weblex_Importer_I18n {
 	public function set_domain( string $domain ) {
 		$this->domain = $domain;
 	}
-
 }

@@ -55,7 +55,6 @@ class Weblex_Importer_Post {
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
 		$this->post_type   = 'weblex-importer-post';
-
 	}
 
 
@@ -65,7 +64,7 @@ class Weblex_Importer_Post {
 	 *
 	 * @return bool
 	 */
-	public function css() : bool {
+	public function css(): bool {
 		global $typenow;
 
 		if ( $this->post_type !== $typenow ) {
@@ -105,7 +104,7 @@ class Weblex_Importer_Post {
 	 * @return array $new_columns
 	 * @link https://developer.wordpress.org/reference/hooks/manage_post_type_posts_columns/
 	 */
-	public function add_custom_columns( array $columns ) : array {
+	public function add_custom_columns( array $columns ): array {
 		$new_columns = array();
 
 		foreach ( $columns as $key => $value ) {
@@ -128,7 +127,7 @@ class Weblex_Importer_Post {
 	 *
 	 * @return void
 	 */
-	public function render_custom_columns( string $column_name, int $post_id ) : void {
+	public function render_custom_columns( string $column_name, int $post_id ): void {
 		switch ( $column_name ) {
 			case 'thumbnail':
 				$thumbnail = get_the_post_thumbnail( $post_id, 'medium' );
@@ -156,7 +155,7 @@ class Weblex_Importer_Post {
 	 * @link https://developer.wordpress.org/reference/hooks/post_updated_messages/
 	 * @access public
 	 */
-	public function updated_messages( array $messages ) : array {
+	public function updated_messages( array $messages ): array {
 		global $post;
 
 		$post_ID     = isset( $post_ID ) ? (int) $post_ID : 0;
@@ -212,7 +211,7 @@ class Weblex_Importer_Post {
 	 *
 	 * @return array $bulk_counts
 	 */
-	public function bulk_updated_messages( array $bulk_messages, array $bulk_counts ) : array {
+	public function bulk_updated_messages( array $bulk_messages, array $bulk_counts ): array {
 		$bulk_messages[ $this->post_type ] = array(
 			/* translators: %s: Number of posts. */
 			'updated'   => _n( '%s post updated.', '%s posts updated.', $bulk_counts['updated'], 'webleximporter' ),
@@ -237,7 +236,7 @@ class Weblex_Importer_Post {
 	 * @return void
 	 * @access public
 	 */
-	public function register() : void {
+	public function register(): void {
 		$labels = array(
 			'name'                     => _x( 'Posts', 'weblex-importer-post type generale name', 'webleximporter' ),
 			'singular_name'            => _x( 'Post', 'weblex-importer-post type singular name', 'webleximporter' ),
@@ -306,6 +305,8 @@ class Weblex_Importer_Post {
 	 * @param WP_Post $post Post object.
 	 */
 	public function delete_attachment( int $postid, WP_Post $post ) {
+		unset( $post );
+
 		$post_type = get_post_type( $postid );
 
 		if ( has_post_thumbnail( $postid ) && weblex_importer_get_post_type() === $post_type && metadata_exists( weblex_importer_get_post_type(), $postid, 'weblex-importer-id' ) ) {

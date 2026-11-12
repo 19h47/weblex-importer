@@ -55,7 +55,6 @@ class Weblex_Importer_Import {
 
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
-
 	}
 
 
@@ -84,7 +83,9 @@ class Weblex_Importer_Import {
 	 *
 	 * @return void
 	 */
-	public function update_options( $old_value, $value, $option ) : void {
+	public function update_options( $old_value, $value, $option ): void {
+		unset( $option );
+
 		if ( $value['post'] !== $old_value['post'] ) {
 			return;
 		}
@@ -107,7 +108,7 @@ class Weblex_Importer_Import {
 	 *
 	 * @return void
 	 */
-	public function fetch( $url ) : void {
+	public function fetch( $url ): void {
 		$post_type = weblex_importer_get_post_type();
 		$rss       = fetch_feed( $url );
 
@@ -118,8 +119,27 @@ class Weblex_Importer_Import {
 			$post_tag = $this->get_tag_by_name( $title );
 
 			foreach ( $rss->get_items( 0, $quantity ) as $item ) {
-				$item_id       = md5( serialize( $item->data ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
+				// The link identifies the item, the hash tells whether its content changed.
+				// Hash first: SimplePie getters cache their result in $item->data.
+				$item_hash     = md5( serialize( $item->data ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
+				$item_link     = (string) $item->get_permalink();
 				$item_pub_date = gmdate( $item->get_date( 'Y-m-d H:i:s' ) );
+
+				// An item without link is found by its hash only, as before 1.1.0.
+				$post = '' !== $item_link ? $this->get_post_by_meta( 'weblex-importer-link', $item_link ) : null;
+
+				// Posts imported before 1.1.0 only have the hash: find them by it, then attach the link.
+				if ( null === $post ) {
+					$post = $this->get_post_by_meta( 'weblex-importer-id', $item_hash );
+
+					if ( null !== $post && '' !== $item_link ) {
+						update_post_meta( $post->ID, 'weblex-importer-link', $item_link );
+					}
+				}
+
+				if ( null !== $post && get_post_meta( $post->ID, 'weblex-importer-id', true ) === $item_hash ) {
+					continue;
+				}
 
 				$post_categories = $this->extract_categories( $item->get_categories() );
 				$post_activities = $this->get_activities( $item );
@@ -128,89 +148,87 @@ class Weblex_Importer_Import {
 				$tag      = 'weblex-importer-post' === $post_type ? 'weblex-importer-tag' : 'post_tag';
 				$category = 'weblex-importer-post' === $post_type ? 'weblex-importer-category' : 'category';
 
-				$query = new WP_Query(
-					array(
-						'post_type'              => $post_type,
-						'meta_key'               => 'weblex-importer-id', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
-						'meta_value'             => $item_id, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
-						'no_found_rows'          => true,
-						'update_post_term_cache' => false,
-						'update_post_meta_cache' => false,
-					)
+				$postarr = array(
+					'post_title'   => $item->get_title(),
+					'post_excerpt' => $this->get_introduction( $item ),
 				);
 
-				if ( $query->have_posts() ) {
-					$post = $query->next_post();
+				if ( $item->get_description( false ) ) {
+					$postarr['post_content'] = $item->get_description( false );
+				}
 
-					if ( strtotime( $post->post_modified ) === strtotime( $item_pub_date ) ) {
-						continue;
-					}
+				// An updated post keeps its date, so its URL stays the same.
+				if ( null !== $post ) {
+					$postarr['ID'] = $post->ID;
 
-					if ( strtotime( $post->post_modified ) < strtotime( $item_pub_date ) ) {
-
-						if ( $item->get_description( false ) ) {
-							$post->post_content = $item->get_description( false );
-						}
-
-						$post->post_title    = $item->get_title();
-						$post->post_modified = $item_pub_date;
-						$post->post_excerpt  = $this->get_introduction( $item );
-
-						$updated_post_id = wp_update_post( $post );
-
-						if ( 0 !== $updated_post_id ) {
-							if ( $post_activities ) {
-								wp_set_object_terms( $updated_post_id, $post_activities, 'weblex-importer-activity', false );
-							}
-
-							if ( $post_keywords ) {
-								wp_set_object_terms( $updated_post_id, $post_keywords, 'weblex-importer-keyword', false );
-							}
-
-							wp_set_object_terms( $updated_post_id, $post_tag, $tag, false );
-							wp_set_object_terms( $updated_post_id, $post_categories, $category, false );
-						}
-
-						if ( $this->get_image_url( $item ) ) {
-							$this->set_post_thumbnail( $this->get_image_url( $item ), $updated_post_id );
-						}
-					}
+					$post_id = wp_update_post( $postarr );
 				} else {
-					$post = array(
-						'post_title'   => $item->get_title(), // The title of the post.
-						'post_type'    => $post_type,
-						'post_status'  => 'publish',
-						'post_date'    => $item_pub_date, // The time the post was made.
-						'post_excerpt' => $this->get_introduction( $item ),
-					);
+					$postarr['post_type']   = $post_type;
+					$postarr['post_status'] = 'publish';
+					$postarr['post_date']   = $item_pub_date;
 
-					if ( $item->get_description( false ) ) {
-						$post['post_content'] = $item->get_description( false );
-					}
+					$post_id = wp_insert_post( $postarr );
+				}
 
-					$inserted_post_id = wp_insert_post( $post );
+				if ( 0 === $post_id ) {
+					continue;
+				}
 
-					if ( 0 !== $inserted_post_id ) {
-						if ( $post_activities ) {
-							wp_set_object_terms( $inserted_post_id, $post_activities, 'weblex-importer-activity', false );
-						}
+				if ( $post_activities ) {
+					wp_set_object_terms( $post_id, $post_activities, 'weblex-importer-activity', false );
+				}
 
-						if ( $post_keywords ) {
-							wp_set_object_terms( $inserted_post_id, $post_keywords, 'weblex-importer-keyword', false );
-						}
+				if ( $post_keywords ) {
+					wp_set_object_terms( $post_id, $post_keywords, 'weblex-importer-keyword', false );
+				}
 
-						wp_set_object_terms( $inserted_post_id, $post_tag, $tag, false );
-						wp_set_object_terms( $inserted_post_id, $post_categories, $category, false );
+				wp_set_object_terms( $post_id, $post_tag, $tag, false );
+				wp_set_object_terms( $post_id, $post_categories, $category, false );
 
-						update_post_meta( $inserted_post_id, 'weblex-importer-id', $item_id );
-					}
+				update_post_meta( $post_id, 'weblex-importer-id', $item_hash );
 
-					if ( $this->get_image_url( $item ) ) {
-						$this->set_post_thumbnail( $this->get_image_url( $item ), $inserted_post_id );
-					}
+				if ( '' !== $item_link ) {
+					update_post_meta( $post_id, 'weblex-importer-link', $item_link );
+				}
+
+				$image_url = $this->get_image_url( $item );
+
+				if ( $image_url ) {
+					$this->set_post_thumbnail( $image_url, $post_id );
 				}
 			}
 		}
+	}
+
+
+	/**
+	 * Get post by meta
+	 *
+	 * Queries the database directly: other plugins filter WP_Query, WPML by language for instance,
+	 * and made it return posts that did not match (#3). Whatever its status, a post is found:
+	 * one a site moved to the trash is not imported again.
+	 *
+	 * @param string $key Meta key.
+	 * @param string $value Meta value.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @return WP_Post|null
+	 */
+	private function get_post_by_meta( string $key, string $value ): ?WP_Post {
+		global $wpdb;
+
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- A lookup the next import must not find in a cache.
+		$post_id = $wpdb->get_var(
+			$wpdb->prepare(
+				"SELECT p.ID FROM $wpdb->posts p INNER JOIN $wpdb->postmeta m ON m.post_id = p.ID WHERE p.post_type = %s AND m.meta_key = %s AND m.meta_value = %s LIMIT 1",
+				weblex_importer_get_post_type(),
+				$key,
+				$value
+			)
+		);
+
+		return $post_id ? get_post( (int) $post_id ) : null;
 	}
 
 
@@ -221,7 +239,7 @@ class Weblex_Importer_Import {
 	 *
 	 * @return array $tags
 	 */
-	private function extract_categories( $categories ) : array {
+	private function extract_categories( $categories ): array {
 		$post_type = weblex_importer_get_post_type();
 		$terms     = array();
 
@@ -249,7 +267,7 @@ class Weblex_Importer_Import {
 	 * @since    0.0.0
 	 * @return int
 	 */
-	private function get_tag_by_name( string $name ) : int {
+	private function get_tag_by_name( string $name ): int {
 		$post_type = weblex_importer_get_post_type();
 		$term      = get_term_by( 'slug', $name, 'weblex-importer-post' === $post_type ? 'weblex-importer-tag' : 'post_tag', ARRAY_A );
 
@@ -292,7 +310,7 @@ class Weblex_Importer_Import {
 	 *
 	 * @return array
 	 */
-	private function get_activities( $item ) : array {
+	private function get_activities( $item ): array {
 		$activites = array();
 
 		if ( ! $item->get_item_tags( '', 'activites' ) ) {
@@ -308,7 +326,7 @@ class Weblex_Importer_Import {
 		}
 
 		return array_map(
-			function( $activite ) {
+			function ( $activite ) {
 				return $activite['data'];
 			},
 			$item->get_item_tags( '', 'activites' )[0]['child']['']['activite']
@@ -325,7 +343,7 @@ class Weblex_Importer_Import {
 	 *
 	 * @return array
 	 */
-	private function get_keywords( $item ) : array {
+	private function get_keywords( $item ): array {
 		$keywords = array();
 
 		if ( ! $item->get_item_tags( '', 'motsCles' ) ) {
@@ -353,7 +371,7 @@ class Weblex_Importer_Import {
 	 *
 	 * @return string
 	 */
-	private function get_introduction( $item ) : string {
+	private function get_introduction( $item ): string {
 		$introduction = '';
 
 		if ( ! $item->get_item_tags( '', 'introduction' ) ) {
@@ -417,6 +435,8 @@ class Weblex_Importer_Import {
 			return $file_array['tmp_name'];
 		}
 
+		$previous_attachment_id = get_post_thumbnail_id( $post );
+
 		// @see https://developer.wordpress.org/reference/functions/media_handle_sideload/
 		$attachment_id = media_handle_sideload( $file_array, $post->ID );
 
@@ -429,6 +449,11 @@ class Weblex_Importer_Import {
 
 		if ( false === $post_thumbnail ) {
 			return new WP_Error( 'insert_attachment_failed', __( 'Problem to set post thumbnail', 'webleximporter' ) );
+		}
+
+		// Only the image imported for this post is deleted, not one picked from the media library.
+		if ( $previous_attachment_id && wp_get_post_parent_id( $previous_attachment_id ) === $post->ID ) {
+			wp_delete_attachment( $previous_attachment_id, true );
 		}
 
 		return $attachment_id;

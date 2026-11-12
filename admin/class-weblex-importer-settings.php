@@ -43,7 +43,6 @@ class Weblex_Importer_Settings {
 
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
-
 	}
 
 	/**
@@ -53,7 +52,7 @@ class Weblex_Importer_Settings {
 	 *
 	 * @return void
 	 */
-	public function setup_options_page() : void {
+	public function setup_options_page(): void {
 		add_options_page(
 			__( 'Weblex Importer', 'webleximporter' ),
 			__( 'Weblex Importer', 'webleximporter' ),
@@ -66,10 +65,8 @@ class Weblex_Importer_Settings {
 
 	/**
 	 * Renders a simple page to display for the theme menu defined above.
-	 *
-	 * @param string $active_tab The active tab.
 	 */
-	public function render_settings_page_content( string $active_tab = '' ) : void {
+	public function render_settings_page_content(): void {
 		?>
 		<div class="wrap">
 
@@ -215,7 +212,7 @@ class Weblex_Importer_Settings {
 		$term      = $this->get_tag( $args['slug'] );
 		$post_type = weblex_importer_get_post_type();
 
-		include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/weblex-importer-admin-input.php';
+		include plugin_dir_path( __DIR__ ) . 'admin/partials/weblex-importer-admin-input.php';
 	}
 
 
@@ -224,10 +221,10 @@ class Weblex_Importer_Settings {
 	 *
 	 * @param array $args Args.
 	 */
-	public function save_weblex_feed_checkbox( array $args ) {
+	public function save_weblex_feed_checkbox( array $args ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- Used by the partial.
 		$options = get_option( 'weblex_importer_options' );
 
-		include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/weblex-importer-admin-checkbox.php';
+		include plugin_dir_path( __DIR__ ) . 'admin/partials/weblex-importer-admin-checkbox.php';
 	}
 
 

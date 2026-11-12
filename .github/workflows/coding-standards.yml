@@ -1,0 +1,31 @@
+name: Coding standards
+
+on:
+  push:
+    branches: [wordpress-plugin]
+  pull_request:
+
+# One run per branch: a push cancels the one still running for the push before.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  phpcs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: none
+          tools: composer
+
+      # The dependencies of composer.lock, from the cache of Composer once downloaded.
+      - uses: ramsey/composer-install@v3
+
+      - run: vendor/bin/phpcs

@@ -67,7 +67,7 @@ class Weblex_Importer_Template_Loader {
 	 *
 	 * @return string
 	 */
-	public function template_loader( string $template ) : string {
+	public function template_loader( string $template ): string {
 
 		if ( is_tax( 'weblex-importer-tag' ) ) {
 			$search_files = array( 'taxonomy-weblex-importer-tag.php' );

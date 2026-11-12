@@ -60,7 +60,6 @@ class Weblex_Importer_Includes {
 
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
-
 	}
 
 	/**
@@ -72,5 +71,4 @@ class Weblex_Importer_Includes {
 	public function register_widgets() {
 		array_walk( $this->widgets, 'register_widget' );
 	}
-
 }

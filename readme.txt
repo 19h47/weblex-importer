@@ -2,8 +2,9 @@
 Contributors: 19h47
 Tags: rss, importer
 Requires at least: 5.8
-Tested up to: 5.8
-Requires PHP: 7.3.5
+Tested up to: 7.1
+Requires PHP: 7.4
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,16 +12,31 @@ Import posts from a Weblex RSS feed.
 
 == Description ==
 
-== Installation ==
- 
-This section describes how to install the plugin and get it working.
+The plugin imports the news of one or more Weblex RSS feeds, once a day and each time the date of a feed is changed in **Settings > Weblex Importer**. Each item becomes a post with its title, its introduction as excerpt, its text, its image as featured image, its categories, its activities and its keywords, and the title of its feed as tag.
 
-1. Upload `weblex-importer` folder to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
+The posts are of the plugin's own type, under `/les-infos-du-jour/`, or WordPress posts when the **Post** option is checked.
+
+An item Weblex edits updates its post: same date, same URL. The plugin recognises an item by its link on weblex.fr, which is built from its title: an item whose title changes is imported as a new post.
+
+== Installation ==
+
+1. Download the archive of the latest [release](https://github.com/19h47/weblex-importer/releases) and upload it in **Plugins > Add New > Upload Plugin**
+2. Activate the plugin
+3. Enter the URLs of the feeds in **Settings > Weblex Importer**
+
+== Updates ==
+
+The plugin updates from the latest release of [19h47/weblex-importer](https://github.com/19h47/weblex-importer/releases), like any other plugin in **Dashboard > Updates**: the `Update URI` header routes the update check to GitHub. To publish a version, bump `Version` in `weblex-importer.php` and `Stable tag` in this file, with an entry in the changelog, then create a release whose tag is that version. No update is offered when the plugin folder is a Git working copy, since updating replaces the whole folder.
 
 == Frequently Asked Questions ==
 
-== Screenshots ==
+= What happens to the posts when the plugin is deactivated? =
+
+The posts of the plugin's own type are deleted permanently; their featured images stay in the media library. WordPress posts, imported with the **Post** option, are kept. An update does not deactivate the plugin.
+
+= Why does an edited news item appear twice? =
+
+Weblex changed its title, and so its link: the plugin cannot tell it from a new item. Delete the older post by hand.
 
 == Changelog ==
 
@@ -289,5 +305,16 @@ This section describes how to install the plugin and get it working.
 = 1.0.21 =
 * Remove unnecessary type
 * Upgrade dependencies
+
+= 1.1.0 =
+* Identify a feed item by its link instead of a hash of its content: an item edited by Weblex updates its post instead of creating a new one (-2) (#4)
+* An updated post keeps its date and URL
+* Replace the featured image of an updated post instead of adding a new one to the media library
+* Posts imported before 1.1.0 are left as they are and attached to their link on the next import
+* The link is built from the title: an item whose title is changed by Weblex still creates a new post
+* Find an imported post with a direct database query, which other plugins (WPML…) cannot filter (#3)
+* Update from GitHub releases with the Update URI header of WordPress, instead of the plugin-update-checker library on the wordpress-plugin branch
+* Remove the empty admin stylesheet and script, and the empty public stylesheet
+* Code only: WordPress coding standards, checked by phpcs
 
 == Upgrade Notice ==

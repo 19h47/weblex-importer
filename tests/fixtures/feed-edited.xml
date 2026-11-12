@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>LES ACTUALITES</title>
+		<link>https://www.weblex.fr/weblex/feed/1/</link>
+		<description>Flux WebLex.fr</description>
+		<item>
+			<link>https://www.weblex.fr/weblex-actualite/une-intensification-des-controles-du-droit-du-travail-a-bord-des-navires</link>
+			<title>Une intensification des contrôles du droit du travail à bord des navires</title>
+			<introduction><![CDATA[<p>Pour lutter contre le dumping social maritime, les autorités renforcent les contrôles.</p>]]></introduction>
+			<description><![CDATA[<p>Le ministère du Travail et le ministère chargé des Transports poursuivent leur action contre le dumping social maritime.</p>]]></description>
+			<category>Actualités</category>
+			<category>Infos Sociales</category>
+			<pubDate>2026-10-16</pubDate>
+			<activites><activite>Transport maritime</activite></activites>
+		</item>
+		<item>
+			<link>https://www.weblex.fr/weblex-actualite/grands-rouleurs-la-nouvelle-aide-est-precisee</link>
+			<title>Grands rouleurs : la nouvelle aide est précisée</title>
+			<introduction><![CDATA[<p>Les modalités de la nouvelle aide aux grands rouleurs sont précisées.</p>]]></introduction>
+			<description><![CDATA[<p>Une aide, précisée par décret, est versée aux travailleurs qui parcourent de longues distances pour se rendre au travail.</p>]]></description>
+			<category>Actualités</category>
+			<category>Infos Sociales</category>
+			<pubDate>2026-10-22</pubDate>
+			<activites><activite>Tout secteur</activite></activites>
+		</item>
+	</channel>
+</rss>

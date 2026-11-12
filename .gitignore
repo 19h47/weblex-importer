@@ -2,8 +2,8 @@
 
 # PHP #
 #######
-# vendor
-wpcs
+vendor
+.phpunit.result.cache
 
 # Webpack #
 ###########
